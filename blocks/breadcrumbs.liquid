@@ -1,0 +1,45 @@
+{% comment %}
+  sections/breadcrumbs-block.liquid
+  — регистрирует блок «Breadcrumbs» и передаёт настройки в сниппет
+{% endcomment %}
+
+{% render 'breadcrumbs',
+    parent_metafield: block.settings.parent_metafield,
+    separator_text:   block.settings.separator_text,
+    separator_image:  block.settings.separator_image
+%}
+
+{% schema %}
+{
+  "name": "Breadcrumbs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "parent_metafield",
+      "label": "Parent collection metafield (namespace.key)",
+      "default": "custom.parent_collection",
+      "info": "Metafield on each collection that stores its parent handle"
+    },
+    {
+      "type": "text",
+      "id": "separator_text",
+      "label": "Separator symbol",
+      "default": "›",
+      "info": "Used if no image is selected"
+    },
+    {
+      "type": "image_picker",
+      "id": "separator_image",
+      "label": "Separator image",
+      "info": "If set, this image will replace the text symbol"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Breadcrumbs",
+      "category": "Navigation"
+    }
+  ]
+}
+{% endschema %}

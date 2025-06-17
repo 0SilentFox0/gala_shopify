@@ -1,0 +1,98 @@
+{% comment %}
+  snippets/breadcrumbs.liquid
+  — breadcrumbs: Home → All products →
+    одна коллекция на уровень 1–10 по метафилду →
+    товар
+{% endcomment %}
+
+{% assign parts = parent_metafield | split: '.' %}
+{% assign ns    = parts[0] %}
+{% assign key   = parts[1] %}
+
+{% if separator_image != blank %}
+  {% capture sep %}<img src="{{ separator_image | image_url }}" alt="Separator" />{% endcapture %}
+{% else %}
+  {% capture sep %}{{ separator_text }}{% endcapture %}
+{% endif %}
+
+<nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
+  <ol class="breadcrumb-list">
+    <!-- 1. Home -->
+    <li class="breadcrumb-item">
+      <p style="margin: 0;"><a href="{{ routes.root_url }}">Home</a></p>
+    </li>
+
+    {% if product %}
+      <!-- 2. All products -->
+      <li class="breadcrumb-separator">{{ sep }}</li>
+      <li class="breadcrumb-item">
+        <p style="margin: 0;"><a href="{{ collections['all'].url }}">All products</a></p>
+      </li>
+
+      <!-- 3. One collection per level -->
+      {% for level in (1..10) %}
+        {% assign found = false %}
+        {% for col in product.collections %}
+          {% assign lvl_num = col.metafields[ns][key] | plus: 0 %}
+          {% if lvl_num == level %}
+            <li class="breadcrumb-separator">{{ sep }}</li>
+            <li class="breadcrumb-item">
+              <p style="margin: 0;"><a href="{{ col.url }}">{{ col.title }}</a></p>
+            </li>
+            {% assign found = true %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+
+      <!-- 4. Product -->
+      <li class="breadcrumb-separator">{{ sep }}</li>
+      <li class="breadcrumb-item" aria-current="page">
+        {{ product.title }}
+      </li>
+
+    {% elsif collection and template.name == 'collection' %}
+      <li class="breadcrumb-separator">{{ sep }}</li>
+      <li class="breadcrumb-item" aria-current="page">
+        {{ collection.title }}
+      </li>
+
+    {% elsif page %}
+      <li class="breadcrumb-separator">{{ sep }}</li>
+      <li class="breadcrumb-item" aria-current="page">
+        {{ page.title }}
+      </li>
+
+    {% elsif blog and article %}
+      <li class="breadcrumb-separator">{{ sep }}</li>
+      <li class="breadcrumb-item">
+        <a href="{{ blog.url }}">{{ blog.title }}</a>
+      </li>
+      <li class="breadcrumb-separator">{{ sep }}</li>
+      <li class="breadcrumb-item" aria-current="page">
+        {{ article.title }}
+      </li>
+    {% endif %}
+  </ol>
+</nav>
+
+<style>
+  .breadcrumb-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    font-size: 12px;
+  }
+  .breadcrumb-item[aria-current="page"] {
+    color: var(--color-text, #333);
+    pointer-events: none;
+  }
+  .breadcrumb-separator {
+    margin: 0 0.5em;
+    display: flex;
+    align-items: center;
+  }
+</style>
