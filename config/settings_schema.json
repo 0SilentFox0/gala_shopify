@@ -348,6 +348,11 @@
         "label": "t:options.accent"
       },
       {
+        "type": "checkbox",
+        "id": "custom_fonts",
+        "label": "Custom fonts"
+      },
+      {
         "type": "header",
         "content": "t:content.text_presets"
       },

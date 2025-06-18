@@ -17,6 +17,119 @@
 %}
 
 {% style %}
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-Black.woff2' | asset_url }}') format('woff2');
+    font-weight: 900;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-BlackItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 900;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-Bold.woff2' | asset_url }}') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-BoldItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 700;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-Book.woff2' | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-BookItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 400;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-Light.woff2' | asset_url }}') format('woff2');
+    font-weight: 300;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-LightItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-Medium.woff2' | asset_url }}') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-MediumItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 500;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-Thin.woff2' | asset_url }}') format('woff2');
+    font-weight: 100;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-ThinItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-Ultra.woff2' | asset_url }}') format('woff2');
+    font-weight: 950;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-UltraItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 950;
+    font-style: italic;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-XLight.woff2' | asset_url }}') format('woff2');
+    font-weight: 200;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: 'Gotham';
+    src: url('{{ 'Gotham-XLightItalic.woff2' | asset_url }}') format('woff2');
+    font-weight: 200;
+    font-style: italic;
+  }
+
   {{ settings.type_body_font | font_face: font_display: 'swap' }}
   {{ primary_font_bold | font_face: font_display: 'swap' }}
   {{ primary_font_italic | font_face: font_display: 'swap' }}
@@ -36,6 +149,40 @@
   {{ accent_font_bold | font_face: font_display: 'swap' }}
   {{ accent_font_italic | font_face: font_display: 'swap' }}
   {{ accent_font_bold_italic | font_face: font_display: 'swap' }}
+
+  /* Font families */
+
+    {% if settings.custom_fonts %}
+      :root {
+        --font-body--family: "Gotham", sans-serif;
+        --font-body--style: normal;
+        --font-body--weight: 400;
+        --font-subheading--family: "Gotham", sans-serif;;
+        --font-subheading--style: normal;
+        --font-subheading--weight: 500;
+        --font-heading--family: "Gotham", sans-serif;;
+        --font-heading--style: normal;
+        --font-heading--weight: 500;
+        --font-accent--family: "Gotham", sans-serif;
+        --font-accent--style: normal;
+        --font-accent--weight: 500;
+      }
+    {% else %}
+    :root {
+      --font-body--family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+      --font-body--style: {{ settings.type_body_font.style }};
+      --font-body--weight: {{ settings.type_body_font.weight }};
+      --font-subheading--family: {{ settings.type_subheading_font.family }}, {{ settings.type_subheading_font.fallback_families }};
+      --font-subheading--style: {{ settings.type_subheading_font.style }};
+      --font-subheading--weight: {{ settings.type_subheading_font.weight }};
+      --font-heading--family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+      --font-heading--style: {{ settings.type_heading_font.style }};
+      --font-heading--weight: {{ settings.type_heading_font.weight }};
+      --font-accent--family: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
+      --font-accent--style: {{ settings.type_accent_font.style }};
+      --font-accent--weight: {{ settings.type_accent_font.weight }};
+    }
+    {% endif %}
 
   :root {
     /* Page Layout */
@@ -67,20 +214,6 @@
     /* Letter spacing */
     --letter-spacing-sm: 0.06em;
     --letter-spacing-md: 0.13em;
-
-    /* Font families */
-    --font-body--family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-    --font-body--style: {{ settings.type_body_font.style }};
-    --font-body--weight: {{ settings.type_body_font.weight }};
-    --font-subheading--family: {{ settings.type_subheading_font.family }}, {{ settings.type_subheading_font.fallback_families }};
-    --font-subheading--style: {{ settings.type_subheading_font.style }};
-    --font-subheading--weight: {{ settings.type_subheading_font.weight }};
-    --font-heading--family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
-    --font-heading--style: {{ settings.type_heading_font.style }};
-    --font-heading--weight: {{ settings.type_heading_font.weight }};
-    --font-accent--family: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
-    --font-accent--style: {{ settings.type_accent_font.style }};
-    --font-accent--weight: {{ settings.type_accent_font.weight }};
 
     /* Margin sizes */
     --font-h1--spacing: 0.25em;

@@ -33,6 +33,23 @@
       %}
     </div>
 
+    <ul class="mobile:hidden header-left-menu">
+      {% for link in block.settings.left_menu.links %}
+        <li>
+          <a
+            href="{{ link.url }}"
+            id="MenuItem-{{ link.handle }}"
+            class="menu-list__item"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- link.title -}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+
   {% when 'navigation_bar' %}
     {% if block.settings.navigation_bar == true %}
       <div
@@ -119,6 +136,7 @@
   }
 
   header-menu {
+    margin-top: 20px;
     width: 100%;
   }
 
@@ -567,6 +585,12 @@
       "type": "link_list",
       "id": "menu",
       "label": "t:settings.menu",
+      "default": "main-menu"
+    },
+    {
+      "type": "link_list",
+      "id": "left_menu",
+      "label": "Left menu",
       "default": "main-menu"
     },
     {
