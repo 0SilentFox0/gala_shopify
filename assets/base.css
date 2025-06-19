@@ -2277,6 +2277,19 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   transition: top var(--animation-speed) ease, font-size var(--animation-speed) ease;
 }
 
+.field__label.field__label-price-info {
+  left: unset;
+  right: var(--input-padding-x);;
+}
+
+.price-facet-label {
+  margin: 0px;
+  font-size: 14px;
+  color: black;
+  line-height: 100%;
+  font-weight: 500;
+}
+
 /* RTE styles */
 .rte,
 .shopify-policy__title {
@@ -2347,7 +2360,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   --checkbox-top: 50%;
   --checkbox-left: 1.5px;
   --checkbox-offset: 3px;
-  --checkbox-border-radius: 7px;
+  --checkbox-border-radius: 0px;
   --checkbox-label-padding: 8px;
   --checkbox-path-opacity: 0;
   --checkbox-cursor: pointer;
@@ -2359,7 +2372,6 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 
   @media screen and (width >= 750px) {
     --checkbox-size: 16px;
-    --checkbox-border-radius: 5px;
     --checkbox-label-padding: 6px;
   }
 
@@ -2582,9 +2594,10 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   gap: var(--gap-sm);
   min-width: 48px;
   padding: 6px 12px;
-  border-radius: var(--style-border-radius-pills);
+  /* border-radius: var(--style-border-radius-pills); */
   cursor: pointer;
-  background-color: var(--pills-pill-background-color);
+  /* background-color: var(--pills-pill-background-color); */
+  border: 1px solid black;
   transition: background-color var(--animation-speed) var(--animation-easing);
 
   &:hover {

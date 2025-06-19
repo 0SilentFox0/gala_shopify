@@ -11,6 +11,8 @@
     {% render 'account-drawer' %}
   {% endif %}
 
+  <button class="st-wishlist-details-button st-wishlist-details-button--header-icon" data-type="manually"></button>
+
   {% if settings.cart_type == 'drawer' and template.name != 'cart' %}
     {% render 'cart-drawer' %}
   {% else %}

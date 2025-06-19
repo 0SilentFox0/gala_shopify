@@ -74,7 +74,8 @@
         id="facet-inputs-{{ filter.param_name | escape | replace: '.', '-' }}"
         on:change="/updatePriceFilterAndResults"
       >
-        <div class="price-facet__inputs-wrapper facets__inputs-wrapper facets__inputs-wrapper--row">
+        <div class="price-facet__inputs-wrapper facets__inputs-wrapper">
+          <p class="price-facet-label">{{ 'content.price_filter_min_label' | t }}:</p>
           <div class="field price-facet__field">
             <input
               class="field__input price-facet__input"
@@ -98,12 +99,20 @@
               class="field__label price-facet__label"
               for="{{ filter.label | escape }}-GTE"
             >
-              {{ cart.currency.symbol }}
+              {{ cart.currency.iso_code }}
             </label>
+
+            <span
+              class="field__label field__label-price-info"
+            >
+              {%- assign formatted_lowest_price = max_input_min_value | money_with_currency -%}
+              {{ 'content.price_filter_html_lowest' | t: price: formatted_lowest_price }}
+            </span>
           </div>
 
-          <div class="price-facet__separator">{{ 'fields.separator' | t }}</div>
+          {% comment %} <div class="price-facet__separator">{{ 'fields.separator' | t }}</div> {% endcomment %}
 
+          <p class="price-facet-label">{{ 'content.price_filter_max_label' | t }}:</p>
           <div class="field price-facet__field">
             <input
               class="field__input price-facet__input"
@@ -127,15 +136,24 @@
               class="field__label price-facet__label"
               for="{{ filter.label | escape }}-LTE"
             >
-              {{ cart.currency.symbol }}
+              {{ cart.currency.iso_code }}
             </label>
+
+            <span
+              class="field__label field__label-price-info"
+            >
+              {%- assign formatted_highest_price = filter.range_max | money_with_currency -%}
+              {{ 'content.price_filter_html' | t: price: formatted_highest_price }}
+            </span>
           </div>
         </div>
 
+        {% comment %}
         <div class="price-facet__highest-price">
           {%- assign formatted_highest_price = filter.range_max | money -%}
           {{ 'content.price_filter_html' | t: price: formatted_highest_price }}
         </div>
+        {% endcomment %}
 
         {% if filter.min_value.value != null or filter.max_value.value != null %}
           {% assign has_active_values = true %}
@@ -173,11 +191,6 @@
     flex-wrap: nowrap;
   }
 
-  .price-facet__field {
-    width: 50%;
-    flex-grow: 0;
-  }
-
   @container (width < 200px) {
     .facets__inputs-wrapper.price-facet__inputs-wrapper {
       flex-wrap: wrap;
@@ -206,8 +219,10 @@
 
   .price-facet__input {
     width: 100%;
-    text-align: right;
-    padding-left: calc(2.5 * var(--input-padding-x));
+    padding-left: calc(4 * var(--input-padding-x));
+    padding-right: calc(4 * var(--input-padding-x));
+    box-shadow: none;
+    border-bottom: 1px solid black;
   }
 
   .price-facet__input::placeholder {

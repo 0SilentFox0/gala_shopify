@@ -703,10 +703,13 @@
       font-size: var(--font-paragraph--size);
       justify-content: flex-start;
       height: var(--minimum-touch-target);
+      border: 1px solid black;
+      padding: 8px;
     }
   }
 
   .facets__summary .icon-caret {
+    margin-left: 20px;
     height: var(--icon-size-xs);
     width: var(--icon-size-xs);
     color: rgb(from var(--color-foreground) r g b / var(--icon-opacity));
@@ -1023,13 +1026,15 @@
     width: max-content;
     display: flex;
     margin-inline-start: auto;
-    font-weight: 500;
+    font-weight: 400;
+    font-size: 14px;
     color: var(--color-foreground);
+    font-family: 'Gotham-Book', sans-serif;
   }
 
-  .facets__panel[open] .facets__status {
+  /* .facets__panel[open] .facets__status {
     display: none;
-  }
+  } */
 
   .facets--filters-title {
     margin-block-end: 0;
