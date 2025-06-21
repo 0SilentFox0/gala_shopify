@@ -4169,3 +4169,32 @@ text-component {
   margin: 0px;
   padding: 0px;
 }
+
+.st-wishlist-icon {
+  color: #000000 !important;
+}
+
+.st-wishlist-button[data-type="details"] {
+  width: 52px !important;
+  height: 52px  !important;
+  background-color: transparent !important;
+  border-radius: 0px !important;
+  color: #000000 !important;
+  padding: 0px !important;
+  border: 1px solid black !important;
+  flex-shrink: 0 !important;
+}
+
+.st-wishlist-button .st-label:not(:empty) {
+  display: none !important;
+}
+
+.product-form-buttons > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.product-form-buttons > span add-to-cart-component {
+  flex: 1 1 auto;
+}
