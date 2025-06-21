@@ -56,7 +56,7 @@
             {{ option_id_attribute }}
           >
             <legend>
-              {{ product_option.name | escape -}}
+              <strong>{{ product_option.name | escape -}}:</strong>
               {%- if variant_style == 'swatch' -%}
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}
@@ -237,7 +237,8 @@
 
   .variant-option--buttons legend {
     padding: 0;
-    margin-block-end: var(--margin-xs);
+    margin-block-end: var(--margin-lg);
+    font-size: 16px;
   }
 
   .variant-option__swatch-value {
