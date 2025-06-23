@@ -131,7 +131,117 @@
           %}
 
           <div class="variant-option variant-option--dropdowns">
-            <label for="Option-{{ block.id }}-{{ forloop.index0 }}">{{ product_option.name | escape }}</label>
+            {% assign option_escape = product_option.name | escape  %}
+            {% if option_escape == "Size" %}
+              <div class="variant-option-top">
+                <label for="Option-{{ block.id }}-{{ forloop.index0 }}"><strong>{{ option_escape }}:</strong></label>
+                <script
+                  src="{{ 'dialog.js' | asset_url }}"
+                  type="module"
+                ></script>
+
+                <dialog-component
+                  class="popup-link popul-link-{{ block.id }}"
+                  {{ block.shopify_attributes }}
+                >
+                  <button
+                    on:click="/showDialog"
+                    class="button button-unstyled popup-link__button text-left spacing-style {{ block.settings.type_preset }}"
+                    style="{% render 'spacing-style', settings: block.settings %}"
+                  >
+                    {{ 'products.product.size_guide' | t }}
+                  </button>
+
+                  <dialog
+                    ref="dialog"
+                    class="popup-link__content dialog-modal color-{{ settings.popover_color_scheme }}{% if block.settings.behavior == 'drawer' %} popup-link__content--drawer dialog-drawer{% endif %}"
+                    scroll-lock
+                  >
+                    <div class="popup-link__inner">
+                      {{ block.settings.size_guide.content }}
+                    </div>
+                    <button
+                      ref="closeButton"
+                      on:click="/closeDialog"
+                      class="button popup-link__close"
+                      aria-label="{{ 'accessibility.close_dialog' | t }}"
+                    >
+                      {{- 'icon-close.svg' | inline_asset_content -}}
+                    </button>
+                  </dialog>
+                </dialog-component>
+
+                <style>
+                  .popul-link-{{ block.id }} .popup-link__button svg {
+                    display: inline-block;
+                    position: relative;
+                    top: var(--margin-2xs);
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content {
+                    box-shadow: var(--shadow-popover);
+                    border: var(--style-border-popover);
+                    border-radius: 0px;
+                    background-color: var(--color-background);
+                    padding: var(--padding-4xl) var(--padding-xl) var(--padding-xl);
+                    max-width: var(--normal-content-width);
+                    max-height: var(--modal-max-height);
+
+                    @media screen and (min-width: 750px) {
+                      padding: var(--padding-5xl);
+                    }
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content[open] {
+                    animation: modalSlideInTop var(--animation-speed) var(--animation-easing) forwards;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content.dialog-closing {
+                    animation: modalSlideOutTop var(--animation-speed) var(--animation-easing) forwards;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content--drawer {
+                    position: fixed;
+                    border-radius: 0;
+                    width: var(--sidebar-width);
+                    max-width: 95vw;
+                    height: 100%;
+                    margin: 0 0 0 auto;
+                  }
+
+                  /* Needed to ensure the drawer is full height */
+                  .popul-link-{{ block.id }} .popup-link__content--drawer:modal {
+                    max-height: 100dvh;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__close {
+                    position: absolute;
+                    top: var(--margin-2xs);
+                    right: var(--margin-2xs);
+                    width: var(--minimum-touch-target);
+                    height: var(--minimum-touch-target);
+                    color: var(--color-foreground);
+                    background-color: transparent;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__close {
+                    background-color: transparent;
+                    opacity: 0.8;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__close svg {
+                    width: var(--icon-size-xs);
+                    height: var(--icon-size-xs);
+                  }
+                </style>
+              </div>
+            {% else %}
+              <label for="Option-{{ block.id }}-{{ forloop.index0 }}"><strong>{{ product_option.name | escape }}:</strong></label>
+            {% endif %}
             <div
               class="variant-option__select-wrapper"
               style="
@@ -205,6 +315,16 @@
     --options-border-radius: var(--variant-picker-button-radius);
     --options-border-width: var(--variant-picker-button-border-width);
     --variant-option-padding-inline: var(--padding-md);
+  }
+
+  .variant-option--dropdowns {
+    margin-top: 30px;
+  }
+
+  .variant-option--dropdowns > label,
+  .variant-option-top > label {
+    font-size: 16px;
+    font-weight: 500;
   }
 
   .variant-option--swatches {
@@ -474,5 +594,21 @@
   .variant-picker--right .variant-option {
     text-align: right;
     justify-content: right;
+  }
+
+  .variant-option-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .variant-option-top dialog-component button {
+    text-transform: uppercase;
+    text-decoration: underline;
+    padding: 0px;
+    font-size: 16px;
+    line-height: 100%;
   }
 {% endstylesheet %}

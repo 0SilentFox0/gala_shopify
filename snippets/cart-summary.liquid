@@ -59,7 +59,7 @@
       class="cart__summary-item cart__total"
       role="status"
     >
-      <span class="cart__total-label cart-primary-typography">{{ 'content.cart_estimated_total' | t }}</span>
+      <span class="cart__total-label cart-primary-typography">{{ 'content.cart_subtotal' | t }}</span>
       <text-component
         ref="cartTotal"
         value="{{ total_price | strip_html }}"
@@ -77,13 +77,20 @@
         {% endform %}
       </span>
     {% endif %}
+    {% comment %}
     <div class="cart__summary-item tax-note cart-primary-typography">
       {% render 'tax-info', has_discounts_enabled: settings.show_add_discount_code %}
     </div>
+    {% endcomment %}
   </div>
 </div>
 
 <div class="cart__ctas">
+  <a href="{{ routes.cart_url }}"
+    class="button cart-link"
+  >
+    {{ 'content.cart_link' | t }}
+  </a>
   <button
     type="submit"
     id="checkout"
@@ -116,11 +123,23 @@
 
   .cart__summary-totals:not(:has(.cart-actions)) {
     margin-block-start: var(--margin-3xs);
-    border-block-start: 1px solid var(--color-border);
+    border-block-start: 1px solid #CCCCCC;
     padding-block-start: var(--margin-xl);
   }
 
   .cart__installments {
     color: var(--color-foreground);
+  }
+
+  .cart-link {
+    width: 100%;
+  }
+
+  .cart-page__summary .cart-link {
+    display: none;
+  }
+
+  .cart-drawer__inner .cart__checkout-button {
+    display: none;
   }
 {% endstylesheet %}
