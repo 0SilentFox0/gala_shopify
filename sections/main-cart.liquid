@@ -112,6 +112,70 @@
   }
 {% endstylesheet %}
 
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.cart-items__size select').forEach(function (selectEl) {
+    selectEl.addEventListener('change', async function () {
+      const newSize = this.value;
+      const row = this.closest('tr');
+      const titleEl = row.querySelector('.cart-items__media-container');
+      const productUrl = titleEl?.getAttribute('href');
+
+      if (!productUrl) return;
+
+      // Получаем продукт и находим нужный вариант
+      const res = await fetch(`${productUrl}.js`);
+      const product = await res.json();
+
+      const newVariant = product.variants.find(variant => {
+        const sizeOption = product.options.find(o => o.name.toLowerCase());
+        const index = product.options.indexOf(sizeOption);
+        return variant.options[index] === newSize;
+      });
+
+      console.log(productUrl);
+
+      if (!newVariant) {
+        alert('Не вдалося знайти варіант для вибраного розміру');
+        return;
+      }
+
+      // Найти текущий line item index (data-cart-line)
+      const lineInput = row.querySelector('input[name="updates[]"]');
+      const cartLine = lineInput?.dataset?.cartLine;
+
+      if (!cartLine) {
+        alert('Не знайдено cart line');
+        return;
+      }
+
+      // Удаляем текущую строку из корзины
+      await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          line: parseInt(cartLine),
+          quantity: 0
+        })
+      });
+
+      // Добавляем новый вариант с количеством 1
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: newVariant.id,
+          quantity: 1
+        })
+      });
+
+      // Обновляем страницу корзины
+      location.reload();
+    });
+  });
+});
+</script>
+
 {% schema %}
 {
   "name": "t:names.cart",

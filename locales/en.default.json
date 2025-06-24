@@ -91,10 +91,15 @@
   },
   "blocks": {
     "contact_form": {
+      "topic": "Topic",
+      "topic_default": "Select topic",
       "name": "Name",
+      "surname": "Surname",
       "email": "Email",
-      "phone": "Phone",
-      "comment": "Comment",
+      "email_placeholder": "Enter your email",
+      "phone": "Mobile",
+      "comment": "Your Message",
+      "comment_placeholder": "Type your inquiry or feedback here",
       "post_success": "Thanks for contacting us. We'll get back to you as soon as possible.",
       "error_heading": "Please adjust the following:"
     },

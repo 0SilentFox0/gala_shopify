@@ -48,79 +48,125 @@
     {%- endif -%}
 
     <div class="contact-form__form-row">
-      <label
-        class="visually-hidden"
-        for="ContactForm-name"
-      >
-        {{- 'blocks.contact_form.name' | t -}}
-      </label>
-      <input
-        type="text"
-        id="ContactForm-name"
-        class="contact-form__input"
-        autocomplete="name"
-        name="contact[name]"
-        value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
-        placeholder="{{ 'blocks.contact_form.name' | t }}"
-      >
-
-      <label
-        class="visually-hidden"
-        for="ContactForm-email"
-      >
-        {{- 'blocks.contact_form.email' | t -}}
-        <span aria-hidden="true">*</span></label
-      >
-      <input
-        type="email"
-        id="ContactForm-email"
-        class="contact-form__input"
-        autocomplete="email"
-        name="contact[email]"
-        spellcheck="false"
-        autocapitalize="off"
-        value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
-        aria-required="true"
-        {% if form.errors contains 'email' %}
-          aria-invalid="true"
-          aria-describedby="ContactForm-email-error"
-        {% endif %}
-        placeholder="{{ 'blocks.contact_form.email' | t }}"
-      >
+      <div>
+        <label
+          for="ContactForm-topic"
+        >
+          {{- 'blocks.contact_form.topic' | t -}}
+        </label>
+        <select
+          id="ContactForm-topic"
+          name="contact[topic]"
+          class="contact-form__input"
+        >
+          <option disabled checked>{{- 'blocks.contact_form.topic_default' | t -}}</option>
+          {% assign options = settings.options | split: "," %}
+          {% for option in options %}
+            <option>{{- option -}}</option>
+          {% endfor %}
+        </select>
+      </div>
     </div>
 
-    <label
-      class="visually-hidden"
-      for="ContactForm-phone"
-    >
-      {{- 'blocks.contact_form.phone' | t -}}
-    </label>
-    <input
-      type="tel"
-      id="ContactForm-phone"
-      class="contact-form__input"
-      autocomplete="tel"
-      name="contact[phone]"
-      pattern="[0-9\-]*"
-      value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
-      placeholder="{{ 'blocks.contact_form.phone' | t }}"
-    >
+    <div class="contact-form__form-row">
+      <div>
+        <label
+          for="ContactForm-name"
+        >
+          {{- 'blocks.contact_form.name' | t -}}
+        </label>
+        <input
+          type="text"
+          id="ContactForm-name"
+          class="contact-form__input"
+          autocomplete="name"
+          name="contact[name]"
+          value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }}{% endif %}"
+          placeholder="{{ 'blocks.contact_form.name' | t }}"
+        >
+      </div>
 
-    <label
-      class="visually-hidden"
-      for="ContactForm-body"
-    >
-      {{- 'blocks.contact_form.comment' | t -}}
-    </label>
-    <textarea
-      rows="10"
-      id="ContactForm-body"
-      class="contact-form__input contact-form__input--textarea"
-      name="contact[body]"
-      placeholder="{{ 'blocks.contact_form.comment' | t }}"
-    >
-      {{- form.body -}}
-    </textarea>
+      <div>
+        <label
+          for="ContactForm-surname"
+        >
+          {{- 'blocks.contact_form.surname' | t -}}
+        </label>
+        <input
+          type="text"
+          id="ContactForm-surname"
+          class="contact-form__input"
+          autocomplete="surname"
+          name="contact[surname]"
+          value="{% if form.surname %}{{ form.surname }}{% elsif customer %}{{ customer.last_name }}{% endif %}"
+          placeholder="{{ 'blocks.contact_form.surname' | t }}"
+        >
+      </div>
+    </div>
+
+    <div class="contact-form__form-row">
+      <div>
+         <label
+          for="ContactForm-email"
+        >
+          {{- 'blocks.contact_form.email' | t -}}
+          <span aria-hidden="true">*</span></label
+        >
+        <input
+          type="email"
+          id="ContactForm-email"
+          class="contact-form__input"
+          autocomplete="email"
+          name="contact[email]"
+          spellcheck="false"
+          autocapitalize="off"
+          value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+          aria-required="true"
+          {% if form.errors contains 'email' %}
+            aria-invalid="true"
+            aria-describedby="ContactForm-email-error"
+          {% endif %}
+          placeholder="{{ 'blocks.contact_form.email_placeholder' | t }}"
+        >
+      </div>
+
+      <div>
+        <label
+          for="ContactForm-phone"
+        >
+          {{- 'blocks.contact_form.phone' | t -}}
+        </label>
+        <input
+          type="tel"
+          id="ContactForm-phone"
+          class="contact-form__input"
+          autocomplete="tel"
+          name="contact[phone]"
+          pattern="[0-9\-]*"
+          value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+          placeholder="+971 00 000 0000"
+        >
+      </div>
+    </div>
+
+    <div class="contact-form__form-row">
+      <div>
+        <label
+          for="ContactForm-body"
+        >
+          {{- 'blocks.contact_form.comment' | t -}}
+        </label>
+        <textarea
+          rows="4"
+          id="ContactForm-body"
+          class="contact-form__input contact-form__input--textarea"
+          name="contact[body]"
+          placeholder="{{ 'blocks.contact_form.comment_placeholder' | t }}"
+        >
+          {{- form.body -}}
+        </textarea>
+      </div>
+    </div>
 
     {{ submit_button }}
   {%- endform -%}
@@ -144,6 +190,15 @@
     }
   }
 
+   .contact-form__form-row > div {
+    flex: 1 0;
+  }
+
+  .contact-form__form-row label {
+    display: block;
+    margin-bottom: 8px;
+  }
+
   .contact-form__input {
     width: 100%;
     overflow: hidden;
@@ -151,14 +206,18 @@
     color: var(--color-foreground);
     background-color: var(--color-input-background);
     padding: var(--padding-lg) var(--padding-xl);
-    border-radius: var(--style-border-radius-inputs);
-    border: var(--style-border-width-inputs) solid var(--color-input-border);
+    border: var(--style-border-width-inputs) solid #CCCCCC;
+    border-radius: 0px;
     -webkit-font-smoothing: antialiased;
   }
 
   .contact-form__input--textarea {
     resize: vertical;
     min-height: var(--input-textarea-min-height);
+  }
+
+  .contact-form__input::placeholder {
+    opacity: 0.5;
   }
 
   .contact-form__error,
