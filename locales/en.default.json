@@ -183,6 +183,7 @@
     "blog_details_separator": "|",
     "cart_estimated_total": "Total",
     "cart_title": "My Bag",
+    "cart_summary_title": "Payment Summary",
     "cart_subtotal": "Subtotal",
     "cart_total": "Cart total",
     "checkout": "Checkout",

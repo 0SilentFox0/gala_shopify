@@ -1,0 +1,380 @@
+{% assign unique_categories = '' %}
+
+{% for block in section.blocks %}
+  {% if block.settings.category != blank %}
+    {% assign category = block.settings.category %}
+    {% unless unique_categories contains category %}
+        {% assign unique_categories = unique_categories | append: category | append: ',' %}
+    {% endunless %}
+  {% endif %}
+{% endfor %}
+
+{% assign unique_categories = unique_categories | split: ',' %}
+
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+<div
+  class="
+    faq-tabs-section
+    section
+    section--page-width
+    color-{{ section.settings.color_scheme }}
+  "
+>
+    <div
+        class="section-content-wrapper spacing-style"
+        style="
+        {% render 'spacing-style', settings: section.settings %}
+        --media-height: 100%;
+        {% if request.visual_preview_mode %}
+            --visual-preview--height: 100%;
+        {% endif %}
+        "
+    >
+
+        <div class="faq-selector">
+            <p class="faq-label">
+                {{ section.settings.label }}: <span class="faq-active-category">{{ unique_categories[0] }}</span>
+                <span class="svg-wrapper icon-caret icon-animated">
+                    {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+            </p>
+            <div class="faq-selector-body">
+                {% for category in unique_categories %}
+                    <button id="{{ category | handle }}" class="button button-secondary button-shopify-xr {% if forloop.first %}active{% endif %}">{{ category }}</button>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="faq-toggles">
+            {% for category in unique_categories %}
+                <button id="{{ category | handle }}" class="button button-secondary button-shopify-xr {% if forloop.first %}active{% endif %}">{{ category }}</button>
+            {% endfor %}
+        </div>
+
+        <div class="faq-tabs">
+            {% for category in unique_categories %}
+                <div class="faq-tab {% if forloop.first %}active{% endif %}" data-id="{{ category | handle }}">
+                    {% for block in section.blocks %}
+                        {% if block.settings.category == category %}
+                            <div class="faq-item">
+                                <p class="faq-item-question">{{ block.settings.question }}</p>
+                                <div class="faq-item-answer">
+                                    {{ block.settings.answer }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    // FAQ Tabs Script с мобильным селектором
+document.addEventListener('DOMContentLoaded', function() {
+    const faqSection = document.querySelector('.faq-tabs-section');
+    if (!faqSection) return;
+
+    const toggleButtons = faqSection.querySelectorAll('.faq-toggles .button');
+    const selectorButtons = faqSection.querySelectorAll('.faq-selector-body .button');
+    const faqTabs = faqSection.querySelectorAll('.faq-tab');
+    const faqSelector = faqSection.querySelector('.faq-selector');
+    const faqLabel = faqSection.querySelector('.faq-label');
+    const faqActiveCategorySpan = faqSection.querySelector('.faq-active-category');
+    const iconCaret = faqSection.querySelector('.icon-caret');
+
+    // Функция для активации таба
+    function activateTab(targetId, categoryName = null) {
+        // Убираем активный класс со всех кнопок (desktop и mobile)
+        [...toggleButtons, ...selectorButtons].forEach(btn => {
+            btn.classList.remove('active');
+            btn.setAttribute('aria-selected', 'false');
+        });
+
+        // Скрываем все табы
+        faqTabs.forEach(tab => {
+            tab.classList.remove('active');
+            tab.setAttribute('aria-hidden', 'true');
+        });
+
+        // Активируем нужные кнопки (и desktop, и mobile)
+        const activeButtons = faqSection.querySelectorAll(`[id="${targetId}"]`);
+        activeButtons.forEach(btn => {
+            btn.classList.add('active');
+            btn.setAttribute('aria-selected', 'true');
+        });
+
+        // Показываем нужный таб
+        const activeTab = faqSection.querySelector(`[data-id="${targetId}"]`);
+        if (activeTab) {
+            activeTab.classList.add('active');
+            activeTab.setAttribute('aria-hidden', 'false');
+        }
+
+        // Обновляем текст в мобильном селекторе
+        if (categoryName && faqActiveCategorySpan) {
+            faqActiveCategorySpan.textContent = categoryName;
+        }
+
+        // Закрываем мобильный селектор после выбора
+        if (faqSelector) {
+            faqSelector.classList.remove('open');
+            if (iconCaret) {
+                iconCaret.classList.remove('rotated');
+            }
+        }
+    }
+
+    // Функция для переключения мобильного селектора
+    function toggleSelector() {
+        if (!faqSelector) return;
+        
+        const isOpen = faqSelector.classList.contains('open');
+        
+        if (isOpen) {
+            faqSelector.classList.remove('open');
+            if (iconCaret) {
+                iconCaret.classList.remove('rotated');
+            }
+            faqLabel.setAttribute('aria-expanded', 'false');
+        } else {
+            faqSelector.classList.add('open');
+            if (iconCaret) {
+                iconCaret.classList.add('rotated');
+            }
+            faqLabel.setAttribute('aria-expanded', 'true');
+        }
+    }
+
+    // Обработчик для мобильного селектора
+    if (faqLabel) {
+        faqLabel.addEventListener('click', function(e) {
+            e.preventDefault();
+            toggleSelector();
+        });
+
+        // Устанавливаем ARIA атрибуты
+        faqLabel.setAttribute('role', 'button');
+        faqLabel.setAttribute('aria-expanded', 'false');
+        faqLabel.setAttribute('tabindex', '0');
+
+        // Поддержка клавиатуры для селектора
+        faqLabel.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                toggleSelector();
+            } else if (e.key === 'Escape') {
+                faqSelector.classList.remove('open');
+                if (iconCaret) {
+                    iconCaret.classList.remove('rotated');
+                }
+                this.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+
+    // Обработчники для desktop кнопок
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.id;
+            const categoryName = this.textContent.trim();
+            activateTab(targetId, categoryName);
+        });
+
+        // Добавляем ARIA атрибуты для доступности
+        button.setAttribute('role', 'tab');
+        button.setAttribute('aria-selected', 'false');
+    });
+
+    // Обработчики для mobile кнопок
+    selectorButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.id;
+            const categoryName = this.textContent.trim();
+            activateTab(targetId, categoryName);
+        });
+
+        // Добавляем ARIA атрибуты для доступности
+        button.setAttribute('role', 'option');
+        button.setAttribute('aria-selected', 'false');
+    });
+
+    // Добавляем ARIA атрибуты для табов
+    faqTabs.forEach(tab => {
+        tab.setAttribute('role', 'tabpanel');
+        tab.setAttribute('aria-hidden', 'true');
+    });
+
+    // Активируем первый таб по умолчанию
+    if (toggleButtons.length > 0) {
+        const firstButton = toggleButtons[0];
+        const firstButtonId = firstButton.id;
+        const firstCategoryName = firstButton.textContent.trim();
+        activateTab(firstButtonId, firstCategoryName);
+    }
+
+    // Поддержка навигации с клавиатуры для desktop табов
+    toggleButtons.forEach((button, index) => {
+        button.addEventListener('keydown', function(e) {
+            let newIndex;
+            
+            switch(e.key) {
+                case 'ArrowRight':
+                case 'ArrowDown':
+                    e.preventDefault();
+                    newIndex = (index + 1) % toggleButtons.length;
+                    toggleButtons[newIndex].focus();
+                    const nextCategoryName = toggleButtons[newIndex].textContent.trim();
+                    activateTab(toggleButtons[newIndex].id, nextCategoryName);
+                    break;
+                    
+                case 'ArrowLeft':
+                case 'ArrowUp':
+                    e.preventDefault();
+                    newIndex = (index - 1 + toggleButtons.length) % toggleButtons.length;
+                    toggleButtons[newIndex].focus();
+                    const prevCategoryName = toggleButtons[newIndex].textContent.trim();
+                    activateTab(toggleButtons[newIndex].id, prevCategoryName);
+                    break;
+                    
+                case 'Home':
+                    e.preventDefault();
+                    toggleButtons[0].focus();
+                    const firstCategoryName = toggleButtons[0].textContent.trim();
+                    activateTab(toggleButtons[0].id, firstCategoryName);
+                    break;
+                    
+                case 'End':
+                    e.preventDefault();
+                    const lastIndex = toggleButtons.length - 1;
+                    toggleButtons[lastIndex].focus();
+                    const lastCategoryName = toggleButtons[lastIndex].textContent.trim();
+                    activateTab(toggleButtons[lastIndex].id, lastCategoryName);
+                    break;
+            }
+        });
+    });
+
+    // Закрытие селектора при клике вне его области
+    document.addEventListener('click', function(e) {
+        if (!faqSelector) return;
+        
+        if (!faqSelector.contains(e.target)) {
+            faqSelector.classList.remove('open');
+            if (iconCaret) {
+                iconCaret.classList.remove('rotated');
+            }
+            if (faqLabel) {
+                faqLabel.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
+
+    // Функционал для раскрытия/скрытия отдельных FAQ вопросов
+    const faqQuestions = faqSection.querySelectorAll('.faq-item-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', function() {
+            const faqItem = this.closest('.faq-item');
+            const isExpanded = faqItem.classList.contains('expanded');
+            
+            // Переключаем текущий вопрос
+            faqItem.classList.toggle('expanded');
+            
+            // Обновляем ARIA атрибуты
+            this.setAttribute('aria-expanded', !isExpanded);
+        });
+
+        // Устанавливаем начальные ARIA атрибуты
+        question.setAttribute('aria-expanded', 'false');
+        question.setAttribute('role', 'button');
+        question.setAttribute('tabindex', '0');
+        
+        // Поддержка клавиатуры для FAQ вопросов
+        question.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                this.click();
+            }
+        });
+    });
+});
+</script>
+
+{% schema %}
+{
+    "name": "FAQ Section",
+    "class": "section-wrapper",
+    "settings": [
+        {
+            "type": "text",
+            "id": "label",
+            "label": "Label",
+            "default": "Category"
+        },
+        {
+            "type": "color_scheme",
+            "id": "color_scheme",
+            "label": "t:settings.color_scheme",
+            "default": "scheme-1"
+        },
+        {
+            "type": "header",
+            "content": "t:content.padding"
+        },
+        {
+            "type": "range",
+            "id": "padding-block-start",
+            "label": "t:settings.top",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+        },
+        {
+            "type": "range",
+            "id": "padding-block-end",
+            "label": "t:settings.bottom",
+            "min": 0,
+            "max": 100,
+            "step": 1,
+            "unit": "px",
+            "default": 0
+        }
+    ],
+    "blocks": [
+        {
+            "type": "accordion",
+            "name": "Accordion",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "category",
+                    "label": "Category"
+                },
+                {
+                    "type": "text",
+                    "id": "question",
+                    "label": "Question"
+                },
+                {
+                    "type": "richtext",
+                    "id": "answer",
+                    "label": "Answer"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "FAQ Section"
+        }
+    ]
+}
+{% endschema %}

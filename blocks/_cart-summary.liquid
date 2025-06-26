@@ -21,6 +21,7 @@
   {{ block.shopify_attributes }}
 >
   <div class="{{ cart_summary_inner_class }}">
+    <h2>{{ 'content.cart_summary_title' | t }}</h2>
     {% render 'cart-summary' %}
   </div>
 </div>
@@ -60,8 +61,7 @@
   .cart__summary-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: var(--gap-2xl);
+    gap: 16px;
     container-type: inline-size;
     padding: 0;
     position: sticky;
@@ -69,10 +69,13 @@
     align-self: start;
 
     @media screen and (width >= 750px) {
-      padding: var(--padding-5xl);
       grid-row: 1 / -1;
     }
   }
+
+   .cart__summary-inner h2 {
+    margin: 0px;
+   }
 
   body:has(> #header-group .header[sticky]) .cart__summary-inner {
     top: var(--header-height, 0);

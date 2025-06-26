@@ -56,193 +56,33 @@
         "padding-block-end": 40
       }
     },
-    "section_yBGCk6": {
-      "type": "section",
+    "faq_section_3TYGmk": {
+      "type": "faq-section",
       "blocks": {
-        "group_689qRa": {
-          "type": "group",
-          "name": "t:names.group",
+        "accordion_RhWBam": {
+          "type": "accordion",
           "settings": {
-            "link": "",
-            "open_in_new_tab": false,
-            "content_direction": "row",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "center",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 0,
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "button_JjVRzL": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Managing Orders",
-                "link": "#shopify-section-template--21572999315492__section_7KnWRB",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
-            "button_edVmFU": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Payments & Billing",
-                "link": "#second-tab",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
-            "button_h3CXD7": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Delivery",
-                "link": "#third-tab",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
-            "button_84pX3h": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Returns & Exchanges",
-                "link": "#fourth-tab",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
-            "button_RPpFzQ": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Account & Support",
-                "link": "#fifth-tab",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
-            "button_bDdXe4": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Personal Stylist",
-                "link": "#seventh-tab",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            },
-            "button_aMtq8T": {
-              "type": "button",
-              "name": "t:names.button",
-              "settings": {
-                "label": "Points & Rewards",
-                "link": "#eighth-tab",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "custom",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "button_JjVRzL",
-            "button_edVmFU",
-            "button_h3CXD7",
-            "button_84pX3h",
-            "button_RPpFzQ",
-            "button_bDdXe4",
-            "button_aMtq8T"
-          ]
+            "category": "Managing Orders",
+            "question": "Where can I view my current and past orders?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer quis auctor elit sed vulputate mi sit amet. Pretium aenean pharetra magna ac placerat vestibulum. </p>"
+          }
+        },
+        "accordion_7H8Man": {
+          "type": "accordion",
+          "settings": {
+            "category": "Payments & Billing",
+            "question": "Where can I view my current and past orders?",
+            "answer": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer quis auctor elit sed vulputate mi sit amet. Pretium aenean pharetra magna ac placerat vestibulum. </p>"
+          }
         }
       },
       "block_order": [
-        "group_689qRa"
+        "accordion_RhWBam",
+        "accordion_7H8Man"
       ],
-      "name": "FAQ Tabs",
+      "name": "FAQ Section",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
         "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -549,7 +389,7 @@
       "block_order": [
         "group_zPNKgG"
       ],
-      "custom_css": [],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -881,9 +721,8 @@
       "block_order": [
         "group_xXDDyn"
       ],
-      "custom_css": [
-        ".custom-section-content {display: none;}"
-      ],
+      "disabled": true,
+      "custom_css": [],
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1215,9 +1054,8 @@
       "block_order": [
         "group_NKQiw4"
       ],
-      "custom_css": [
-        ".custom-section-content {display: none;}"
-      ],
+      "disabled": true,
+      "custom_css": [],
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
@@ -1250,7 +1088,7 @@
   },
   "order": [
     "main",
-    "section_yBGCk6",
+    "faq_section_3TYGmk",
     "section_7KnWRB",
     "section_UzUBCJ",
     "section_Mr3UgR"

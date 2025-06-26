@@ -4201,3 +4201,135 @@ text-component {
 .cart-drawer__dialog::backdrop {
   display: none;
 }
+
+.faq-tabs-section {
+  display: block;
+}
+
+.faq-toggles {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 0px;
+  max-width: 1312px;
+  margin: 0px auto;
+  padding: 0px 16px;
+}
+
+.faq-toggles .button {
+  max-width: 182px;
+  border: 1px solid #CCCCCC !important;
+  transition: all 0.25s ease 0s;
+}
+
+.faq-toggles .button:hover,
+.faq-toggles .button.active {
+  border-color: black !important;
+  font-weight: 700;
+}
+
+.faq-tabs {
+  margin-top: 16px;
+  max-width: 912px;
+  margin: 0px auto;
+  padding: 0px 16px;
+}
+
+.faq-tab {
+  display: none;
+}
+
+.faq-tab.active {
+  display: block;
+}
+
+.faq-item {
+  padding: 24px 0px;
+  border-bottom: 1px solid #DEDEDE;
+}
+
+.faq-item-question {
+  margin: 0px;
+  font-size: 16px;
+  font-weight: "Gotham-Book", sans-serif;
+  line-height: 140%;
+}
+
+.faq-item-answer {
+  margin-top: 16px;
+}
+
+.faq-item-answer * {
+  margin: 0px;
+  font-size: 16px;
+  line-height: 140%;
+}
+
+.faq-selector {
+  padding: 14px;
+  border: 1px solid #CCCCCC;
+  position: relative;
+  margin-left: 16px;
+  margin-right: 16px;
+}
+
+.faq-label {
+  margin: 0px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #808080;
+}
+
+.faq-active-category {
+  color: black;
+}
+
+.faq-label .svg-wrapper {
+  display: block;
+  margin-left: auto;
+}
+
+.faq-selector-body {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  padding: 14px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  max-height: 80vh;
+  overflow-y: auto;
+  z-index: 999;
+  background-color: white;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.faq-selector.open .faq-selector-body {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.faq-selector-body .button {
+  text-align: left;
+  color: #808080;
+  padding: 0px;
+}
+
+.faq-selector-body .button:not(:first-child) {
+  margin-top: 12px;
+}
+
+.faq-selector-body .button.active {
+  color: black;
+}
+
+@media(min-width: 1024px) {
+  .faq-selector {
+    display: none;
+  }
+
+  .faq-toggles {
+    display: flex;
+  }
+}
