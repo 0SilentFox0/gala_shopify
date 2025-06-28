@@ -84,7 +84,7 @@
       style="{% render 'spacing-style', settings: block.settings %}{% if block.settings.text_label_case == 'uppercase' %} --facet-label-transform: uppercase;{% endif %}"
     >
       {% if block.settings.enable_filtering %}
-        <h4 class="facets--filters-title">{{ 'content.filters' | t }}</h4>
+          <h4 class="facets--filters-title">{{ 'content.filters' | t }}</h4>
       {% endif %}
 
       <div class="products-count-wrapper">
@@ -150,103 +150,227 @@
           class="facets__form"
           ref="facetsForm"
         >
-          {% if should_show_pane %}
-            {% render 'filter-remove-buttons',
-              filters: filters,
-              results_url: results_url,
-              show_filter_label: block.settings.show_filter_label,
-              should_show_clear_all: true
-            %}
+          {% if capsule %}
+            <div class="capsule-facets-row">
+                {% if should_show_pane %}
+                   <div class="capsule-filter-wrapper">
+                    <div class="capsule-facets-toggle">
+                      {{ 'content.filters' | t }}
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16.4998 4.5L11.0623 10.5V16.5L6.93726 18V10.5L1.49976 4.5V2.25H16.4998V4.5ZM9.93725 10.0661V15.712L8.06226 16.3939V10.0661L2.62476 4.06607V3.375H15.3748V4.06607L9.93725 10.0661Z" fill="black" fill-opacity="0.5"/>
+                      </svg>
+                    </div>
+                     {% if block.settings.enable_filtering %}
+                      {% assign total_active_values = 0 %}
 
-            {% if block.settings.enable_filtering %}
-              {% assign total_active_values = 0 %}
+                      {% capture rendered_filters %}
+                        {%- for filter in filters -%}
+                          {% case filter.type %}
+                            {% when 'price_range' %}
+                              {%- liquid
+                                if filter.min_value.value != null or filter.max_value.value != null
+                                  assign total_active_values = total_active_values | plus: 1
+                                  assign is_active = true
+                                endif
 
-              {% capture rendered_filters %}
-                {%- for filter in filters -%}
-                  {% case filter.type %}
-                    {% when 'price_range' %}
-                      {%- liquid
-                        if filter.min_value.value != null or filter.max_value.value != null
-                          assign total_active_values = total_active_values | plus: 1
-                          assign is_active = true
-                        endif
+                                if block.settings.filter_style != 'vertical'
+                                  assign should_render_clear = true
+                                else
+                                  assign should_render_clear = false
+                                endif
 
-                        if block.settings.filter_style != 'vertical'
-                          assign should_render_clear = true
-                        else
-                          assign should_render_clear = false
-                        endif
+                                render 'price-filter', filter: filter, filter_style: block.settings.filter_style, should_render_clear: should_render_clear
+                              -%}
+                            {% else %}
+                              {% liquid
+                                if filter.active_values.size > 0
+                                  assign is_active = true
+                                endif
 
-                        render 'price-filter', filter: filter, filter_style: block.settings.filter_style, should_render_clear: should_render_clear
-                      -%}
-                    {% else %}
-                      {% liquid
-                        if filter.active_values.size > 0
-                          assign is_active = true
-                        endif
+                                assign active_value_count = filter.active_values | size
+                                assign total_active_values = total_active_values | plus: active_value_count
+                                if block.settings.filter_style != 'vertical'
+                                  assign should_render_clear = true
+                                else
+                                  assign should_render_clear = false
+                                endif
+                                render 'list-filter', filter: filter, filter_style: block.settings.filter_style, active_value_count: active_value_count, should_render_clear: should_render_clear, show_swatch_label: block.settings.show_swatch_label, sectionId: section.id
+                              %}
+                          {% endcase %}
+                        {%- endfor -%}
+                      {% endcapture %}
 
-                        assign active_value_count = filter.active_values | size
-                        assign total_active_values = total_active_values | plus: active_value_count
-                        if block.settings.filter_style != 'vertical'
-                          assign should_render_clear = true
-                        else
-                          assign should_render_clear = false
-                        endif
-                        render 'list-filter', filter: filter, filter_style: block.settings.filter_style, active_value_count: active_value_count, should_render_clear: should_render_clear, show_swatch_label: block.settings.show_swatch_label, sectionId: section.id
+                      <div class="facets__filters-wrapper">
+                        {% if block.settings.filter_style == 'horizontal' %}
+                          {% liquid
+                            assign more_attributes = 'on:click="#filters-drawer/showDialog"'
+                            if block.settings.text_label_case == 'uppercase'
+                              assign more_attributes = more_attributes | append: ' style="--text-transform: uppercase;"'
+                            endif
+                          %}
+                          {% render 'overflow-list',
+                            class: 'facets__overflow-list',
+                            children: rendered_filters,
+                            more-attributes: more_attributes,
+                            minimum-items: 2
+                          %}
+                        {% else %}
+                          {{ rendered_filters }}
+                        {% endif %}
+                      </div>
+
+                      {% render 'facets-actions',
+                        results_url: results_url,
+                        is_active: is_active,
+                        products_count: products_count,
+                        should_show_clear_all: should_show_vertical_clear_all
                       %}
-                  {% endcase %}
-                {%- endfor -%}
-              {% endcapture %}
+                    {% endif %}
+                  </div>
+                  {% render 'filter-remove-buttons',
+                    filters: filters,
+                    results_url: results_url,
+                    show_filter_label: block.settings.show_filter_label,
+                    should_show_clear_all: true
+                  %}
+                  {% if block.settings.filter_style == 'horizontal' %}
+                    <div class="products-count-wrapper">
+                      <span title="{{ 'content.product_count' | t }}">
+                        {{- 'content.item_count' | t: count: products_count -}}
+                      </span>
+                    </div>
 
-              <div class="facets__filters-wrapper">
-                {% if block.settings.filter_style == 'horizontal' %}
-                  {% liquid
-                    assign more_attributes = 'on:click="#filters-drawer/showDialog"'
-                    if block.settings.text_label_case == 'uppercase'
-                      assign more_attributes = more_attributes | append: ' style="--text-transform: uppercase;"'
-                    endif
-                  %}
-                  {% render 'overflow-list',
-                    class: 'facets__overflow-list',
-                    children: rendered_filters,
-                    more-attributes: more_attributes,
-                    minimum-items: 2
-                  %}
-                {% else %}
-                  {{ rendered_filters }}
+                    {% if block.settings.enable_sorting %}
+                      {% render 'sorting',
+                        results: results,
+                        sort_by: sort_by,
+                        filter_style: block.settings.filter_style,
+                        suffix: 'desktop',
+                        sort_position: 'desktop',
+                        should_use_select_on_mobile: false,
+                        section_id: section.id
+                      %}
+                    {% endif %}
+
+                    {% if block.settings.enable_grid_density %}
+                      {% render 'grid-density-controls', viewport: 'desktop' %}
+                    {% endif %}
+                  {% endif %}
                 {% endif %}
+                <div class="capsule-layout-selector">
+                  <span class="capsule-layout-slider active">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M5 3H19V21H5V3ZM6.5 4.5H17.5V19.5H6.5V4.5Z" fill="black" fill-opacity="0.5"/>
+                      <path d="M3 5H1.5V19H3V5Z" fill="black" fill-opacity="0.5"/>
+                      <path d="M22.5 5H21V19H22.5V5Z" fill="black" fill-opacity="0.5"/>
+                    </svg>
+                  </span>
+                  <span class="capsule-layout-grid">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" clip-rule="evenodd" d="M21 3H3V21H21V3ZM4.5 12.75H11.25V19.5H4.5V12.75ZM4.5 11.25H11.25V4.5H4.5V11.25ZM12.75 19.5V12.75H19.5V19.5H12.75ZM12.75 11.25H19.5V4.5H12.75V11.25Z" fill="black"/>
+                    </svg>
+                  </span>
+                </div>
               </div>
-
-              {% render 'facets-actions',
-                results_url: results_url,
-                is_active: is_active,
-                products_count: products_count,
-                should_show_clear_all: should_show_vertical_clear_all
-              %}
-            {% endif %}
-            {% if block.settings.filter_style == 'horizontal' %}
-              <div class="products-count-wrapper">
-                <span title="{{ 'content.product_count' | t }}">
-                  {{- 'content.item_count' | t: count: products_count -}}
-                </span>
-              </div>
-
-              {% if block.settings.enable_sorting %}
-                {% render 'sorting',
-                  results: results,
-                  sort_by: sort_by,
-                  filter_style: block.settings.filter_style,
-                  suffix: 'desktop',
-                  sort_position: 'desktop',
-                  should_use_select_on_mobile: false,
-                  section_id: section.id
+          {% else %}
+            {% if should_show_pane %}
+                {% render 'filter-remove-buttons',
+                  filters: filters,
+                  results_url: results_url,
+                  show_filter_label: block.settings.show_filter_label,
+                  should_show_clear_all: true
                 %}
-              {% endif %}
 
-              {% if block.settings.enable_grid_density %}
-                {% render 'grid-density-controls', viewport: 'desktop' %}
+                {% if block.settings.enable_filtering %}
+                  {% assign total_active_values = 0 %}
+
+                  {% capture rendered_filters %}
+                    {%- for filter in filters -%}
+                      {% case filter.type %}
+                        {% when 'price_range' %}
+                          {%- liquid
+                            if filter.min_value.value != null or filter.max_value.value != null
+                              assign total_active_values = total_active_values | plus: 1
+                              assign is_active = true
+                            endif
+
+                            if block.settings.filter_style != 'vertical'
+                              assign should_render_clear = true
+                            else
+                              assign should_render_clear = false
+                            endif
+
+                            render 'price-filter', filter: filter, filter_style: block.settings.filter_style, should_render_clear: should_render_clear
+                          -%}
+                        {% else %}
+                          {% liquid
+                            if filter.active_values.size > 0
+                              assign is_active = true
+                            endif
+
+                            assign active_value_count = filter.active_values | size
+                            assign total_active_values = total_active_values | plus: active_value_count
+                            if block.settings.filter_style != 'vertical'
+                              assign should_render_clear = true
+                            else
+                              assign should_render_clear = false
+                            endif
+                            render 'list-filter', filter: filter, filter_style: block.settings.filter_style, active_value_count: active_value_count, should_render_clear: should_render_clear, show_swatch_label: block.settings.show_swatch_label, sectionId: section.id
+                          %}
+                      {% endcase %}
+                    {%- endfor -%}
+                  {% endcapture %}
+
+                  <div class="facets__filters-wrapper">
+                    {% if block.settings.filter_style == 'horizontal' %}
+                      {% liquid
+                        assign more_attributes = 'on:click="#filters-drawer/showDialog"'
+                        if block.settings.text_label_case == 'uppercase'
+                          assign more_attributes = more_attributes | append: ' style="--text-transform: uppercase;"'
+                        endif
+                      %}
+                      {% render 'overflow-list',
+                        class: 'facets__overflow-list',
+                        children: rendered_filters,
+                        more-attributes: more_attributes,
+                        minimum-items: 2
+                      %}
+                    {% else %}
+                      {{ rendered_filters }}
+                    {% endif %}
+                  </div>
+
+                  {% render 'facets-actions',
+                    results_url: results_url,
+                    is_active: is_active,
+                    products_count: products_count,
+                    should_show_clear_all: should_show_vertical_clear_all
+                  %}
+                {% endif %}
+                {% if block.settings.filter_style == 'horizontal' %}
+                  <div class="products-count-wrapper">
+                    <span title="{{ 'content.product_count' | t }}">
+                      {{- 'content.item_count' | t: count: products_count -}}
+                    </span>
+                  </div>
+
+                  {% if block.settings.enable_sorting %}
+                    {% render 'sorting',
+                      results: results,
+                      sort_by: sort_by,
+                      filter_style: block.settings.filter_style,
+                      suffix: 'desktop',
+                      sort_position: 'desktop',
+                      should_use_select_on_mobile: false,
+                      section_id: section.id
+                    %}
+                  {% endif %}
+
+                  {% if block.settings.enable_grid_density %}
+                    {% render 'grid-density-controls', viewport: 'desktop' %}
+                  {% endif %}
+                {% endif %}
               {% endif %}
-            {% endif %}
           {% endif %}
         </form>
       </facets-form-component>

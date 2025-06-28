@@ -1,0 +1,131 @@
+<div class="section section--page-width">
+    <div class="custom-section-content">
+        <div class="capsule-top">
+            <div class="capsule-step active">
+                <span class="capsule-step-number">1</span>
+                <span class="capsule-step-title">{{ section.settings.first_step }}</span>
+            </div>
+            <span class="capsule-divider"></span>
+            <div class="capsule-step">
+                <span class="capsule-step-number">2</span>
+                <span class="capsule-step-title">{{ section.settings.second_step }}</span>
+            </div>
+            <span class="capsule-divider"></span>
+            <div class="capsule-step">
+                <span class="capsule-step-number">3</span>
+                <span class="capsule-step-title">{{ section.settings.third_step }}</span>
+            </div>
+        </div>
+
+        <div class="capsule-content">
+            {% if section.settings.heading != blank %}
+                <h1>{{ section.settings.heading }}</h1>
+            {% endif %}
+            {% if section.settings.text != blank %}
+                <p>{{ section.settings.text }}</p>
+            {% endif %}
+        </div>
+
+        <div class="capsule-facets">
+            {% content_for 'block',
+                type: 'filters',
+                id: 'filters',
+                results: collection,
+                results_size: collection.products_count,
+                capsule: true
+            %}
+        </div>
+
+        <div class="capsule-slider-wrapper active">
+            <div class="capsule-slider swiper">
+                <div class="swiper-wrapper">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="capsule-grid-wrapper"></div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        let filtersToggle = document.querySelector('.capsule-facets-toggle');
+        let filtersBody = document.querySelector('.facets__filters-wrapper');
+        let layoutSelector = document.querySelector('.capsule-layout-selector');
+        let layoutSlider = document.querySelector('.capsule-slider-wrapper');
+        let layoutGrid = document.querySelector('.capsule-grid-wrapper');
+
+        if(filtersToggle) {
+            filtersToggle.addEventListener('click', () => {
+                if(filtersBody.classList.contains('active')){
+                    filtersBody.classList.remove('active');
+                } else {
+                     filtersBody.classList.add('active');
+                }
+            })
+        }
+
+        if(layoutSelector) {
+            let spans = layoutSelector.querySelectorAll('span');
+            spans.forEach(span => {
+                span.addEventListener('click', () => {
+                    if(span.classList.contains('.capsule-layout-slider')) {
+                        layoutSlider.classList.add('active');
+                        layoutGrid.classList.remove('active');
+                    } else {
+                        layoutSlider.classList.remove('active');
+                        layoutGrid.classList.add('active');
+                    }
+                    spans.forEach(spanSub => {
+                        spanSub.classList.remove('active');
+                    })
+
+                    span.classList.add('active');
+                })
+            });
+        }
+    })
+</script>
+
+{% schema %}
+{
+    "name": "Capsules section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "first_step",
+            "label": "First step",
+            "default": "Choose Your Look"
+        },
+        {
+            "type": "text",
+            "id": "second_step",
+            "label": "Second step",
+            "default": "Customize Your Capsule"
+        },
+        {
+            "type": "text",
+            "id": "third_step",
+            "label": "Third step",
+            "default": "Select Item Details"
+        },
+        {
+            "type": "text",
+            "id": "heading",
+            "label": "Heading",
+            "default": "Create your perfect Look"
+        },
+        {
+            "type": "text",
+            "id": "text",
+            "label": "Text",
+            "default": "Start with a designer’s choice, then customize it to fit your style."
+        }
+    ],
+    "presets": [
+        {
+            "name": "Capsules section"
+        }
+    ]
+}
+{% endschema %}
