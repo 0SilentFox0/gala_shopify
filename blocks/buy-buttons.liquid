@@ -23,12 +23,20 @@
       assign add_to_cart_text = 'products.product.sold_out' | t
     else
       assign can_add_to_cart = true
-      assign add_to_cart_text = 'products.product.add_to_cart' | t
+      if template.suffix == "capsule"
+        assign add_to_cart_text = 'actions.capsule_add' | t
+      else
+        assign add_to_cart_text = 'products.product.add_to_cart' | t
+      endif
     endif
   else
     if block.settings.product.selected_or_first_available_variant != null
       assign can_add_to_cart = true
-      assign add_to_cart_text = 'products.product.add_to_cart' | t
+      if template.suffix == "capsule"
+        assign add_to_cart_text = 'actions.capsule_add' | t
+      else
+        assign add_to_cart_text = 'products.product.add_to_cart' | t
+      endif
     else
       assign can_add_to_cart = false
       assign add_to_cart_text = 'products.product.unavailable' | t

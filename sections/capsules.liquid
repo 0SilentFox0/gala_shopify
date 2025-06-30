@@ -1,4 +1,9 @@
-<div class="section section--page-width">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+/>
+
+<div class="section section--page-width capsule-section">
     <div class="custom-section-content">
         <div class="capsule-top">
             <div class="capsule-step active">
@@ -17,75 +22,117 @@
             </div>
         </div>
 
-        <div class="capsule-content">
-            {% if section.settings.heading != blank %}
-                <h1>{{ section.settings.heading }}</h1>
-            {% endif %}
-            {% if section.settings.text != blank %}
-                <p>{{ section.settings.text }}</p>
-            {% endif %}
-        </div>
+        <div class="capsule-first-step-body">
 
-        <div class="capsule-facets">
-            {% content_for 'block',
-                type: 'filters',
-                id: 'filters',
-                results: collection,
-                results_size: collection.products_count,
-                capsule: true
-            %}
-        </div>
+            <div class="capsule-content">
+                {% if section.settings.heading != blank %}
+                    <h1>{{ section.settings.heading }}</h1>
+                {% endif %}
+                {% if section.settings.text != blank %}
+                    <p>{{ section.settings.text }}</p>
+                {% endif %}
+            </div>
 
-        <div class="capsule-slider-wrapper active">
-            <div class="capsule-slider swiper">
-                <div class="swiper-wrapper">
-                    
+            <div class="capsule-facets">
+                {% content_for 'block',
+                    type: 'filters',
+                    id: 'filters',
+                    results: collection,
+                    results_size: collection.products_count,
+                    capsule: true
+                %}
+            </div>
+
+            <div class="capsule-slider-wrapper active">
+                <div class="capsule-slider swiper">
+                    <div class="swiper-wrapper">
+                        {% for product in collection.products %}
+                            <div
+                                id="{{ section.id }}-{{ product.id }}"
+                                class="swiper-slide product-grid__item product-grid__item--{{ forloop.index0 }}"
+                                data-product-id="{{ product.id }}"
+                                ref="cards[]"
+                            >
+                                {% # theme-check-disable %}
+                                {% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}
+                                {% # theme-check-enable %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="swiper-button-prev"></button>
+                    <button class="swiper-button-next"></button>
+                </div>
+            </div>
+            <div class="capsule-grid-wrapper">
+                <div class="capsule-grid">
+                    {% for product in collection.products %}
+                        <div
+                            id="{{ section.id }}-{{ product.id }}"
+                            class="product-grid__item product-grid__item--{{ forloop.index0 }}"
+                            data-product-id="{{ product.id }}"
+                            ref="cards[]"
+                        >
+                            {% # theme-check-disable %}
+                            {% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}
+                            {% # theme-check-enable %}
+                        </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
-        <div class="capsule-grid-wrapper"></div>
+
+        <div class="capsule-edit-wrapper">
+            <div class="capsule-edit-content">
+                {% if section.settings.edit_heading != blank %}
+                    <h2>{{ section.settings.edit_heading }}</h2>
+                {% endif %}
+                {% if section.settings.edit_text != blank %}
+                    <p>{{ section.settings.edit_text }}</p>
+                {% endif %}
+            </div>
+
+            <div class="capsule-edit-body">
+                <div class="capsule-edit-left">
+                    <div class="capsule-edit-product">
+                        
+                    </div>
+                    <div class="capsule-edit-bottom">
+                        <div class="capsule-edit-bottom-left">
+                            <p class="capsule-edit-label">
+                                {{ 'content.cart_estimated_total' | t }}
+                            </p>
+                            <p class="capsule-edit-price"></p>
+                        </div>
+                        <button class="capsule-review-button">
+                            {{ 'actions.capsule_review' | t }}
+                        </button>
+                    </div>
+                </div>
+                <div class="capsule-edit-right">
+                    <div class="capsule-edit-quote">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M10.0102 6.32071C9.8344 6.32071 9.68421 6.26158 9.5596 6.14333C9.43491 6.02188 9.3726 5.87646 9.3726 5.70707C9.3726 5.53768 9.43491 5.39386 9.5596 5.27561C9.68421 5.15416 9.8344 5.09344 10.0102 5.09344C10.186 5.09344 10.3362 5.15416 10.4608 5.27561C10.5855 5.39386 10.6478 5.53768 10.6478 5.70707C10.6478 5.87646 10.5855 6.02188 10.4608 6.14333C10.3362 6.26158 10.186 6.32071 10.0102 6.32071Z" fill="#202020"/>
+                            <path d="M9.5739 8.08643V14.95H10.4321V8.08643H9.5739Z" fill="#202020"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10ZM19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" fill="#202020"/>
+                        </svg>
+                        <span>Pro Tip</span>
+                    </div>
+
+                    {% if section.settings.edit_subheading != blank %}
+                        <h3>{{ section.settings.edit_subheading }}</h3>
+                    {% endif %}
+                    {% if section.settings.edit_subtext != blank %}
+                        <p>{{ section.settings.edit_subtext }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
-<script>
-    document.addEventListener('DOMContentLoaded', () => {
-        let filtersToggle = document.querySelector('.capsule-facets-toggle');
-        let filtersBody = document.querySelector('.facets__filters-wrapper');
-        let layoutSelector = document.querySelector('.capsule-layout-selector');
-        let layoutSlider = document.querySelector('.capsule-slider-wrapper');
-        let layoutGrid = document.querySelector('.capsule-grid-wrapper');
+<script src="https://cdn.jsdelivr.net/npm/swiper@6.8.4/swiper-bundle.min.js"></script>
 
-        if(filtersToggle) {
-            filtersToggle.addEventListener('click', () => {
-                if(filtersBody.classList.contains('active')){
-                    filtersBody.classList.remove('active');
-                } else {
-                     filtersBody.classList.add('active');
-                }
-            })
-        }
-
-        if(layoutSelector) {
-            let spans = layoutSelector.querySelectorAll('span');
-            spans.forEach(span => {
-                span.addEventListener('click', () => {
-                    if(span.classList.contains('.capsule-layout-slider')) {
-                        layoutSlider.classList.add('active');
-                        layoutGrid.classList.remove('active');
-                    } else {
-                        layoutSlider.classList.remove('active');
-                        layoutGrid.classList.add('active');
-                    }
-                    spans.forEach(spanSub => {
-                        spanSub.classList.remove('active');
-                    })
-
-                    span.classList.add('active');
-                })
-            });
-        }
-    })
-</script>
+<script src="{{ 'capsule.js' |  asset_url }}"></script>
 
 {% schema %}
 {
@@ -120,6 +167,30 @@
             "id": "text",
             "label": "Text",
             "default": "Start with a designer’s choice, then customize it to fit your style."
+        },
+        {
+            "type": "text",
+            "id": "edit_heading",
+            "label": "Edit heading",
+            "default": "Business summer"
+        },
+        {
+            "type": "text",
+            "id": "edit_text",
+            "label": "Edit text",
+            "default": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+        },
+        {
+            "type": "text",
+            "id": "edit_subheading",
+            "label": "Edit subheading",
+            "default": "Select an item on the left to start editing."
+        },
+        {
+            "type": "text",
+            "id": "edit_subtext",
+            "label": "Edit subtext",
+            "default": "Click on any item to edit or remove it, or tap on an empty spot to add a new piece to your look."
         }
     ],
     "presets": [

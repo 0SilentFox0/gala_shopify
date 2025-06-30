@@ -52,6 +52,9 @@
   },
   "actions": {
     "add": "Add",
+    "capsule_add": "Add full outfit to cart",
+    "capsule_edit": "Edit the outfit",
+    "capsule_review": "Continue to review",
     "add_to_cart": "Add to bag",
     "added": "Added",
     "apply": "Apply",
@@ -66,6 +69,7 @@
     "log_in": "Sign in",
     "log_out": "Log out",
     "open_image_in_full_screen": "Open image in full screen",
+    "delete": "Delete",
     "remove": "Remove",
     "remove_discount": "Remove discount {{ code }}",
     "show_all_options": "Show all options",

@@ -25,7 +25,13 @@
     add_to_cart_text: add_to_cart_text
   %}
 
-  <button class="st-wishlist-button" type="button" data-type="details" data-handle="{{product.handle}}"></button>
+  {% if template.suffix == "capsule" %}
+    <button class="capsule-edit-button" data-id="{{ block.settings.product.id }}" type="button" >
+      {{ 'actions.capsule_edit' | t }}
+    </button>
+  {% endif %}
+
+  <button class="st-wishlist-button" type="button" data-type="details" data-handle="{{block.settings.product.handle}}"></button>
 </span>
 
 {% schema %}
