@@ -54,7 +54,7 @@
     "add": "Add",
     "capsule_add": "Add full outfit to cart",
     "capsule_edit": "Edit the outfit",
-    "capsule_review": "Continue to review",
+    "capsule_review": "Continue to Review",
     "add_to_cart": "Add to bag",
     "added": "Added",
     "apply": "Apply",
@@ -91,7 +91,8 @@
     "sign_up": "Sign up",
     "submit": "Submit",
     "view_store_information": "View store information",
-    "sort": "Sort"
+    "sort": "Sort",
+    "hide_hotspots": "Hide Hotspots"
   },
   "blocks": {
     "contact_form": {

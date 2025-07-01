@@ -17,21 +17,26 @@
   {{ block.shopify_attributes }}
   style="--add-to-cart-font-case: {{ settings.button_text_case }};"
 >
-  {% render 'add-to-cart-button',
-    id: id,
-    class: class,
-    can_add_to_cart: can_add_to_cart,
-    product: block.settings.product,
-    add_to_cart_text: add_to_cart_text
-  %}
-
   {% if template.suffix == "capsule" %}
+    <button class="capsule-add-full-button" data-id="{{ block.settings.product.id }}" type="button" >
+      {{ 'actions.capsule_add' | t }}
+    </button>
+
     <button class="capsule-edit-button" data-id="{{ block.settings.product.id }}" type="button" >
       {{ 'actions.capsule_edit' | t }}
     </button>
-  {% endif %}
 
-  <button class="st-wishlist-button" type="button" data-type="details" data-handle="{{block.settings.product.handle}}"></button>
+  {% else %}
+    {% render 'add-to-cart-button',
+      id: id,
+      class: class,
+      can_add_to_cart: can_add_to_cart,
+      product: block.settings.product,
+      add_to_cart_text: add_to_cart_text
+    %}
+
+    <button class="st-wishlist-button" type="button" data-type="details" data-handle="{{block.settings.product.handle}}"></button>
+  {% endif %}
 </span>
 
 {% schema %}

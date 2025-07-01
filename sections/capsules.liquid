@@ -94,7 +94,8 @@
             <div class="capsule-edit-body">
                 <div class="capsule-edit-left">
                     <div class="capsule-edit-product">
-                        
+                        <span class="capsule-edit-hide-hotspot">{{ 'actions.hide_hotspots' | t  }}</span>
+                        <div class="capsule-edit-product-list"></div>
                     </div>
                     <div class="capsule-edit-bottom">
                         <div class="capsule-edit-bottom-left">
@@ -106,24 +107,58 @@
                         <button class="capsule-review-button">
                             {{ 'actions.capsule_review' | t }}
                         </button>
+
+                        {%- form 'product', collection.products[0], novalidate: 'novalidate', data-type: 'add-to-cart-form', class: 'capsule-form hidden' -%}
+                            <button type="submit" class="capsule-form-button">
+                            {{ 'actions.capsule_add' | t }}
+                        </button>
+                        {%- endform -%}
                     </div>
                 </div>
                 <div class="capsule-edit-right">
-                    <div class="capsule-edit-quote">
-                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10.0102 6.32071C9.8344 6.32071 9.68421 6.26158 9.5596 6.14333C9.43491 6.02188 9.3726 5.87646 9.3726 5.70707C9.3726 5.53768 9.43491 5.39386 9.5596 5.27561C9.68421 5.15416 9.8344 5.09344 10.0102 5.09344C10.186 5.09344 10.3362 5.15416 10.4608 5.27561C10.5855 5.39386 10.6478 5.53768 10.6478 5.70707C10.6478 5.87646 10.5855 6.02188 10.4608 6.14333C10.3362 6.26158 10.186 6.32071 10.0102 6.32071Z" fill="#202020"/>
-                            <path d="M9.5739 8.08643V14.95H10.4321V8.08643H9.5739Z" fill="#202020"/>
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10ZM19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" fill="#202020"/>
-                        </svg>
-                        <span>Pro Tip</span>
+                    <div class="capsule-edit-empty">
+                        <div class="capsule-edit-quote">
+                            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M10.0102 6.32071C9.8344 6.32071 9.68421 6.26158 9.5596 6.14333C9.43491 6.02188 9.3726 5.87646 9.3726 5.70707C9.3726 5.53768 9.43491 5.39386 9.5596 5.27561C9.68421 5.15416 9.8344 5.09344 10.0102 5.09344C10.186 5.09344 10.3362 5.15416 10.4608 5.27561C10.5855 5.39386 10.6478 5.53768 10.6478 5.70707C10.6478 5.87646 10.5855 6.02188 10.4608 6.14333C10.3362 6.26158 10.186 6.32071 10.0102 6.32071Z" fill="#202020"/>
+                                <path d="M9.5739 8.08643V14.95H10.4321V8.08643H9.5739Z" fill="#202020"/>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M20 10C20 15.5228 15.5228 20 10 20C4.47715 20 0 15.5228 0 10C0 4.47715 4.47715 0 10 0C15.5228 0 20 4.47715 20 10ZM19 10C19 14.9706 14.9706 19 10 19C5.02944 19 1 14.9706 1 10C1 5.02944 5.02944 1 10 1C14.9706 1 19 5.02944 19 10Z" fill="#202020"/>
+                            </svg>
+                            <span>Pro Tip</span>
+                        </div>
+
+                        {% if section.settings.edit_subheading != blank %}
+                            <h3>{{ section.settings.edit_subheading }}</h3>
+                        {% endif %}
+                        {% if section.settings.edit_subtext != blank %}
+                            <p>{{ section.settings.edit_subtext }}</p>
+                        {% endif %}
                     </div>
 
-                    {% if section.settings.edit_subheading != blank %}
-                        <h3>{{ section.settings.edit_subheading }}</h3>
-                    {% endif %}
-                    {% if section.settings.edit_subtext != blank %}
-                        <p>{{ section.settings.edit_subtext }}</p>
-                    {% endif %}
+                    <div class="capsule-edit-right-selector hidden">
+                        <h4 class="capsule-edit-right-heading"></h4>
+                        <div class="capsule-edit-grid">
+
+                        </div>
+                    </div>
+
+                    <div class="capsule-edit-finalize hidden">
+                        <div class="capsule-edit-finalize-top">
+                            <div class="capsule-edit-finalize-left">
+                                {% if section.settings.finalize_heading != blank %}
+                                    <h2 class="capsule-edit-finalize-heading">{{ section.settings.finalize_heading }}</h2>
+                                {% endif %}
+
+                                {% if section.settings.finalize_text != blank %}
+                                    <p class="capsule-edit-finalize-text">{{ section.settings.finalize_text }}</p>
+                                {% endif %}
+                            </div>
+                            <p class="capsule-edit-size-guide">{{ 'products.product.size_guide' | t }}</p>
+                        </div>
+
+                        <div class="capsule-edit-finalize-grid">
+                            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -191,6 +226,18 @@
             "id": "edit_subtext",
             "label": "Edit subtext",
             "default": "Click on any item to edit or remove it, or tap on an empty spot to add a new piece to your look."
+        },
+        {
+            "type": "text",
+            "id": "finalize_heading",
+            "label": "Finalize heading ",
+            "default": "Finalize Your Capsule"
+        },
+        {
+            "type": "text",
+            "id": "finalize_text",
+            "label": "Finalize text",
+            "default": "Choose size and color for each item before adding to bag."
         }
     ],
     "presets": [
