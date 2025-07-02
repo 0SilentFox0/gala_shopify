@@ -46,6 +46,33 @@ function hideRightLoader() {
   if (loader) loader.remove();
 }
 
+function recalculateTotalPrice() {
+  const items = document.querySelectorAll('.capsule-edit-product-item');
+  let total = 0;
+
+  const promises = [...items].map(async (item) => {
+    const productId = item.dataset.id;
+    if (!productId) return;
+
+    const data = await getProductByIdApp(productId);
+    const price = parseFloat(data?.product?.variants?.[0]?.price || 0);
+    total += price;
+  });
+
+  Promise.all(promises).then(() => {
+    const priceElement = document.querySelector('.capsule-edit-price');
+    if (priceElement) {
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'decimal',
+        useGrouping: true,
+        minimumFractionDigits: 0
+      }).format(total);
+
+      priceElement.textContent = `${formatted} AED`;
+    }
+  });
+}
+
 async function updateCapsuleTotal() {
   const items = document.querySelectorAll('.capsule-edit-product-item');
   let total = 0;
@@ -767,4 +794,74 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     })
   }
+
+  const stored = localStorage.getItem('capsuleQuickStart');
+  if (!stored) return;
+
+  (async () => {
+    try {
+      const { topId, bottomId } = JSON.parse(stored);
+
+      const ids = [topId, bottomId];
+      const products = await Promise.all(ids.map(id => getProductByIdApp(id).then(d => d.product)));
+
+      const list = document.querySelector('.capsule-edit-product-list');
+      const finalizeGrid = document.querySelector('.capsule-edit-finalize-grid');
+      const form = document.querySelector('.capsule-form');
+
+      list.innerHTML = '';
+      finalizeGrid.innerHTML = '';
+
+      products.forEach((product, index) => {
+        // == Капсула ==
+        const item = document.createElement('div');
+        item.classList.add('capsule-edit-product-item');
+        item.dataset.id = product.id;
+        item.style.gridColumn = '3 / span 4';
+        item.style.gridRow = index === 0 ? '1 / span 4' : '5 / span 4';
+
+        const img = document.createElement('img');
+        img.src = product.image?.src || '';
+        img.alt = product.title || '';
+        img.loading = 'lazy';
+        item.appendChild(img);
+        list.appendChild(item);
+
+        // == Finalize ==
+        finalizeGrid.appendChild(renderFinalizeProduct(product, index));
+
+        // == Form ==
+        const inputId = document.createElement('input');
+        inputId.type = 'hidden';
+        inputId.name = `items[${index}][id]`;
+        inputId.value = product.variants?.[0]?.id;
+
+        const inputQty = document.createElement('input');
+        inputQty.type = 'hidden';
+        inputQty.name = `items[${index}][quantity]`;
+        inputQty.value = '1';
+        inputQty.id = product.variants?.[0]?.id;
+
+        form.appendChild(inputId);
+        form.appendChild(inputQty);
+
+        localStorage.removeItem('capsuleQuickStart');
+      });
+
+      recalculateTotalPrice();
+
+      // == Перехід на крок 3 ==
+      document.querySelector('.capsule-edit-wrapper')?.classList.add('active');
+      document.querySelectorAll('.capsule-step').forEach((s, i) => s.classList.toggle('active', i === 2));
+      document.querySelector('.capsule-first-step-body')?.classList.add('hidden');
+      document.querySelector('.capsule-edit-empty')?.classList.add('hidden');
+      document.querySelector('.capsule-edit-right-selector')?.classList.add('hidden');
+      document.querySelector('.capsule-review-button')?.classList.add('hidden');
+      document.querySelector('.capsule-form')?.classList.remove('hidden');
+      document.querySelector('.capsule-edit-finalize')?.classList.remove('hidden');
+
+    } catch (err) {
+      console.error('Quick start init failed:', err);
+    }
+  })();
 });

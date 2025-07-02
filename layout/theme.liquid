@@ -22,6 +22,11 @@
       id="view-transition-render-blocker"
     >
 
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+
     {%- render 'meta-tags' -%}
     {%- render 'fonts' -%}
     {%- render 'scripts' -%}
@@ -55,6 +60,9 @@
     {% sections 'footer-group' %}
 
     {% render 'search-modal' %}
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@6.8.4/swiper-bundle.min.js"></script>
+    <script src="{{ 'custom.js' | asset_url }}"></script>
 
     {% # theme-check-disable ParserBlockingScript %}
     <script src="{{ 'critical.js' | asset_url }}"></script>
