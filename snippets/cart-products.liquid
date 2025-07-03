@@ -856,7 +856,7 @@
       const newSize = select.value;
       const currentOptions = JSON.parse(select.dataset.currentOptions); // всі поточні значення
 
-      const row = this.closest('tr');
+      const row = select.closest('tr');
       const variantMapRaw = row.dataset.variantMap;
       const variantData = JSON.parse(variantMapRaw);
 
