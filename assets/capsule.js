@@ -1,3 +1,7 @@
+// === Shopify config ===
+const SHOP_DOMAIN = 'galadubai.myshopify.com';
+const ACCESS_TOKEN = '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';
+
 let activeEditProductItem = null;
 
 function showRightLoader() {
