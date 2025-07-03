@@ -98,6 +98,10 @@
                 role="row"
                 class="cart-items__table-row"
                 ref="cartItemRows[]"
+                data-variant-map='{
+                  "variants": {{ item.product.variants | json }},
+                  "option_names": {{ item.product.options | json }}
+                }'
               >
                 <td
                   class="cart-items__product"
@@ -852,9 +856,9 @@
       const newSize = select.value;
       const currentOptions = JSON.parse(select.dataset.currentOptions); // всі поточні значення
 
-      const variantData = JSON.parse(
-          document.getElementById(`VariantMap-${lineKey}`).textContent
-      );
+      const row = this.closest('tr');
+      const variantMapRaw = row.dataset.variantMap;
+      const variantData = JSON.parse(variantMapRaw);
 
       const optionNames = variantData.option_names; // ["Size", "Color"]
       const variants = variantData.variants;
