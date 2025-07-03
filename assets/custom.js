@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-   document.querySelectorAll('.button--AN2IvRzQ4YSt1K2UyM__button_P4rdAT').forEach(button => {
+   document.querySelectorAll('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT').forEach(button => {
     button.addEventListener('click', (e) => {
         e.preventDefault();
 
