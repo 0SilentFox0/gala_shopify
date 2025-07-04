@@ -1,5 +1,4 @@
 
-
 let activeEditProductItem = null;
 
 function showRightLoader() {
@@ -105,7 +104,8 @@ async function getProductMetafields(productId) {
   const response = await fetch(`/admin/api/2023-10/products/${productId}/metafields.json`, {
     headers: {
       'X-Shopify-Access-Token': ACCESS_TOKEN,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }
   });
   return await response.json();
@@ -116,7 +116,8 @@ async function getProductByIdApp(productId) {
   const response = await fetch(`/admin/api/2023-10/products/${productId}.json`, {
     headers: {
       'X-Shopify-Access-Token': ACCESS_TOKEN,
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     }
   });
   return await response.json();
@@ -129,6 +130,7 @@ async function getMetaobjectByGID(gid) {
     headers: {
       'X-Shopify-Access-Token': ACCESS_TOKEN,
       'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({
       query: `
@@ -176,6 +178,7 @@ async function getCollectionsByProductId(productId, targetLevel = null) {
     headers: {
       'Content-Type': 'application/json',
       'X-Shopify-Access-Token': ACCESS_TOKEN,
+      'Access-Control-Allow-Origin': '*'
     },
     body: JSON.stringify({ query }),
   });
@@ -212,6 +215,7 @@ async function getCollectionProductsREST(collectionId) {
     headers: {
       'Content-Type': 'application/json',
       'X-Shopify-Access-Token': ACCESS_TOKEN,
+      'Access-Control-Allow-Origin': '*'
     },
   });
 
