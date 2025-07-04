@@ -1,0 +1,132 @@
+<div class="section section--page-width meet-section">
+    <div class="custom-section-content">
+        {% if section.settings.heading != blank %}
+            <div class="meet-section-heading">
+                {{ section.settings.heading }}
+            </div>
+        {% endif %}
+
+        <div class="meet-section-body">
+            <div class="meet-section-gallery">
+                <div class="meet-section-gallery-column">
+                    {% for block in section.blocks %}
+                        <div class="meet-section-gallery-card">
+                            <img src="{{ block.settings.small_image | image_url }}" alt="{{ block.settings.small_image.alt }}" loading="lazy">
+                            <p class="meet-section-gallery-card-title">{{ block.settings.name }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="meet-section-gallery-image">
+                    {% for block in section.blocks %}
+                        <img src="{{ section.settings.big_image.alt }}" alt="{{ section.settings.big_image | image_url }}" loading="lazy" data-id="{{ block.id }}">
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="meet-section-slider-wrapper">
+                <div class="meet-section-slider swiper">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            <div class="meet-section-content swiper-slide" id="{{ block.id }}">
+                                {% if block.settings.name != blank %}
+                                    <p class="meet-section-name">{{ block.settings.name }}</p>
+                                {% endif %}
+                                
+                                {% if block.settings.description != blank %}
+                                    <div class="meet-section-description">{{ block.settings.description }}</div>
+                                {% endif %}
+
+                                {% if block.settings.languages != blank %}
+                                    <p class="meet-section-languages">{{ block.settings.languages }}</p>
+                                {% endif %}
+
+                                 {% if block.settings.features != blank %}
+                                    {% assign items_features = block.settings.features | splut: ',' %}
+                                    <div class="meet-section-features">
+                                        {% for feature in items_features %}
+                                            <p class="meet-section-feature">{{ feature }}</p>
+                                        {% endfor %}
+                                    </div>
+                                {% endif %}
+
+                                {% if block.settings.button != blank %}
+                                    <a href="{{ block.settings.button_url }}">{{ block.settings.button }}</a>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <div class="meet-section-navigation">
+                        <button class="swiper-button-prev"></button>
+                        <button class="swiper-button-next"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{%  schema  %} 
+    {
+        "name": "Meet section",
+        "settings": [
+            {
+                "type": "richtext",
+                "id": "heading",
+                "label": "Heading",
+                "default": "<h2>Meet the Stylists</h2>"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "person",
+                "name": "Person",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "small_image",
+                        "label": "Small image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "big_image",
+                        "label": "Big image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "name",
+                        "label": "Name"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "description",
+                        "label": "Description"
+                    },
+                    {
+                        "type": "inline_richtext",
+                        "id": "languages",
+                        "label": "Languages"
+                    },
+                    {
+                        "type": "text",
+                        "id": "features",
+                        "label": "Features"
+                    },
+                    {
+                        "type": "text",
+                        "id": "button",
+                        "label": "Button"
+                    },
+                    {
+                        "type": "url",
+                        "id": "button_url",
+                        "label": "Button URL"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Meet section"
+            }
+        ]
+    }
+{% endschema %}

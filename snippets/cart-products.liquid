@@ -333,6 +333,13 @@
                 </td>
                 <td class="cart-items__bottom">
                   <button
+                    class="button button--tertiary cart-items__duplicate"
+                    type="button"
+                    aria-label="{{ 'accessibility.remove_item' | t: title: item.title | escape }}"
+                  >
+                    <span>{{ 'actions.duplicate' | t }}</span>
+                  </button>
+                  <button
                     class="button button--tertiary cart-items__remove"
                     type="button"
                     aria-label="{{ 'accessibility.remove_item' | t: title: item.title | escape }}"
@@ -522,7 +529,8 @@
     display: none;
   }
 
-  .cart-items__remove {
+  .cart-items__remove,
+  .cart-items__duplicate {
     background-color: transparent;
     color: var(--color-foreground);
     width: var(--minimum-touch-target);
@@ -530,6 +538,12 @@
     justify-content: center;
     box-shadow: none;
     padding: 0;
+  }
+
+  .cart-items__bottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
   }
 
   .cart-items__media {
@@ -841,7 +855,8 @@
     z-index: 3;
   }
 
-  .cart-items__remove {
+  .cart-items__remove,
+  .cart-items__duplicate {
     text-decoration: underline;
   }
 {% endstylesheet %}
@@ -901,4 +916,40 @@
       location.reload();
       });
   })
+
+  document.querySelectorAll('.cart-items__duplicate').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      const row = e.target.closest('tr');
+      if (!row) return;
+
+      const variantMapRaw = row.dataset.variantMap;
+      const variantData = JSON.parse(variantMapRaw);
+      const optionNames = variantData.option_names;
+
+      const sizeSelect = row.querySelector('.cart-size-select');
+      const variantId = sizeSelect?.selectedOptions[0]?.dataset.variantId;
+
+      if (!variantId) {
+        console.warn('Variant ID not found');
+        return;
+      }
+
+      // Створюємо унікальну властивість, щоб Shopify не обʼєднав
+      const uniqueProperty = `_duplicate_uuid_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: variantId,
+          quantity: 1,
+          properties: {
+            [uniqueProperty]: 'true'
+          }
+        }),
+      });
+
+      location.reload();
+    });
+  });
 </script>

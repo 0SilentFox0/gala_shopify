@@ -5089,3 +5089,19 @@ text-component {
     font-size: 16px;
   }
 }
+
+#shopify-section-template--21612690636836__section_CGDYY4 .divider {
+  justify-content: start;
+}
+
+#shopify-section-template--21612690636836__section_CGDYY4 .divider span {
+  background-color: #D3D3D3;
+}
+
+#shopify-section-template--21612690636836__section_CGDYY4 .icon-block__media {
+  width: 8px;
+}
+
+#shopify-section-template--21612690636836__section_CGDYY4 .text-block.custom {
+  max-width: 300px;
+}

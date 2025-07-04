@@ -52,6 +52,7 @@
   },
   "actions": {
     "add": "Add",
+    "duplicate": "Duplicate",
     "capsule_add": "Add full outfit to cart",
     "capsule_edit": "Edit the outfit",
     "capsule_review": "Continue to Review",
