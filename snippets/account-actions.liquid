@@ -32,7 +32,7 @@
         </account-login-actions>
 
         <a
-          href="{% if request.design_mode %}{{ routes.account_url }}{% else %}{{ routes.storefront_login_url }}{% endif %}"
+          href="{{ routes.account_url }}"
           class="account-actions__link button"
           {% if autofocus_enabled %}
             autofocus
