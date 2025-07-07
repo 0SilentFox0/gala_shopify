@@ -1,15 +1,7 @@
 .customer:not(.account):not(.order) {
-  margin: 0 auto;
-  max-width: 33.4rem;
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   text-align: center;
-}
-
-@media screen and (min-width: 750px) {
-  .customer:not(.account):not(.order) {
-    max-width: 47.8rem;
-  }
 }
 
 .customer > h1,
@@ -18,11 +10,18 @@
 }
 
 .customer form {
-  margin-top: 4rem;
+  margin-top: 40px;
+  max-width: 400px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .customer button {
-  margin: 4rem 0 1.5rem;
+  margin: 3.2rem auto 4rem auto;
+  min-width: 114px;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 .customer ul {
@@ -30,6 +29,19 @@
   padding-left: 4.4rem;
   text-align: left;
   margin-bottom: 4rem;
+}
+
+.create-link {
+  max-width: fit-content;
+  margin: 0px auto !important;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.create-link a {
+  font-weight: 600;
 }
 
 .customer ul a {
@@ -52,11 +64,27 @@
 }
 
 .customer .field {
+  flex-direction: column-reverse;
+  align-items: start;
+  gap: 8px;
   margin: 2rem 0 0 0;
 }
 
 .customer .field:first-of-type {
   margin-top: 0;
+}
+
+.customer .field input {
+  width: 100%;
+  box-shadow: none;
+  border: 1px solid #CCCCCC;
+  padding: 14px;
+  font-size: 16px;
+  border-radius: 0px;
+}
+
+.customer .field input::placeholder {
+  color: #808080;
 }
 
 /* Customer Table */
@@ -338,6 +366,10 @@
 .login a[href='#recover'] {
   margin-left: 0;
   margin-right: 0;
+  font-weight: 600;
+  text-decoration: underline;
+  font-size: 14px;
+  color: #4D4D4D;
 }
 
 .login .field + a {
@@ -752,4 +784,37 @@ li[data-address] > h2 {
 .addresses form > div:nth-of-type(7),
 .addresses form > div:nth-of-type(7) + div[id] {
   margin-top: 1.5rem;
+}
+
+.customer-body {
+  display: grid;
+  gap: 20px;
+}
+
+.customer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.customer-content h1 {
+  margin: 0px;
+  font-size: 32px;
+}
+
+.fields-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.fields-row .field {
+  margin: 0px;
+  flex: 1 0;
+}
+
+@media(min-width: 1024px) {
+  .customer-body {
+    grid-template-columns: 1fr 1fr;
+  }
 }

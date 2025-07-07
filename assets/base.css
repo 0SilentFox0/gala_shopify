@@ -5107,3 +5107,241 @@ text-component {
 #shopify-section-template--21612690636836__section_CGDYY4 .text-block.custom {
   max-width: 300px;
 }
+
+.meet-section {
+  padding: 40px 0px;
+}
+
+.meet-section-heading {
+  text-align: center;
+}
+
+.meet-section-body {
+  margin-top: 20px;
+  display: grid;
+}
+
+.meet-section-gallery {
+  display: none;
+}
+
+.meet-section-gallery-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.meet-section-gallery-card {
+  position: relative;
+  flex: 1 0;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.meet-section-gallery-card img,
+.meet-section-content-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meet-section-content-image {
+  aspect-ratio: 1/0.8;
+}
+
+.meet-section-gallery-card-title {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 8px;
+  text-align: center;
+  font-size: 16px;
+  line-height: 140%;
+  color: white;
+}
+
+.meet-section-gallery-image {
+  aspect-ratio: 1/1.2;
+}
+
+.meet-section-gallery-image img {
+  display: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.meet-section-gallery-image img.active {
+  display: block;
+}
+
+.meet-section-content {
+  box-sizing: border-box !important;
+}
+
+.meet-section-slider-wrapper {
+  display: grid;
+}
+
+.meet-section-slider {
+  max-width: 100%;
+  min-width: 0;
+}
+
+.meet-section-navigation {
+  margin-top: 32px;
+  padding: 0px 32px;
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  justify-content: center;
+  gap: 8px;
+}
+
+.meet-section-navigation button {
+  margin: 0px;
+  position: static;
+  transform: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.meet-section-navigation button::after {
+  font-size: 16px;
+}
+
+.meet-section-name {
+  margin: 0px;
+  margin-top: 24px;
+  font-size: 18px;
+  font-weight: 600;
+  color: black;
+}
+
+.meet-section-description {
+  margin-top: 16px;
+}
+
+.meet-section-description *,
+.meet-section-languages {
+  margin: 0px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 140%;
+  color: black;
+}
+
+.meet-section-languages {
+  margin-top: 12px;
+}
+
+.meet-section-features {
+  margin-top: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.meet-section-feature {
+  margin: 0px;
+  font-size: 14px;
+  line-height: 130%;
+  color: black;
+  text-decoration: underline;
+}
+
+.meet-section-button {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 16px 24px;
+  border: 1px solid black;
+  font-size: 16px;
+  font-weight: 600;
+  max-width: fit-content;
+  cursor: pointer;
+}
+
+@media(min-width: 768px) {
+  .meet-section-features {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+
+@media(min-width: 1024px) {
+  .meet-section {
+    padding: 80px 0px;
+  }
+
+  .meet-section-body {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 40px;
+  }
+
+  .meet-section-gallery {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 40px;
+  }
+
+  .meet-section-content {
+    padding: 64px 32px !important
+  }
+
+  .meet-section-name {
+    margin: 0px;
+    font-size: 24px;
+  }
+
+  .meet-section-description {
+    margin-top: 24px;
+  }
+
+  .meet-section-description *,
+  .meet-section-languages {
+    font-size: 16px;
+  }
+
+  .meet-section-languages {
+    margin-top: 16px;
+  }
+
+  .meet-section-features {
+    margin-top: 24px;
+    gap: 24px;
+  }
+
+  .meet-section-feature {
+    font-size: 14px;
+  }
+
+  .meet-section-button {
+    margin-top: 40px;
+    padding: 16px 32px;
+  }
+
+  .meet-section-content-image {
+    display: none;
+  }
+
+  .meet-section-navigation {
+    margin-top: auto;
+    max-width: fit-content;
+  }
+  
+}

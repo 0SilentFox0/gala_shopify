@@ -18,7 +18,7 @@
                 </div>
                 <div class="meet-section-gallery-image">
                     {% for block in section.blocks %}
-                        <img src="{{ section.settings.big_image.alt }}" alt="{{ section.settings.big_image | image_url }}" loading="lazy" data-id="{{ block.id }}">
+                        <img src="{{ block.settings.big_image | image_url }}" alt="{{ block.settings.big_image.alt }}" loading="lazy" data-id="{{ block.id }}" {% if forloop.first %}class="active"{% endif %}>
                     {% endfor %}
                 </div>
             </div>
@@ -27,6 +27,9 @@
                     <div class="swiper-wrapper">
                         {% for block in section.blocks %}
                             <div class="meet-section-content swiper-slide" id="{{ block.id }}">
+                                <div class="meet-section-content-image">
+                                    <img src="{{ block.settings.big_image | image_url }}" alt="{{ block.settings.big_image.alt }}">
+                                </div>
                                 {% if block.settings.name != blank %}
                                     <p class="meet-section-name">{{ block.settings.name }}</p>
                                 {% endif %}
@@ -40,7 +43,7 @@
                                 {% endif %}
 
                                  {% if block.settings.features != blank %}
-                                    {% assign items_features = block.settings.features | splut: ',' %}
+                                    {% assign items_features = block.settings.features | split: ',' %}
                                     <div class="meet-section-features">
                                         {% for feature in items_features %}
                                             <p class="meet-section-feature">{{ feature }}</p>
@@ -49,15 +52,15 @@
                                 {% endif %}
 
                                 {% if block.settings.button != blank %}
-                                    <a href="{{ block.settings.button_url }}">{{ block.settings.button }}</a>
+                                    <a href="{{ block.settings.button_url }}" class="meet-section-button">{{ block.settings.button }}</a>
                                 {% endif %}
                             </div>
                         {% endfor %}
                     </div>
-                    <div class="meet-section-navigation">
-                        <button class="swiper-button-prev"></button>
-                        <button class="swiper-button-next"></button>
-                    </div>
+                </div>
+                <div class="meet-section-navigation">
+                    <button class="swiper-button-prev"></button>
+                    <button class="swiper-button-next"></button>
                 </div>
             </div>
         </div>

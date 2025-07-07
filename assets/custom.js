@@ -25,6 +25,44 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    const meetSlider = document.querySelector('.meet-section-slider');
+    if (meetSlider) {
+        new Swiper(meetSlider, {
+            loop: true,
+            centeredSlides: true,
+            slidesPerView: 1,
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1.3,
+                },
+                768: {
+                    slidesPerView: 2.3,
+                },
+                1024: {
+                    lidesPerView: 1
+                }
+            },
+            on: {
+                slideChange: function () {
+                    const activeSlide = this.slides[this.activeIndex];
+                    const activeId = activeSlide.getAttribute('id');
+
+                    document.querySelectorAll('.meet-section-gallery-image img').forEach((img) => {
+                    if (img.dataset.id === activeId) {
+                        img.classList.add('active');
+                    } else {
+                        img.classList.remove('active');
+                    }
+                    });
+                },
+            },
+        });
+    }
+
 
    document.querySelectorAll('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT').forEach(button => {
     button.addEventListener('click', (e) => {

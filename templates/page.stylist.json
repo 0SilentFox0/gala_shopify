@@ -1816,6 +1816,59 @@
         "padding-block-end": 80
       }
     },
+    "meet_section_cgqCfh": {
+      "type": "meet-section",
+      "blocks": {
+        "person_HAXL3K": {
+          "type": "person",
+          "settings": {
+            "small_image": "shopify://shop_images/image_6.png",
+            "big_image": "shopify://shop_images/Frame_219_71092dd3-719d-4314-8aa9-24c21301a625.png",
+            "name": "Lina Moreau",
+            "description": "<p>Trained in Paris, Lina brings over a decade of luxury fashion experience, known for her refined layering and effortlessly elegant looks.</p>",
+            "languages": "Languages: <strong>French, English</strong>",
+            "features": "Feminine Classic,French Chic,Capsule Wardrobe,Elegant Everyday",
+            "button": "Book a consultation with Lina",
+            "button_url": "shopify://pages/contact"
+          }
+        },
+        "person_p4HHF7": {
+          "type": "person",
+          "settings": {
+            "small_image": "shopify://shop_images/image_7.png",
+            "big_image": "shopify://shop_images/image_7.png",
+            "name": "Camille Navarro",
+            "description": "<p>Trained in Paris, Lina brings over a decade of luxury fashion experience, known for her refined layering and effortlessly elegant looks.</p>",
+            "languages": "Languages: <strong>French, English</strong>",
+            "features": "Feminine Classic,French Chic,Capsule Wardrobe,Elegant Everyday",
+            "button": "Book a consultation with Camille",
+            "button_url": "shopify://pages/contact"
+          }
+        },
+        "person_WyfykJ": {
+          "type": "person",
+          "settings": {
+            "small_image": "shopify://shop_images/image_8.png",
+            "big_image": "shopify://shop_images/image_8.png",
+            "name": "Ahmed Al Farsi",
+            "description": "<p>Trained in Paris, Lina brings over a decade of luxury fashion experience, known for her refined layering and effortlessly elegant looks.</p>",
+            "languages": "Languages: <strong>French, English</strong>",
+            "features": "Feminine Classic,French Chic,Capsule Wardrobe,Elegant Everyday",
+            "button": "Book a consultation with Ahmed",
+            "button_url": "shopify://pages/contact"
+          }
+        }
+      },
+      "block_order": [
+        "person_HAXL3K",
+        "person_p4HHF7",
+        "person_WyfykJ"
+      ],
+      "name": "Meet section",
+      "settings": {
+        "heading": "<h2>Meet the Stylists</h2>"
+      }
+    },
     "section_9HY6wr": {
       "type": "section",
       "blocks": {
@@ -1991,6 +2044,7 @@
     "hero_HVzgAr",
     "section_enGk6R",
     "section_CGDYY4",
+    "meet_section_cgqCfh",
     "section_9HY6wr"
   ]
 }
