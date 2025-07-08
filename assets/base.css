@@ -4721,6 +4721,11 @@ text-component {
   padding: 16px;
   border: 1px solid #D8D8D8;
   position: relative;
+  display: none;
+}
+
+.capsule-edit-product.active {
+  display: block;
 }
 
 .capsule-edit-product-list {
@@ -4819,6 +4824,14 @@ text-component {
   color: #000000;
   text-align: center;
   width: 100%;
+}
+
+.capsule-product-card {
+  display: none;
+}
+
+.capsule-product-card.active {
+  display: block;
 }
 
 .capsule-product-card-content {

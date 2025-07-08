@@ -64,30 +64,27 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-   document.querySelectorAll('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT').forEach(button => {
-    button.addEventListener('click', (e) => {
+    document.querySelector('.button--AN2IvRzQ4YSt1K2UyM__button_P4rdAT')?.addEventListener('click', (e) => {
         e.preventDefault();
-
-        const topSlide = document.querySelector('.capsule-slider-top .swiper-slide-active');
-        const bottomSlide = document.querySelector('.capsule-slider-bottom .swiper-slide-active');
+        const topSlide = document.querySelector('.capsule-slider-top .swiper-slide-active img');
+        const bottomSlide = document.querySelector('.capsule-slider-bottom .swiper-slide-active img');
 
         if (!topSlide || !bottomSlide) return;
 
-        const topId = topSlide.dataset.id;
-        const bottomId = bottomSlide.dataset.id;
+        const capsuleData = {
+            top: {
+            id: topSlide.closest('[data-product-id]')?.dataset.productId,
+            img: topSlide.src
+            },
+            bottom: {
+            id: bottomSlide.closest('[data-product-id]')?.dataset.productId,
+            img: bottomSlide.src
+            }
+        };
 
-        if (!topId || !bottomId) return;
-
-        try {
-        localStorage.setItem('capsuleQuickStart', JSON.stringify({ topId, bottomId }));
-        } catch (err) {
-        console.error('⚠️ Ошибка записи в localStorage:', err);
-        }
-
-        // Выполняем переход принудительно, уже точно после записи
+        localStorage.setItem('capsuleSelection', JSON.stringify(capsuleData));
         setTimeout(() => {
-        location.assign(button.href); // не window.location.href — безопаснее
+            location.assign(document.querySelector('.button--AN2IvRzQ4YSt1K2UyM__button_P4rdAT').href); // не window.location.href — безопаснее
         }, 200);
-    });
     });
 })

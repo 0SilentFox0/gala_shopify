@@ -48,9 +48,10 @@
                     <div class="swiper-wrapper">
                         {% for product in collection.products %}
                             <div
-                                id="{{ section.id }}-{{ product.id }}"
+                                id="{{ section.id }}-{{ product.selected_or_first_available_variant.id }}"
                                 class="swiper-slide product-grid__item product-grid__item--{{ forloop.index0 }}"
-                                data-product-id="{{ product.id }}"
+                                data-product-id="{{ product.selected_or_first_available_variant.id }}"
+                                data-capsule="{{ product.handle }}"
                                 ref="cards[]"
                             >
                                 {% # theme-check-disable %}
@@ -67,9 +68,10 @@
                 <div class="capsule-grid">
                     {% for product in collection.products %}
                         <div
-                            id="{{ section.id }}-{{ product.id }}"
+                            id="{{ section.id }}-{{ product.selected_or_first_available_variant.id }}"
                             class="product-grid__item product-grid__item--{{ forloop.index0 }}"
-                            data-product-id="{{ product.id }}"
+                            data-product-id="{{ product.selected_or_first_available_variant.id }}"
+                            data-capsule="{{ product.handle }}"
                             ref="cards[]"
                         >
                             {% # theme-check-disable %}
@@ -93,10 +95,40 @@
 
             <div class="capsule-edit-body">
                 <div class="capsule-edit-left">
-                    <div class="capsule-edit-product">
-                        <span class="capsule-edit-hide-hotspot">{{ 'actions.hide_hotspots' | t  }}</span>
-                        <div class="capsule-edit-product-list"></div>
-                    </div>
+                    {% for product in collection.products %}
+                        {% assign capsule = product.metafields.custom.capsule.value %}
+                        {% if capsule != blank %}
+                            {% assign capsuleProducts = capsule.capsule_products %}
+                            {% if capsuleProducts %}
+                                <div class="capsule-edit-product" data-capsule="{{ product.handle }}">
+                                    <span class="capsule-edit-hide-hotspot">{{ 'actions.hide_hotspots' | t  }}</span>
+                                    <div class="capsule-edit-product-list">
+                                        {% for capsuleProduct in capsuleProducts.value %}
+                                            {% assign col_start = capsuleProduct.horizontal_position.value %}
+                                            {% assign col_span = capsuleProduct.horizontal_size.value %}
+                                            {% assign row_start = capsuleProduct.vertical_position.value %}
+                                            {% assign row_span = capsuleProduct.vertical_size.value %}
+                                            {% assign capsule_product = capsuleProduct.product.value %}
+                                            {% assign collection_title = '' %}
+                                            {% for collection in capsule_product.collections %}
+                                                {% if collection.metafields.custom.level.value == "1" %}
+                                                    {% if collection.title != "Capsule" %}
+                                                        {% assign collection_title = collection.title %}
+                                                    {% endif %}
+                                                {% endif %}
+                                            {% endfor %}
+                                            <div class="capsule-edit-product-item" style="grid-column: {{ col_start }} / span {{ col_span }}; grid-row: {{ row_start }} / span {{ row_span }}" data-collection="{{ collection_title }}" data-price="{{ capsule_product.price |  divided_by: 100 }}" data-id="{{ capsule_product.selected_or_first_available_variant.id }}">
+                                                <img src="{{ capsule_product.featured_image | image_url }}" alt="{{ capsule_product.featured_image.alt }}" loading="lazy">
+                                                <span class="capsule-edit-product-item-hotspot">
+                                                    <span></span>
+                                                </span>
+                                            </div>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                    {% endfor %}
                     <div class="capsule-edit-bottom">
                         <div class="capsule-edit-bottom-left">
                             <p class="capsule-edit-label">
@@ -134,10 +166,37 @@
                         {% endif %}
                     </div>
 
-                    <div class="capsule-edit-right-selector hidden">
+                    <div class="capsule-edit-right-selector">
                         <h4 class="capsule-edit-right-heading"></h4>
                         <div class="capsule-edit-grid">
-
+                            {% for product in collections.all.products %}
+                                {% assign collection_title = '' %}
+                                {% for collection in product.collections %}
+                                    {% if collection.metafields.custom.level.value == "1" %}
+                                        {% if collection.title != "Capsule" %}
+                                            {% assign collection_title = collection.title %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="capsule-product-card" data-collection="{{ collection_title }}" data-price="{{ product.price |  divided_by: 100 }}" data-id="{{ product.selected_or_first_available_variant.id }}">  
+                                    <div class="capsule-product-card-inner">
+                                        <div class="capsule-product-card-img">
+                                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                                        </div>
+                                        <div class="capsule-product-card-content">
+                                            <h4 class="capsule-product-card-title">{{ product.title }}</h4>
+                                            {% if product.metafields.custom.short_description.value != blank %}
+                                                <p class="capsule-product-card-desc">
+                                                    {{ product.metafields.custom.short_description.value }}
+                                                </p>
+                                            {% endif %}
+                                            <p class="capsule-product-card-price">{{ product.price | money }}</p>
+                                        </div>
+                                    </div>
+                                    <button class="capsule-product-card-replace-btn">Replace item</button>
+                                    <button class="capsule-product-card-delete-btn hidden">Delete item</button>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
 
@@ -156,7 +215,44 @@
                         </div>
 
                         <div class="capsule-edit-finalize-grid">
-                            
+                            {% for product in collections.all.products %}
+                                {% assign collection_title = '' %}
+                                {% for collection in product.collections %}
+                                    {% if collection.metafields.custom.level.value == "1" %}
+                                        {% if collection.title != "Capsule" %}
+                                            {% assign collection_title = collection.title %}
+                                        {% endif %}
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="capsule-product-card" data-collection="{{ collection_title }}" data-price="{{ product.price |  divided_by: 100 }}" data-id="{{ product.selected_or_first_available_variant.id }}" data-variants='[{%- for variant in product.variants -%}{ "id": {{ variant.id }}, "options": {{ variant.options | json }}}{% unless forloop.last %},{% endunless %}{%- endfor -%}]'> 
+                                    <div class="capsule-product-card-inner">
+                                        <div class="capsule-product-card-img">
+                                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                                        </div>
+                                        <div class="capsule-product-card-content">
+                                            <h4 class="capsule-product-card-title">{{ product.title }}</h4>
+                                            {% if product.metafields.custom.short_description.value != blank %}
+                                                <p class="capsule-product-card-desc">
+                                                    {{ product.metafields.custom.short_description.value }}
+                                                </p>
+                                            {% endif %}
+                                            <p class="capsule-product-card-price">{{ product.price | money }}</p>
+                                        </div>
+                                        {% if product.variants.size > 1 %}
+                                            <div class="capsule-product-card-options">
+                                            {% for option in product.options_with_values %}
+                                                <select>
+                                                    <option checked disabled>Select {{ option.name }}</option>
+                                                    {%- for option_value in option.values -%}
+                                                        <option value="{{ option_value }}">{{ option_value }}</option>
+                                                    {% endfor %}
+                                                </select>
+                                            {% endfor %}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>
