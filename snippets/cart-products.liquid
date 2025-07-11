@@ -418,8 +418,11 @@
 
   @media(min-width: 1050px) {
 
-  .cart-items__table-row td {
+  .cart-items__table-row th:not(.cart-items__product), .cart-items__table-row td:not(.cart-items__product){
     width: 136px;
+  }
+
+  .cart-items__table-row td {
     padding: 24px 0px;
     min-height: 92px;
   }
