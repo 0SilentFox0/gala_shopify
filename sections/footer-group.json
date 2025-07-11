@@ -329,7 +329,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<h2>Lorem ipsum </h2>",
+                    "text": "<h2><strong>Lorem ipsum </strong></h2>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -338,7 +338,7 @@
                     "font_size": "1.125rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
-                    "case": "none",
+                    "case": "uppercase",
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
                     "background": false,
