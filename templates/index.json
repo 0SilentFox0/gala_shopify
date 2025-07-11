@@ -1659,9 +1659,18 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "custom_liquid_FYEzzY": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3612.253444519165!2d55.18120667537962!3d25.12712097775614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f6baa47e79e97%3A0xe05b810d2ac6b00!2zMiBLaW5nIFNhbG1hbiBCaW4gQWJkdWxheml6IEFsIFNhdWQgU3QgLSBBbCBTdWZvdWggLSBBbCBTdWZvdWggMSAtIER1YmFpIC0g0J7QsSfRlNC00L3QsNC90ZYg0JDRgNCw0LHRgdGM0LrRliDQldC80ZbRgNCw0YLQuA!5e0!3m2!1suk!2srs!4v1752253335556!5m2!1suk!2srs\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+              },
+              "blocks": {}
+            },
             "image_d6MWya": {
               "type": "image",
               "name": "t:names.image",
+              "disabled": true,
               "settings": {
                 "image": "shopify://shop_images/34yfhkwsj.png",
                 "link": "",
@@ -1684,6 +1693,7 @@
             }
           },
           "block_order": [
+            "custom_liquid_FYEzzY",
             "image_d6MWya"
           ]
         },
