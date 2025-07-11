@@ -83,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
       // Назначить обработчик клика
       button.addEventListener('click', () => {
-        const topSlide = document.querySelector('.capsule-slider-top .swiper-slide-active img');
-        const bottomSlide = document.querySelector('.capsule-slider-bottom .swiper-slide-active img');
+        const topSlide = document.querySelector('.capsule-slider-top .swiper-slide-active');
+        const bottomSlide = document.querySelector('.capsule-slider-bottom .swiper-slide-active');
     
         if (!topSlide || !bottomSlide) {
           console.warn('❌ Один из слайдов не найден');
@@ -94,11 +94,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const capsuleData = {
           top: {
             id: topSlide.closest('[data-product-id]')?.dataset.productId,
-            img: topSlide.src
+            img: topSlide.querySelector('img').src
           },
           bottom: {
             id: bottomSlide.closest('[data-product-id]')?.dataset.productId,
-            img: bottomSlide.src
+            img: bottomSlide.querySelector('img').src
           }
         };
     
