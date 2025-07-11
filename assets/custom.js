@@ -113,9 +113,13 @@ document.addEventListener('DOMContentLoaded', () => {
     
         // Переход на сохранённый href
         const targetHref = button.getAttribute('data-href');
-        if (targetHref) {
-          window.location.href = targetHref;
-        }
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            if (targetHref) {
+              window.location.href = targetHref;
+            }
+          }, 100);
+        });
       });
     }
 })
