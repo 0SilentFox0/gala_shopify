@@ -64,6 +64,8 @@
   data-product-transition="{{ settings.transition_to_main_product }}"
   {{ block.shopify_attributes }}
 >
+  
+  <button class='st-wishlist-button' data-type='details' data-handle='{{ product.handle }}'></button>
   <a
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
