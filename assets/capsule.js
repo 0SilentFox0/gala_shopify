@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const reviewBtn = e.target.closest('.capsule-review-button');
     if (reviewBtn) {
-      const items = document.querySelectorAll('.capsule-edit-product-item');
+      const items = document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item');
       const form = document.querySelector('.capsule-form');
       const finalizeGrid = document.querySelector('.capsule-edit-finalize-grid');
       let inputs = form?.querySelectorAll('input');
