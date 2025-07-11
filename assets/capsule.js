@@ -28,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.querySelector('.capsule-edit-product-dynamic').classList.add('active');
 
+        recalculateTotalPrice();
+
         document.querySelector('.capsule-first-step-body')?.classList.add('hidden');
         document.querySelector('.capsule-edit-wrapper')?.classList.add('active');
 
@@ -82,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function recalculateTotalPrice() {
     let total = 0;
 
-    document.querySelectorAll('.capsule-edit-product-item').forEach(item => {
+    document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item').forEach(item => {
       const price = parseFloat((item.dataset.price || '0').replace(/,/g, ''));
       total += price;
     });
