@@ -118,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (targetHref) {
               window.location.href = targetHref;
             }
-          }, 300);
+          }, 500);
         });
       });
     }
