@@ -5358,3 +5358,67 @@ text-component {
   }
   
 }
+
+@media only screen and (min-width: 768px) {
+    .frcp-main {
+      max-width: 1440px !important;
+    }
+}
+
+.frcp-profile-cards-container {
+    display: none !important;
+}
+
+.frcp-nav {
+  box-shadow: none !important;
+  border: 0px !important;
+  padding: 0px !important;
+}
+
+.frcp-nav__title {
+  padding: 0px !important;
+  padding-bottom: 24px !important;
+  border-bottom: 1px solid #E5E5E5;
+  margin-bottom: 24px !important;
+}
+
+.frcp-nav__first-name,
+.frcp-nav__last-name {
+  font-size: 20px;;
+}
+
+.frcp-section__title {
+  font-size: 32px !important;
+}
+
+.frcp-nav-button {
+  margin-top: 16px;
+  padding: 0px !important;
+  border: 0px !important;
+  background-color: transparent !important;
+}
+
+.frcp-nav-button__text {
+  opacity: 0.7 !important;
+  font-size: 16px !important;
+}
+
+.frcp-nav-button[active=true] .frcp-nav-button__text {
+  opacity: 1 !important;
+}
+
+.frcp-nav-button:last-child {
+  margin-top: 24px;
+  padding-top: 24px !important;
+  border-top: 1px solid #E5E5E5  !important;
+}
+
+@media(min-width: 1024px) {
+  .frcp-main {
+    gap: 80px !important;
+  }
+}
+
+.frcp-app {
+  --frcp-primaryColor: #000000 !important;
+}
