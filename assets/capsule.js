@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const { top, bottom } = JSON.parse(storedCapsule);
 
-      const capsuleList = document.querySelector('.capsule-edit-product.active .capsule-edit-product-list');
+      const capsuleList = document.querySelector('.capsule-edit-product-dynamic .capsule-edit-product-list');
 
       if (capsuleList) {
         [top, bottom].forEach((item, index) => {
