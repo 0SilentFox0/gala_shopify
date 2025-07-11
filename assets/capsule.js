@@ -284,7 +284,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('.capsule-edit-right-selector')?.classList.add('hidden');
 
         // Подсветить карточки, которые присутствуют в capsule-edit-product-list
-        const selectedIds = Array.from(document.querySelectorAll('.capsule-edit-product-item'))
+        const selectedIds = Array.from(document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item'))
           .map(item => item.dataset.id);
 
         document.querySelectorAll('.capsule-edit-finalize-grid .capsule-product-card').forEach(card => {
