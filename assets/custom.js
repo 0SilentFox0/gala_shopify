@@ -93,11 +93,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
         const capsuleData = {
           top: {
-            id: topSlide.closest('[data-product-id]')?.dataset.productId,
+            id: topSlide.closest('[data-id]')?.dataset.productId,
             img: topSlide.querySelector('img').src
           },
           bottom: {
-            id: bottomSlide.closest('[data-product-id]')?.dataset.productId,
+            id: bottomSlide.closest('[data-id]')?.dataset.productId,
             img: bottomSlide.querySelector('img').src
           }
         };
