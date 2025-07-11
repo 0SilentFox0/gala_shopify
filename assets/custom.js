@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    document.querySelector('.button--AN2IvRzQ4YSt1K2UyM__button_P4rdAT')?.addEventListener('click', (e) => {
+    document.querySelector('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT')?.addEventListener('click', (e) => {
         e.preventDefault();
         const topSlide = document.querySelector('.capsule-slider-top .swiper-slide-active img');
         const bottomSlide = document.querySelector('.capsule-slider-bottom .swiper-slide-active img');
@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('capsuleSelection', JSON.stringify(capsuleData));
         requestAnimationFrame(() => {
           setTimeout(() => {
-            location.assign(document.querySelector('.button--AN2IvRzQ4YSt1K2UyM__button_P4rdAT').href);
+            location.assign(document.querySelector('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT').href);
           }, 100); // даже 100ms хватит
         });
     });
