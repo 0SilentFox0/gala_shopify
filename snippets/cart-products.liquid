@@ -98,10 +98,8 @@
                 role="row"
                 class="cart-items__table-row"
                 ref="cartItemRows[]"
-                data-variant-map='{
-                  "variants": {{ item.product.variants | json }},
-                  "option_names": {{ item.product.options | json }}
-                }'
+                data-variants='{{ item.product.variants | json | escape }}'
+                data-option-names='{{ item.product.options | json | escape }}'
               >
                 <td
                   class="cart-items__product"
@@ -863,59 +861,68 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('change', async function (e) {
-      const select = e.target;
-      if (!select.classList.contains('cart-size-select')) return;
+  document.addEventListener('change', async function (e) {
+    const select = e.target;
+    if (!select.classList.contains('cart-size-select')) return;
 
-      const lineKey = select.dataset.lineKey;
-      const newSize = select.value;
-      const currentOptions = JSON.parse(select.dataset.currentOptions); // всі поточні значення
+    const lineKey = select.dataset.lineKey;
+    const newSize = select.value;
 
-      const row = select.closest('tr');
-      const variantMapRaw = row.dataset.variantMap;
-      const variantData = JSON.parse(variantMapRaw);
+    let currentOptions = [];
+    let variants = [];
+    let optionNames = [];
 
-      const optionNames = variantData.option_names; // ["Size", "Color"]
-      const variants = variantData.variants;
+    const row = select.closest('tr');
+    if (!row) return;
 
-      // Знаходимо, який індекс у "Size"
-      const sizeIndex = optionNames.findIndex(opt => opt.toLowerCase() === 'size');
-      if (sizeIndex === -1) {
-          console.warn('Size option not found');
-          return;
-      }
+    try {
+      currentOptions = JSON.parse(select.dataset.currentOptions || '[]');
+      variants = JSON.parse(row.dataset.variants || '[]');
+      optionNames = JSON.parse(row.dataset.optionNames || '[]');
+    } catch (err) {
+      console.error('❌ Ошибка при разборе JSON:', err);
+      return;
+    }
 
-      // Оновлюємо саме розмір у масиві обраних опцій
-      currentOptions[sizeIndex] = newSize;
+    // Найти индекс опции "Size"
+    const sizeIndex = optionNames.findIndex(opt => opt.toLowerCase() === 'size');
+    if (sizeIndex === -1) {
+      console.warn('⚠️ Опция "Size" не найдена');
+      return;
+    }
 
-      // Знаходимо відповідний варіант
-      const matched = variants.find(v =>
-          v.options.every((opt, i) => opt === currentOptions[i])
-      );
+    // Заменить значение размера в текущих опциях
+    currentOptions[sizeIndex] = newSize;
 
-      if (!matched) {
-          alert('Цей розмір недоступний для обраних опцій');
-          return;
-      }
+    // Найти подходящий вариант
+    const matched = variants.find(variant =>
+      variant.options.every((opt, i) => opt === currentOptions[i])
+    );
 
-      const newVariantId = matched.id;
+    if (!matched) {
+      alert('❌ Обраний розмір недоступний для даних опцій');
+      return;
+    }
 
-      // Заміна в кошику
-      await fetch('/cart/change.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: lineKey, quantity: 0 })
-      });
+    const newVariantId = matched.id;
 
-      await fetch('/cart/add.js', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ id: newVariantId, quantity: 1 })
-      });
+    // Удалить текущий вариант
+    await fetch('/cart/change.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: lineKey, quantity: 0 }),
+    });
 
-      location.reload();
-      });
-  })
+    // Добавить новый вариант
+    await fetch('/cart/add.js', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id: newVariantId, quantity: 1 }),
+    });
+
+    location.reload();
+  });
+});
 
   document.querySelectorAll('.cart-items__duplicate').forEach((btn) => {
     btn.addEventListener('click', async (e) => {
