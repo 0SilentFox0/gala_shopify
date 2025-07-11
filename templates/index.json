@@ -276,7 +276,7 @@
           "magda-butrym",
           "reiss"
         ],
-        "layout_type": "grid",
+        "layout_type": "carousel",
         "carousel_on_mobile": true,
         "columns": 3,
         "mobile_columns": "2",
