@@ -861,109 +861,109 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('change', async function (e) {
-    const select = e.target;
-    if (!select.classList.contains('cart-size-select')) return;
-
-    const lineKey = select.dataset.lineKey;
-    const newSize = select.value;
-
-    let currentOptions = [];
-    let variants = [];
-    let optionNames = [];
-
-    const row = select.closest('tr');
-    if (!row) return;
-
-    try {
-      currentOptions = JSON.parse(select.dataset.currentOptions || '[]');
-      variants = JSON.parse(row.dataset.variants || '[]');
-      optionNames = JSON.parse(row.dataset.optionNames || '[]');
-    } catch (err) {
-      console.error('❌ Ошибка при разборе JSON:', err);
-      return;
-    }
-
-    // Найти индекс опции "Size"
-    const sizeIndex = optionNames.findIndex(opt => opt.toLowerCase() === 'size');
-    if (sizeIndex === -1) {
-      console.warn('⚠️ Опция "Size" не найдена');
-      return;
-    }
-
-    // Заменить значение размера в текущих опциях
-    currentOptions[sizeIndex] = newSize;
-
-    // Найти подходящий вариант
-    const matched = variants.find(variant =>
-      variant.options.every((opt, i) => opt === currentOptions[i])
-    );
-
-    if (!matched) {
-      alert('❌ Обраний розмір недоступний для даних опцій');
-      return;
-    }
-
-    const newVariantId = matched.id;
-
-    // Удалить текущий вариант
-    await fetch('/cart/change.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: lineKey, quantity: 0 }),
-    });
-
-    // Добавить новый вариант
-    await fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: newVariantId, quantity: 1 }),
-    });
-
-    location.reload();
-  });
-});
-
-  document.querySelectorAll('.cart-items__duplicate').forEach((btn) => {
-    btn.addEventListener('click', async (e) => {
-      const row = e.target.closest('tr');
+    document.addEventListener('change', async function (e) {
+      const select = e.target;
+      if (!select.classList.contains('cart-size-select')) return;
+  
+      const lineKey = select.dataset.lineKey;
+      const newSize = select.value;
+  
+      let currentOptions = [];
+      let variants = [];
+      let optionNames = [];
+  
+      const row = select.closest('tr');
       if (!row) return;
-
-      const optionNames = JSON.parse(row.dataset.optionNames || '[]');
-      const variants = JSON.parse(row.dataset.variants || '[]');
-      const sizeSelect = row.querySelector('.cart-size-select');
-      
-      // Получаем текущие значения всех опций
-      let currentOptions = JSON.parse(sizeSelect.dataset.currentOptions || '[]');
-      
-      // Найти нужный вариант
-      const matchedVariant = variants.find(variant =>
-        variant.options.every((opt, i) => opt === currentOptions[i])
-      );
-      
-      const variantId = matchedVariant?.id;
-      
-      if (!variantId) {
-        console.warn('❌ Не удалось найти подходящий вариант для дубликата');
+  
+      try {
+        currentOptions = JSON.parse(select.dataset.currentOptions || '[]');
+        variants = JSON.parse(row.dataset.variants || '[]');
+        optionNames = JSON.parse(row.dataset.optionNames || '[]');
+      } catch (err) {
+        console.error('❌ Ошибка при разборе JSON:', err);
         return;
       }
   
-      // Створюємо унікальну властивість, щоб Shopify не обʼєднав
-      const uniqueProperty = `_duplicate_uuid_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
-
+      // Найти индекс опции "Size"
+      const sizeIndex = optionNames.findIndex(opt => opt.toLowerCase() === 'size');
+      if (sizeIndex === -1) {
+        console.warn('⚠️ Опция "Size" не найдена');
+        return;
+      }
+  
+      // Заменить значение размера в текущих опциях
+      currentOptions[sizeIndex] = newSize;
+  
+      // Найти подходящий вариант
+      const matched = variants.find(variant =>
+        variant.options.every((opt, i) => opt === currentOptions[i])
+      );
+  
+      if (!matched) {
+        alert('❌ Обраний розмір недоступний для даних опцій');
+        return;
+      }
+  
+      const newVariantId = matched.id;
+  
+      // Удалить текущий вариант
+      await fetch('/cart/change.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: lineKey, quantity: 0 }),
+      });
+  
+      // Добавить новый вариант
       await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: variantId,
-          quantity: 1,
-          properties: {
-            [uniqueProperty]: 'true'
-          }
-        }),
+        body: JSON.stringify({ id: newVariantId, quantity: 1 }),
       });
-
+  
       location.reload();
+    });
+
+    document.querySelectorAll('.cart-items__duplicate').forEach((btn) => {
+      btn.addEventListener('click', async (e) => {
+        const row = e.target.closest('tr');
+        if (!row) return;
+  
+        const optionNames = JSON.parse(row.dataset.optionNames || '[]');
+        const variants = JSON.parse(row.dataset.variants || '[]');
+        const sizeSelect = row.querySelector('.cart-size-select');
+        
+        // Получаем текущие значения всех опций
+        let currentOptions = JSON.parse(sizeSelect.dataset.currentOptions || '[]');
+        
+        // Найти нужный вариант
+        const matchedVariant = variants.find(variant =>
+          variant.options.every((opt, i) => opt === currentOptions[i])
+        );
+        
+        const variantId = matchedVariant?.id;
+        
+        if (!variantId) {
+          console.warn('❌ Не удалось найти подходящий вариант для дубликата');
+          return;
+        }
+    
+        // Створюємо унікальну властивість, щоб Shopify не обʼєднав
+        const uniqueProperty = `_duplicate_uuid_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+  
+        await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            id: variantId,
+            quantity: 1,
+            properties: {
+              [uniqueProperty]: 'true'
+            }
+          }),
+        });
+  
+        location.reload();
+      });
     });
   });
 </script>
