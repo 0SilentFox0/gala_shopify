@@ -16,8 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
           div.dataset.price = item.price;
           div.dataset.collection = item.collection;
           div.dataset.img = item.img;
-          div.style.gridColumn = '4 / span 2';
-          div.style.gridRow = `${1 + index * 3} / span 2`;
+          div.style.gridColumn = '1 / span 4';
+          div.style.gridRow = `${3 + index * 3} / span 2`;
 
           div.innerHTML = `
             <img src="${item.img}" alt="" loading="lazy">
