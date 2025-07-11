@@ -95,12 +95,14 @@ document.addEventListener('DOMContentLoaded', () => {
           top: {
             id: topSlide.dataset.id,
             img: topSlide.querySelector('img').src,
-            collection: topSlide.dataset.collection
+            collection: topSlide.dataset.collection,
+            price: topSlide.dataset.price
           },
           bottom: {
             id: bottomSlide.dataset.id,
             img: bottomSlide.querySelector('img').src,
-            collection: bottomSlide.dataset.collection
+            collection: bottomSlide.dataset.collection,
+            price: bottomSlide.dataset.price
           }
         };
     
