@@ -64,29 +64,55 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    document.querySelector('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT')?.addEventListener('click', (e) => {
-        e.preventDefault();
+    const oldLink = document.querySelector('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT');
+
+    if (oldLink && oldLink.tagName === 'A') {
+      const href = oldLink.getAttribute('href');
+      const button = document.createElement('button');
+    
+      // Скопировать классы и контент
+      button.className = oldLink.className;
+      button.innerHTML = oldLink.innerHTML;
+    
+      // Перенести href в data-href
+      button.setAttribute('data-href', href);
+    
+      // Заменить <a> на <button>
+      oldLink.replaceWith(button);
+    
+      // Назначить обработчик клика
+      button.addEventListener('click', () => {
         const topSlide = document.querySelector('.capsule-slider-top .swiper-slide-active img');
         const bottomSlide = document.querySelector('.capsule-slider-bottom .swiper-slide-active img');
-
-        if (!topSlide || !bottomSlide) return;
-
+    
+        if (!topSlide || !bottomSlide) {
+          console.warn('❌ Один из слайдов не найден');
+          return;
+        }
+    
         const capsuleData = {
-            top: {
+          top: {
             id: topSlide.closest('[data-product-id]')?.dataset.productId,
             img: topSlide.src
-            },
-            bottom: {
+          },
+          bottom: {
             id: bottomSlide.closest('[data-product-id]')?.dataset.productId,
             img: bottomSlide.src
-            }
+          }
         };
-
+    
+        if (!capsuleData.top.id || !capsuleData.bottom.id) {
+          console.warn('❌ Не удалось определить ID товаров');
+          return;
+        }
+    
         localStorage.setItem('capsuleSelection', JSON.stringify(capsuleData));
-        requestAnimationFrame(() => {
-          setTimeout(() => {
-            location.assign(document.querySelector('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT').href);
-          }, 100); // даже 100ms хватит
-        });
-    });
+    
+        // Переход на сохранённый href
+        const targetHref = button.getAttribute('data-href');
+        if (targetHref) {
+          window.location.href = targetHref;
+        }
+      });
+    }
 })
