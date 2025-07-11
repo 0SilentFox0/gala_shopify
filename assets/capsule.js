@@ -26,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
           capsuleList.appendChild(div);
         });
 
+        document.querySelector('.capsule-edit-product-dynamic').classList.add('active');
+
         document.querySelector('.capsule-first-step-body')?.classList.add('hidden');
         document.querySelector('.capsule-edit-wrapper')?.classList.add('active');
 
