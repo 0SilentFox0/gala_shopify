@@ -864,17 +864,17 @@
     document.addEventListener('change', async function (e) {
       const select = e.target;
       if (!select.classList.contains('cart-size-select')) return;
-  
+    
+      const row = select.closest('tr');
+      if (!row) return;
+    
       const lineKey = select.dataset.lineKey;
       const newSize = select.value;
-  
+    
       let currentOptions = [];
       let variants = [];
       let optionNames = [];
-  
-      const row = select.closest('tr');
-      if (!row) return;
-  
+    
       try {
         currentOptions = JSON.parse(select.dataset.currentOptions || '[]');
         variants = JSON.parse(row.dataset.variants || '[]');
@@ -883,43 +883,47 @@
         console.error('❌ Ошибка при разборе JSON:', err);
         return;
       }
-  
+    
+      // Получаем текущее количество из input
+      const quantityInput = row.querySelector('.quantity-selector input[type="number"]');
+      const quantity = parseInt(quantityInput?.value, 10) || 1;
+    
       // Найти индекс опции "Size"
       const sizeIndex = optionNames.findIndex(opt => opt.toLowerCase() === 'size');
       if (sizeIndex === -1) {
         console.warn('⚠️ Опция "Size" не найдена');
         return;
       }
-  
+    
       // Заменить значение размера в текущих опциях
       currentOptions[sizeIndex] = newSize;
-  
+    
       // Найти подходящий вариант
       const matched = variants.find(variant =>
         variant.options.every((opt, i) => opt === currentOptions[i])
       );
-  
+    
       if (!matched) {
         alert('❌ Обраний розмір недоступний для даних опцій');
         return;
       }
-  
+    
       const newVariantId = matched.id;
-  
+    
       // Удалить текущий вариант
       await fetch('/cart/change.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ id: lineKey, quantity: 0 }),
       });
-  
-      // Добавить новый вариант
+    
+      // Добавить новый вариант с тем же количеством
       await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ id: newVariantId, quantity: 1 }),
+        body: JSON.stringify({ id: newVariantId, quantity }),
       });
-  
+    
       location.reload();
     });
 
