@@ -112,14 +112,14 @@ document.addEventListener('DOMContentLoaded', () => {
         localStorage.setItem('capsuleSelection', JSON.stringify(capsuleData));
     
         // Переход на сохранённый href
-        // const targetHref = button.getAttribute('data-href');
-        // requestAnimationFrame(() => {
-        //   setTimeout(() => {
-        //     if (targetHref) {
-        //       window.location.href = targetHref;
-        //     }
-        //   }, 100);
-        // });
+        const targetHref = button.getAttribute('data-href');
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            // if (targetHref) {
+            //   window.location.href = targetHref;
+            // }
+          }, 100);
+        });
       });
     }
 })
