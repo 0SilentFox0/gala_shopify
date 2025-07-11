@@ -1182,6 +1182,7 @@
                 "button_mkadkC": {
                   "type": "button",
                   "name": "t:names.button",
+                  "disabled": true,
                   "settings": {
                     "label": "Add full outfit to cart",
                     "link": "shopify://collections/all",
