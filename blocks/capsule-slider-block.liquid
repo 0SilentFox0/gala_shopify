@@ -1,24 +1,44 @@
+{% capture top_products %}
+  {% for product in block.settings.collection_top.products limit: block.settings.products_limit %}
+      {% assign collection_title = '' %}
+      {% for collection in product.collections %}
+          {% if collection.metafields.custom.level.value == "1" %}
+              {% if collection.title != "Capsule" %}
+                  {% assign collection_title = collection.title %}
+              {% endif %}
+          {% endif %}
+      {% endfor %}
+        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}" data-collection="{{ collection_title }}">
+            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+        </div>
+    {% endfor %}
+{% endcapture %}
+
+{% capture bottom_products %}
+  {% for product in block.settings.collection_bottom.products limit: block.settings.products_limit %}
+      {% assign collection_title = '' %}
+      {% for collection in product.collections %}
+          {% if collection.metafields.custom.level.value == "1" %}
+              {% if collection.title != "Capsule" %}
+                  {% assign collection_title = collection.title %}
+              {% endif %}
+          {% endif %}
+      {% endfor %}
+        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}" data-collection="{{ collection_title }}">
+            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+        </div>
+    {% endfor %}
+{% endcapture %}
+
 <div class="capsule-slider-block">
     <div class="capsule-slider-inner">
         <div class="capsule-slider-top swiper">
             <div class="swiper-wrapper">
                 {% if block.settings.collection_top.products.size < 3 %}
-                    {% for product in block.settings.collection_top.products limit: block.settings.products_limit %}
-                        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}">
-                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-                        </div>
-                    {% endfor %}
-                    {% for product in block.settings.collection_top.products limit: block.settings.products_limit %}
-                        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}">
-                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-                        </div>
-                    {% endfor %}
+                  {{ top_products }}
+                  {{ top_products }}
                 {% else %}
-                    {% for product in block.settings.collection_top.products limit: block.settings.products_limit %}
-                        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}">
-                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-                        </div>
-                    {% endfor %}
+                    {{ top_products }}
                 {% endif %}
             </div>
             <button class="swiper-button-prev"></button>
@@ -27,22 +47,10 @@
         <div class="capsule-slider-bottom swiper">
             <div class="swiper-wrapper">
                 {% if block.settings.collection_bottom.products.size < 3 %}
-                    {% for product in block.settings.collection_bottom.products limit: block.settings.products_limit %}
-                        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}">
-                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-                        </div>
-                    {% endfor %}
-                    {% for product in block.settings.collection_bottom.products limit: block.settings.products_limit %}
-                        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}">
-                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-                        </div>
-                    {% endfor %}
+                  {{ bottom_products }}
+                  {{ bottom_products }}
                 {% else %}
-                    {% for product in block.settings.collection_bottom.products limit: block.settings.products_limit %}
-                        <div class="swiper-slide capsule-slider-slide" data-id="{{ product.id }}">
-                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-                        </div>
-                    {% endfor %}
+                  {{ bottom_products }}
                 {% endif %}
             </div>
             <button class="swiper-button-prev"></button>
