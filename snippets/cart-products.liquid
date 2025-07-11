@@ -929,18 +929,25 @@
       const row = e.target.closest('tr');
       if (!row) return;
 
-      const variantMapRaw = row.dataset.variantMap;
-      const variantData = JSON.parse(variantMapRaw);
-      const optionNames = variantData.option_names;
-
+      const optionNames = JSON.parse(row.dataset.optionNames || '[]');
+      const variants = JSON.parse(row.dataset.variants || '[]');
       const sizeSelect = row.querySelector('.cart-size-select');
-      const variantId = sizeSelect?.selectedOptions[0]?.dataset.variantId;
-
+      
+      // Получаем текущие значения всех опций
+      let currentOptions = JSON.parse(sizeSelect.dataset.currentOptions || '[]');
+      
+      // Найти нужный вариант
+      const matchedVariant = variants.find(variant =>
+        variant.options.every((opt, i) => opt === currentOptions[i])
+      );
+      
+      const variantId = matchedVariant?.id;
+      
       if (!variantId) {
-        console.warn('Variant ID not found');
+        console.warn('❌ Не удалось найти подходящий вариант для дубликата');
         return;
       }
-
+  
       // Створюємо унікальну властивість, щоб Shopify не обʼєднав
       const uniqueProperty = `_duplicate_uuid_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
 
