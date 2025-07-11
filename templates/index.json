@@ -1928,9 +1928,7 @@
         "group_DGWfex",
         "group_8yJxbF"
       ],
-      "custom_css": [
-        "iframe {width: 100%; height: 100%; display: block;}"
-      ],
+      "custom_css": [],
       "name": "t:names.split_showcase",
       "settings": {
         "content_direction": "row",
