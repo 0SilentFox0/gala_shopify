@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       // Удаляем, чтобы не повторно использовать
-      localStorage.removeItem('capsuleSelection');
+      // localStorage.removeItem('capsuleSelection');
     } catch (err) {
       console.error('Invalid capsuleSelection data', err);
     }
