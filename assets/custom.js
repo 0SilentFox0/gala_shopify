@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
           return;
         }
 
-        console.log(JSON.stringify(capsuleData)));
+        console.log(JSON.stringify(capsuleData));
     
         localStorage.setItem('capsuleSelection', JSON.stringify(capsuleData));
     
@@ -122,4 +122,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       });
     }
-})
+});
