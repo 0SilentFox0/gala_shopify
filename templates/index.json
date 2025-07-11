@@ -68,7 +68,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><a href=\"#\" title=\"#\">View Collection</a></p>",
+            "text": "<p><a href=\"/collections/all\" title=\"All Products\">View Collection</a></p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
