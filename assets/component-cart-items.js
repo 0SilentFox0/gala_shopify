@@ -82,11 +82,24 @@ class CartItemsComponent extends Component {
     const body = JSON.stringify({
       line,
       quantity,
-      sections: Array.from(sectionsToUpdate).join(','),
+      sections: Array.from(sectionsToUpdate),
       sections_url: window.location.pathname,
     });
 
+    console.log('[DEBUG] Body JSON:', body);
+
     fetch(`${Theme.routes.cart_change_url}`, fetchConfig('json', { body }))
+        .then(async (response) => {
+        const rawText = await response.text();
+        console.log('[DEBUG] Raw response text:', rawText);
+
+        try {
+          return JSON.parse(rawText); // ручной парсинг, чтобы поймать ошибку
+        } catch (e) {
+          console.error('[ERROR] JSON parse failed at client:', e);
+          throw new Error('Invalid JSON from server');
+        }
+      })
       .then((response) => response.json())
       .then((data) => {
         resetShimmer(this);
