@@ -405,8 +405,12 @@
 
   .cart-items__table-row th:not(.cart-items__product),
   .cart-items__table-row td:not(.cart-items__product) {
-    width: 136px;
+    width: 90px;
     flex-shrink: 0;
+  }
+
+  @media(min-width: 1050px) {
+    width: 136px;
   }
 
   .cart-items__table-row td {
