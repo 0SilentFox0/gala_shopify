@@ -115,9 +115,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const targetHref = button.getAttribute('data-href');
         requestAnimationFrame(() => {
           setTimeout(() => {
-            // if (targetHref) {
-            //   window.location.href = targetHref;
-            // }
+            if (targetHref) {
+              window.location.href = targetHref;
+            }
           }, 100);
         });
       });
