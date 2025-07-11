@@ -106,6 +106,8 @@ document.addEventListener('DOMContentLoaded', () => {
           console.warn('❌ Не удалось определить ID товаров');
           return;
         }
+
+        console.log(capsuleData);
     
         localStorage.setItem('capsuleSelection', JSON.stringify(capsuleData));
     
