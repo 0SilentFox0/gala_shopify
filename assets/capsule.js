@@ -6,9 +6,6 @@ document.addEventListener('DOMContentLoaded', () => {
     try {
       const { top, bottom } = JSON.parse(storedCapsule);
 
-      // Удаляем, чтобы не повторно использовать
-      localStorage.removeItem('capsuleSelection');
-
       const capsuleList = document.querySelector('.capsule-edit-product.active .capsule-edit-product-list');
 
       if (capsuleList) {
@@ -36,6 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
           step.classList.toggle('active', i === 1)
         );
       }
+
+      // Удаляем, чтобы не повторно использовать
+      localStorage.removeItem('capsuleSelection');
     } catch (err) {
       console.error('Invalid capsuleSelection data', err);
     }
