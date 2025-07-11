@@ -73,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
       // Скопировать классы и контент
       button.className = oldLink.className;
       button.innerHTML = oldLink.innerHTML;
+      button.style.maxWidth = "fit-content";
     
       // Перенести href в data-href
       button.setAttribute('data-href', href);
