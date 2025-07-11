@@ -5422,3 +5422,9 @@ text-component {
 .frcp-app {
   --frcp-primaryColor: #000000 !important;
 }
+
+.menu__heading {
+  font-size: 18px !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+}
