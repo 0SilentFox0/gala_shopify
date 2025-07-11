@@ -83,8 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         localStorage.setItem('capsuleSelection', JSON.stringify(capsuleData));
-        setTimeout(() => {
-            location.assign(document.querySelector('.button--AN2IvRzQ4YSt1K2UyM__button_P4rdAT').href); // не window.location.href — безопаснее
-        }, 200);
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            location.assign(document.querySelector('.button--AN2IvRzQ4YSt1K2UyM__button_P4rdAT').href);
+          }, 100); // даже 100ms хватит
+        });
     });
 })
