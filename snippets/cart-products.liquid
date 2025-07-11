@@ -54,6 +54,7 @@
           </caption>
 
           <thead
+            class="visually-hidden"
             role="rowgroup"
           >
             <tr
@@ -61,19 +62,18 @@
               class="cart-items__table-row"
             >
               <th
+                id="productImage"
+                scope="col"
+                role="columnheader"
+              >
+                {{ 'content.product_image' | t }}
+              </th>
+              <th
                 id="productInformation"
                 scope="col"
                 role="columnheader"
-                class="cart-items__product"
               >
                 {{ 'content.product_information' | t }}
-              </th>
-              <th
-                id="size"
-                scope="col"
-                role="columnheader"
-              >
-                {{ 'content.size' | t }}
               </th>
               <th
                 id="quantity"
@@ -98,15 +98,13 @@
                 role="row"
                 class="cart-items__table-row"
                 ref="cartItemRows[]"
-                data-variants='{{ item.product.variants | json | escape }}'
-                data-option-names='{{ item.product.options | json | escape }}'
               >
                 <td
-                  class="cart-items__product"
+                  class="cart-items__media"
                   role="cell"
-                  headers="productInformation"
+                  headers="productImage"
                 >
-                {% if item.image -%}
+                  {% if item.image -%}
                     {% liquid
                       assign ratio = 1
                       if block.settings.image_ratio == 'portrait'
@@ -125,154 +123,116 @@
                       -%}
                     </a>
                   {%- endif %}
-                  <div class="cart-items__details cart-primary-typography">
-                    <p class="cart-items__vendor">
-                        {{- item.product.vendor -}}
-                    </p>
-                    <p>
-                      <a
-                        href="{{ item.url }}"
-                        class="cart-items__title"
-                      >
-                        {{- item.product.title -}}
-                      </a>
-                    </p>
-                    {% if item.product.vendor and block.settings.vendor %}
-                      <p>
-                        {{ item.product.vendor }}
-                      </p>
-                    {% endif %}
-
-                    {%- if item.item_components.size != 0 -%}
-                      <ul class="cart-items__bundle list-unstyled">
-                        {%- for component in item.item_components -%}
-                          <li>
-                            {{- component.title -}}
-                            {%- if component.quantity > 1 -%}
-                              <span> × {{ component.quantity }}</span>
-                            {%- endif -%}
-                          </li>
-                        {%- endfor -%}
-                      </ul>
-                    {%- endif -%}
-
-                    {%- if item.product.has_only_default_variant == false
-                      or item.properties.size != 0
-                      or item.selling_plan_allocation != null
-                    -%}
-                      <dl class="cart-items__variants">
-                        {%- if item.product.has_only_default_variant == false and item.item_components.size == 0 -%}
-                          {%- for option in item.options_with_values -%}
-                            <div class="cart-items__variant">
-                              <dt class="visually-hidden">{{ option.name }}:</dt>
-                              <dd>
-                                {{- option.value -}}
-                                {%- if forloop.last != true %},&nbsp;{% endif -%}
-                              </dd>
-                            </div>
-                          {%- endfor -%}
-                        {%- endif -%}
-
-                        {%- for property in item.properties -%}
-                          {%- assign property_first_char = property.first | slice: 0 -%}
-                          {%- if property.last != blank and property_first_char != '_' -%}
-                            <div class="cart-items__properties">
-                              <dt class="visually-hidden">{{ property.first }}:</dt>
-                              <dd>
-                                {%- if property.last contains '/uploads/' -%}
-                                  <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
-                                {%- else -%}
-                                  {{ property.last }}
-                                {%- endif -%}
-                              </dd>
-                            </div>
-                          {%- endif -%}
-                        {%- endfor -%}
-                      </dl>
-
-                      {% if item.selling_plan_allocation %}
-                        <p>{{ item.selling_plan_allocation.selling_plan.name }}</p>
-                      {% endif %}
-                    {%- endif -%}
-
-                    {% if item.line_level_discount_allocations.size > 0 %}
-                      <ul
-                        class="list-unstyled"
-                        role="list"
-                      >
-                        {%- for discount in item.line_level_discount_allocations -%}
-                          <li>{{ discount.discount_application.title | escape }}</li>
-                        {%- endfor -%}
-                      </ul>
-                    {% endif %}
-
-                    <div>
-                      {% if item.original_price != item.final_price %}
-                        <span class="visually-hidden">{{ 'content.price_sale' | t }}</span>
-                        <span>{{ item.final_price | money }}</span>
-                        <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
-                        <s class="compare-at-price">
-                          {% if item.variant.compare_at_price > item.original_price %}
-                            {{ item.variant.compare_at_price | money }}
-                          {% else %}
-                            {{ item.original_price | money }}
-                          {% endif %}
-                        </s>
-                      {% else %}
-                        {% if item.variant.compare_at_price > item.original_price %}
-                          <span class="visually-hidden">{{ 'content.price_sale' | t }}</span>
-                        {% else %}
-                          <span class="visually-hidden">{{ 'content.price' | t }}</span>
-                        {% endif %}
-
-                        <span>{{ item.original_price | money }}</span>
-
-                        {% if item.variant.compare_at_price > item.original_price %}
-                          <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
-                          <s class="compare-at-price">{{ item.variant.compare_at_price | money }}</s>
-                        {% endif %}
-                      {% endif %}
-                    </div>
-                  </div>
                 </td>
                 <td
-                  class="cart-items__size"
+                  class="cart-items__details cart-primary-typography"
                   role="cell"
-                  headers="size"
+                  headers="productInformation"
                 >
-                  {% assign size_index = nil %}
-                    {% for opt in item.product.options %}
-                      {% if opt == 'Size' %}
-                        {% assign size_index = forloop.index0 %}
-                      {% endif %}
-                    {% endfor %}
+                  <p>
+                    <a
+                      href="{{ item.url }}"
+                      class="cart-items__title"
+                    >
+                      {{- item.product.title -}}
+                    </a>
+                  </p>
+                  {% if item.product.vendor and block.settings.vendor %}
+                    <p>
+                      {{ item.product.vendor }}
+                    </p>
+                  {% endif %}
 
-                    {% if size_index != nil %}
-                      {% assign current_size = item.variant.options[size_index] %}
+                  {%- if item.item_components.size != 0 -%}
+                    <ul class="cart-items__bundle list-unstyled">
+                      {%- for component in item.item_components -%}
+                        <li>
+                          {{- component.title -}}
+                          {%- if component.quantity > 1 -%}
+                            <span> × {{ component.quantity }}</span>
+                          {%- endif -%}
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  {%- endif -%}
 
-                      <select
-                        class="cart-size-select"
-                        data-line-key="{{ item.key }}"
-                        data-current-options='{{ item.variant.options | json }}'>
+                  {%- if item.product.has_only_default_variant == false
+                    or item.properties.size != 0
+                    or item.selling_plan_allocation != null
+                  -%}
+                    <dl class="cart-items__variants">
+                      {%- if item.product.has_only_default_variant == false and item.item_components.size == 0 -%}
+                        {%- for option in item.options_with_values -%}
+                          <div class="cart-items__variant">
+                            <dt class="visually-hidden">{{ option.name }}:</dt>
+                            <dd>
+                              {{- option.value -}}
+                              {%- if forloop.last != true %},&nbsp;{% endif -%}
+                            </dd>
+                          </div>
+                        {%- endfor -%}
+                      {%- endif -%}
 
-                        {% for value in item.product.options_by_name['Size'].values %}
-                          {% assign variant_id = blank %}
-                          {% for variant in item.product.variants %}
-                            {% if variant.options[size_index] == value %}
-                              {% assign variant_id = variant.id %}
-                            {% endif %}
-                          {% endfor %}
+                      {%- for property in item.properties -%}
+                        {%- assign property_first_char = property.first | slice: 0 -%}
+                        {%- if property.last != blank and property_first_char != '_' -%}
+                          <div class="cart-items__properties">
+                            <dt class="visually-hidden">{{ property.first }}:</dt>
+                            <dd>
+                              {%- if property.last contains '/uploads/' -%}
+                                <a href="{{ property.last }}">{{ property.last | split: '/' | last }}</a>
+                              {%- else -%}
+                                {{ property.last }}
+                              {%- endif -%}
+                            </dd>
+                          </div>
+                        {%- endif -%}
+                      {%- endfor -%}
+                    </dl>
 
-                          <option
-                            value="{{ value }}"
-                            data-variant-id="{{ variant_id }}"
-                            {% if value == current_size %}selected disabled{% endif %}
-                          >
-                            {{ value }}
-                          </option>
-                        {% endfor %}
-                      </select>
+                    {% if item.selling_plan_allocation %}
+                      <p>{{ item.selling_plan_allocation.selling_plan.name }}</p>
                     {% endif %}
+                  {%- endif -%}
+
+                  {% if item.line_level_discount_allocations.size > 0 %}
+                    <ul
+                      class="list-unstyled"
+                      role="list"
+                    >
+                      {%- for discount in item.line_level_discount_allocations -%}
+                        <li>{{ discount.discount_application.title | escape }}</li>
+                      {%- endfor -%}
+                    </ul>
+                  {% endif %}
+
+                  <div>
+                    {% if item.original_price != item.final_price %}
+                      <span class="visually-hidden">{{ 'content.price_sale' | t }}</span>
+                      <span>{{ item.final_price | money }}</span>
+                      <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
+                      <s class="compare-at-price">
+                        {% if item.variant.compare_at_price > item.original_price %}
+                          {{ item.variant.compare_at_price | money }}
+                        {% else %}
+                          {{ item.original_price | money }}
+                        {% endif %}
+                      </s>
+                    {% else %}
+                      {% if item.variant.compare_at_price > item.original_price %}
+                        <span class="visually-hidden">{{ 'content.price_sale' | t }}</span>
+                      {% else %}
+                        <span class="visually-hidden">{{ 'content.price' | t }}</span>
+                      {% endif %}
+
+                      <span>{{ item.original_price | money }}</span>
+
+                      {% if item.variant.compare_at_price > item.original_price %}
+                        <span class="visually-hidden">{{ 'content.price_regular' | t }}</span>
+                        <s class="compare-at-price">{{ item.variant.compare_at_price | money }}</s>
+                      {% endif %}
+                    {% endif %}
+                  </div>
                 </td>
                 <td
                   class="cart-items__quantity"
@@ -287,6 +247,35 @@
                     min: 0,
                     class: 'cart-primary-typography'
                   %}
+
+                  <button
+                    class="button button--tertiary cart-items__remove"
+                    type="button"
+                    aria-label="{{ 'accessibility.remove_item' | t: title: item.title | escape }}"
+                    on:click="/onLineItemRemove/{{ item.index | plus: 1 }}"
+                  >
+                    {{- 'icon-delete.svg' | inline_asset_content -}}
+                    <span class="visually-hidden">Remove</span>
+                  </button>
+                </td>
+                <td
+                  class="cart-items__error hidden"
+                  role="cell"
+                  ref="cartItemErrorContainer-{{ item.index | plus: 1 }}"
+                  headers="quantity"
+                >
+                  <div
+                    class="cart-item__error"
+                    role="alert"
+                  >
+                    <span class="svg-wrapper">
+                      {{- 'icon-error.svg' | inline_asset_content -}}
+                    </span>
+                    <small
+                      class="cart-item__error-text cart-primary-typography"
+                      ref="cartItemError-{{ item.index | plus: 1 }}"
+                    ></small>
+                  </div>
                 </td>
                 <td
                   class="cart-items__price cart-secondary-typography"
@@ -308,43 +297,6 @@
                       {% render 'unit-price', variant: item.variant, price: unit_price %}
                     </div>
                   {%- endif -%}
-                </td>
-
-                <td
-                  class="cart-items__error hidden"
-                  role="cell"
-                  ref="cartItemErrorContainer-{{ item.index | plus: 1 }}"
-                  headers="quantity"
-                >
-                  <div
-                    class="cart-item__error"
-                    role="alert"
-                  >
-                    <span class="svg-wrapper">
-                      {{- 'icon-error.svg' | inline_asset_content -}}
-                    </span>
-                    <small
-                      class="cart-item__error-text cart-primary-typography"
-                      ref="cartItemError-{{ item.index | plus: 1 }}"
-                    ></small>
-                  </div>
-                </td>
-                <td class="cart-items__bottom">
-                  <button
-                    class="button button--tertiary cart-items__duplicate"
-                    type="button"
-                    aria-label="{{ 'accessibility.remove_item' | t: title: item.title | escape }}"
-                  >
-                    <span>{{ 'actions.duplicate' | t }}</span>
-                  </button>
-                  <button
-                    class="button button--tertiary cart-items__remove"
-                    type="button"
-                    aria-label="{{ 'accessibility.remove_item' | t: title: item.title | escape }}"
-                    on:click="/onLineItemRemove/{{ item.index | plus: 1 }}"
-                  >
-                    <span>{{ 'actions.delete' | t }}</span>
-                  </button>
                 </td>
               </tr>
             {% endfor %}
@@ -378,59 +330,18 @@
   }
 
   .cart-items__table-row {
-    /* --cart-item-price-width: 6rem;
+    --cart-item-price-width: 6rem;
 
     display: grid;
     grid-template-columns: clamp(2.5rem, 15cqi, 7.5rem) minmax(0, 1fr) minmax(var(--cart-item-price-width), auto);
     grid-template-areas:
       'media details price'
       'media quantity price'
-      'media error error'; */
-    display: flex;
+      'media error error';
     column-gap: var(--gap-md);
     align-items: start;
     padding-bottom: var(--cart-items-gap);
     margin-bottom: var(--margin-lg);
-  }
-
-  .cart-items__product {
-    flex: 1 1 auto;
-    display: flex;
-    gap: 8px;
-  }
-
-   .cart-items__table-row {
-    position: relative;
-   }
-
-  .cart-items__table-row th:not(.cart-items__product),
-  .cart-items__table-row td:not(.cart-items__product) {
-    width: 136px;
-    flex-shrink: 0;
-  }
-
-  .cart-items__table-row td {
-    padding: 24px 0px;
-  }
-
-  .cart-items__table-row td select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 100%;
-    min-height: 48px;
-    border: 1px solid #D2D2D2;
-    font-size: 16px;
-    color: black;
-    line-height: 100%;
-    border-radius: 0px;
-    text-align: center;
-    position: relative;
-    background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='16' viewBox='0 0 20 20' width='16' xmlns='http://www.w3.org/2000/svg'><path d='M5.516 7.548l4.49 4.488 4.488-4.49a.873.873 0 011.236 1.235l-5.106 5.104a.873.873 0 01-1.236 0L4.39 8.783a.873.873 0 111.236-1.235z'/></svg>");
-    background-repeat: no-repeat;
-    background-position: right 20px center;
-    background-size: 20px;
-    cursor: pointer;
   }
 
   html:active-view-transition-type(page-navigation) .cart-items__table-row {
@@ -491,15 +402,9 @@
   }
 
   .cart-items__title {
-    font-size: var(--cart-font-size--xs);
+    font-size: var(--cart-font-size--md);
     color: var(--color-foreground);
     text-transform: var(--product-title-case);
-  }
-
-  .cart-items__vendor {
-    font-size: 14px;
-    font-weight: 700;
-    text-transform: uppercase;
   }
 
   .cart-items__variant {
@@ -511,7 +416,7 @@
     margin-block-start: var(--margin-xs);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     gap: var(--gap-xs);
     width: fit-content;
   }
@@ -520,15 +425,10 @@
     display: inline-flex;
     flex: 0 1 var(--quantity-selector-width);
     font-size: var(--cart-font-size--sm);
-    height: 44px;
+    height: auto;
   }
 
-  .cart-drawer__inner .cart-items__quantity {
-    display: none;
-  }
-
-  .cart-items__remove,
-  .cart-items__duplicate {
+  .cart-items__remove {
     background-color: transparent;
     color: var(--color-foreground);
     width: var(--minimum-touch-target);
@@ -536,12 +436,6 @@
     justify-content: center;
     box-shadow: none;
     padding: 0;
-  }
-
-  .cart-items__bottom {
-    display: flex;
-    align-items: center;
-    gap: 10px;
   }
 
   .cart-items__media {
@@ -566,7 +460,7 @@
     display: flex;
     aspect-ratio: var(--ratio);
     position: relative;
-    width: 120px;
+    width: 100%;
     overflow: hidden;
   }
 
@@ -620,7 +514,7 @@
   }
 
   @container cart-items (width >= 720px) {
-    /* .cart-items__table-row {
+    .cart-items__table-row {
       --cart-item-price-width: 6rem;
 
       grid-template-columns: 7.5rem 1fr 1fr minmax(var(--cart-item-price-width), auto);
@@ -628,7 +522,7 @@
       grid-template-areas:
         'media details quantity price'
         'media details error error';
-    } */
+    }
 
     .cart-items__quantity,
     .cart-items__price {
@@ -643,7 +537,7 @@
       min-height: var(--minimum-touch-target);
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
     }
   }
@@ -693,17 +587,7 @@
   }
 
   .cart__total-label {
-    text-transform: uppercase;
-    font-size: 16px;
-  }
-
-  .cart-drawer__inner .cart__total-label {
-    font-size: 14px;
-  }
-
-  .cart-drawer__inner .cart__total-value {
-    font-size: 16px;
-    text-transform: uppercase;
+    font-size: var(--cart-font-size--sm);
   }
 
   .cart__total-value {
@@ -738,7 +622,6 @@
     width: 100%;
     height: clamp(25px, var(--height-buy-buttons), 55px);
     padding-inline: var(--padding-4xl);
-    font-size: 20px;
   }
 
   shopify-accelerated-checkout-cart {
@@ -827,136 +710,4 @@
       transform: translate(0, 0);
     }
   }
-
-  .cart-items__table thead th {
-    padding: 17px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-  }
-
-  .cart-items__table thead th.cart-items__product {
-    justify-content: center;
-  }
-
-  .cart-items__table thead tr {
-    background-color: #F2F2F2;
-    border-top: 1px solid #E6E6E6;
-    border-bottom: 1px solid #E6E6E6;
-  }
-
-  .cart-items__bottom {
-    position: absolute;
-    width: fit-content !important;
-    bottom: 10px;
-    right: 10px;
-    z-index: 3;
-  }
-
-  .cart-items__remove,
-  .cart-items__duplicate {
-    text-decoration: underline;
-  }
 {% endstylesheet %}
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-  document.addEventListener('change', async function (e) {
-    const select = e.target;
-    if (!select.classList.contains('cart-size-select')) return;
-
-    const lineKey = select.dataset.lineKey;
-    const newSize = select.value;
-
-    let currentOptions = [];
-    let variants = [];
-    let optionNames = [];
-
-    const row = select.closest('tr');
-    if (!row) return;
-
-    try {
-      currentOptions = JSON.parse(select.dataset.currentOptions || '[]');
-      variants = JSON.parse(row.dataset.variants || '[]');
-      optionNames = JSON.parse(row.dataset.optionNames || '[]');
-    } catch (err) {
-      console.error('❌ Ошибка при разборе JSON:', err);
-      return;
-    }
-
-    // Найти индекс опции "Size"
-    const sizeIndex = optionNames.findIndex(opt => opt.toLowerCase() === 'size');
-    if (sizeIndex === -1) {
-      console.warn('⚠️ Опция "Size" не найдена');
-      return;
-    }
-
-    // Заменить значение размера в текущих опциях
-    currentOptions[sizeIndex] = newSize;
-
-    // Найти подходящий вариант
-    const matched = variants.find(variant =>
-      variant.options.every((opt, i) => opt === currentOptions[i])
-    );
-
-    if (!matched) {
-      alert('❌ Обраний розмір недоступний для даних опцій');
-      return;
-    }
-
-    const newVariantId = matched.id;
-
-    // Удалить текущий вариант
-    await fetch('/cart/change.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: lineKey, quantity: 0 }),
-    });
-
-    // Добавить новый вариант
-    await fetch('/cart/add.js', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id: newVariantId, quantity: 1 }),
-    });
-
-    location.reload();
-  });
-});
-
-  document.querySelectorAll('.cart-items__duplicate').forEach((btn) => {
-    btn.addEventListener('click', async (e) => {
-      const row = e.target.closest('tr');
-      if (!row) return;
-
-      const variantMapRaw = row.dataset.variantMap;
-      const variantData = JSON.parse(variantMapRaw);
-      const optionNames = variantData.option_names;
-
-      const sizeSelect = row.querySelector('.cart-size-select');
-      const variantId = sizeSelect?.selectedOptions[0]?.dataset.variantId;
-
-      if (!variantId) {
-        console.warn('Variant ID not found');
-        return;
-      }
-
-      // Створюємо унікальну властивість, щоб Shopify не обʼєднав
-      const uniqueProperty = `_duplicate_uuid_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
-
-      await fetch('/cart/add.js', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          id: variantId,
-          quantity: 1,
-          properties: {
-            [uniqueProperty]: 'true'
-          }
-        }),
-      });
-
-      location.reload();
-    });
-  });
-</script>
