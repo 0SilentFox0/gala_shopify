@@ -105,9 +105,9 @@
       },
       "11074193060611426105": {
         "type": "shopify://apps/froonze-loyalty-wishlist/blocks/product_wishlist/3c495b68-652c-468d-a0ef-5bad6935d104",
-        "disabled": false,
+        "disabled": true,
         "settings": {
-          "add_button_color": "#5873F9",
+          "add_button_color": "#5873f9",
           "add_button_text_color": "#ffffff",
           "remove_button_color": "#333333",
           "remove_button_text_color": "#ffffff",
