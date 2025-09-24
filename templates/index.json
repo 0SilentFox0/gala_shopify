@@ -994,6 +994,9 @@
         "group_UaMEzq",
         "group_DFzJAw"
       ],
+      "custom_css": [
+        "a {text-decoration: underline; text-transform: uppercase;}"
+      ],
       "name": "t:names.image_with_text",
       "settings": {
         "content_direction": "row",
