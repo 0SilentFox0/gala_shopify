@@ -5468,6 +5468,9 @@ text-component {
   display: none;
   background-color: #FEFDFA;
   padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
 
 @media(min-width: 1024px) {
