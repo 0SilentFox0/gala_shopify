@@ -5493,3 +5493,13 @@ text-component {
     display: block;
   }
 }
+
+.hero__content-newsletter .email-signup__input {
+  border: 0px;
+  padding: 7px 0px;
+  border-color: #3A1704;
+  border-width: 1px;
+  color: #3A1704;
+  text-transform: uppercase;
+  font-size: 12px;
+}
