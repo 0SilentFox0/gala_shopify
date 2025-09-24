@@ -5503,3 +5503,7 @@ text-component {
   text-transform: uppercase;
   font-size: 12px;
 }
+
+.hero__content-newsletter .email-signup__input::placeholder {
+  color: #3A1704;
+}
