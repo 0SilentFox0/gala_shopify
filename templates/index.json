@@ -461,8 +461,8 @@
               "type": "capsule-slider-block",
               "name": "Capsule slider block",
               "settings": {
-                "collection_top": "top",
-                "collection_bottom": "shorts",
+                "collection_top": "magda-butrym",
+                "collection_bottom": "reiss",
                 "products_limit": 10
               },
               "blocks": {}
