@@ -6,6 +6,23 @@
 <header-actions
   {{- block.shopify_attributes -}}
 >
+  <ul class="mobile:hidden header-left-menu">
+    {% for link in block.settings.left_menu.links %}
+      <li>
+        <a
+          href="{{ link.url }}"
+          id="MenuItem-{{ link.handle }}"
+          class="menu-list__item"
+          {% if link.current %}
+            aria-current="page"
+          {% endif %}
+        >
+          {{- link.title -}}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  
   {% if shop.customer_accounts_enabled %}
     {% render 'account-popover' %}
     {% render 'account-drawer' %}
