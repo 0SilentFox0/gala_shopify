@@ -4165,6 +4165,13 @@ text-component {
   padding: 0px;
 }
 
+.header-left-menu a {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  line-height: 100%;
+}
+
 .st-wishlist-icon {
   color: #000000 !important;
 }
