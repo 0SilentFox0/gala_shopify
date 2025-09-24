@@ -5473,6 +5473,17 @@ text-component {
   gap: 16px;
 }
 
+.hero__content-newsletter-title {
+  font-weight: 600;
+  font-size: 16px;
+  margin: 0px;
+}
+
+.hero__content-newsletter-text {
+  font-size: 12px;
+  margin: 0px;
+}
+
 @media(min-width: 1024px) {
   .hero__content-newsletter {
     display: block;
