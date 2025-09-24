@@ -817,28 +817,6 @@
     "section_bPNhfN": {
       "type": "section",
       "blocks": {
-        "image_a7AFaj": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Tezza-1227_1.png",
-            "link": "",
-            "image_ratio": "square",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
         "group_UaMEzq": {
           "type": "group",
           "settings": {
@@ -856,12 +834,13 @@
             "custom_width": 100,
             "width_mobile": "fill",
             "custom_width_mobile": 100,
-            "height": "fit",
+            "height": "fill",
             "custom_height": 100,
             "inherit_color_scheme": true,
             "color_scheme": "",
-            "background_media": "none",
+            "background_media": "image",
             "video_position": "cover",
+            "background_image": "shopify://shop_images/Tezza-1227_2.png",
             "background_image_position": "cover",
             "border": "none",
             "border_width": 1,
@@ -902,31 +881,86 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            },
-            "button_y7H7iK": {
-              "type": "button",
+            }
+          },
+          "block_order": [
+            "text_9X4F4L"
+          ]
+        },
+        "group_mtP6qb": {
+          "type": "group",
+          "settings": {
+            "link": "",
+            "open_in_new_tab": false,
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 24,
+            "width": "custom",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fill",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "image",
+            "video_position": "cover",
+            "background_image": "shopify://shop_images/Tezza-1227_3.png",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "text_ERVfDJ": {
+              "type": "text",
+              "name": "t:names.heading",
               "settings": {
-                "label": "Discover all dresses",
-                "link": "shopify://collections/all",
-                "open_in_new_tab": false,
-                "style_class": "button",
+                "text": "<h2>Most popular <br/>brands</h2>",
                 "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "custom",
+                "font": "var(--font-body--family)",
+                "font_size": "3rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
               },
               "blocks": {}
             }
           },
           "block_order": [
-            "text_9X4F4L",
-            "button_y7H7iK"
+            "text_ERVfDJ"
           ]
         }
       },
       "block_order": [
-        "image_a7AFaj",
-        "group_UaMEzq"
+        "group_UaMEzq",
+        "group_mtP6qb"
       ],
       "name": "t:names.image_with_text",
       "settings": {
