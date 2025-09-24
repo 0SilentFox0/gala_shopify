@@ -5502,6 +5502,7 @@ text-component {
   text-transform: uppercase;
   font-size: 12px;
   padding-right: 20px;
+  background-color: transparent;
 }
 
 .hero__content-newsletter .email-signup__input:focus-visible {
