@@ -479,7 +479,8 @@
         "group_XLBiK4"
       ],
       "custom_css": [
-        "img {object-fit: contain;}"
+        "img {object-fit: contain;}",
+        ".link {text-decoration: underline;}"
       ],
       "name": "t:names.image_with_text",
       "settings": {
