@@ -7,7 +7,7 @@
   {{- block.shopify_attributes -}}
 >
   <ul class="mobile:hidden header-left-menu">
-    {% for link in block.settings.left_menu.links %}
+    {% for link in section.settings.left_menu.links %}
       <li>
         <a
           href="{{ link.url }}"
@@ -22,7 +22,7 @@
       </li>
     {% endfor %}
   </ul>
-  
+
   {% if shop.customer_accounts_enabled %}
     {% render 'account-popover' %}
     {% render 'account-drawer' %}
