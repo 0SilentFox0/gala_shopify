@@ -232,7 +232,16 @@
       "
       style="{% render 'layout-panel-style', settings: section.settings %}"
     >
-      {% content_for 'blocks' %}
+      {% if section.settings.use_newsletter %}
+        <div class="hero__content-left">
+      {% endif %}
+        {% content_for 'blocks' %}
+      {% if section.settings.use_newsletter %}
+        </div>
+        <div class="hero__content-newsletter">
+          
+        </div>
+      {% endif %}
     </div>
   </div>
 </div>
@@ -431,6 +440,9 @@
     },
     {
       "type": "_marquee"
+    },
+    {
+      "type": "email-signup"
     }
   ],
   "disabled_on": {
