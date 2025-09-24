@@ -3872,6 +3872,7 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
 }
 
 .resource-list__carousel slideshow-arrows {
+  position: static;
   padding-inline: var(--util-page-margin-offset);
 }
 
