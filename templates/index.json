@@ -669,32 +669,6 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "text_QahtWH": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p><strong>{{ closest.product.vendor }}</strong></p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "custom",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "uppercase",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
                 "product_title_gXk788": {
                   "type": "product-title",
                   "name": "t:names.product_title",
@@ -702,7 +676,7 @@
                     "product": "{{ closest.product }}",
                     "width": "100%",
                     "max_width": "normal",
-                    "alignment": "center",
+                    "alignment": "left",
                     "type_preset": "h5",
                     "font": "var(--font-body--family)",
                     "font_size": "",
@@ -729,11 +703,11 @@
                     "show_sale_price_first": true,
                     "show_installments": false,
                     "show_tax_info": false,
-                    "type_preset": "",
+                    "type_preset": "custom",
                     "width": "100%",
-                    "alignment": "center",
+                    "alignment": "left",
                     "font": "var(--font-body--family)",
-                    "font_size": "1rem",
+                    "font_size": "0.75rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
                     "case": "none",
@@ -748,6 +722,7 @@
                 "variant_picker_V68mEH": {
                   "type": "variant-picker",
                   "name": "t:names.product_variant_picker",
+                  "disabled": true,
                   "settings": {
                     "product": "{{ closest.product }}",
                     "variant_style": "buttons",
@@ -779,7 +754,6 @@
                 }
               },
               "block_order": [
-                "text_QahtWH",
                 "product_title_gXk788",
                 "price_fJWWHn",
                 "variant_picker_V68mEH",
