@@ -5473,6 +5473,7 @@ text-component {
   gap: 16px;
   width: 320px;
   flex-shrink: 0;
+  margin-right: 32px;
 }
 
 .hero__content-newsletter-title {
