@@ -995,7 +995,7 @@
         "group_DFzJAw"
       ],
       "custom_css": [
-        "a {text-decoration: underline; text-transform: uppercase; font-size: 11px;}"
+        "a {margin-top: 8px; text-decoration: underline; text-transform: uppercase; font-size: 11px;}"
       ],
       "name": "t:names.image_with_text",
       "settings": {
