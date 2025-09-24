@@ -5518,3 +5518,7 @@ text-component {
 .hero__content-newsletter .email-signup__button svg {
   padding: 0px;
 }
+
+.hero__content-newsletter .email-signup__input-group {
+  display: flex;
+}
