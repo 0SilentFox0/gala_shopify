@@ -5513,4 +5513,8 @@ text-component {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
+  padding: 0px;
+}
+.hero__content-newsletter .email-signup__button svg {
+  padding: 0px;
 }
