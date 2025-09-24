@@ -3840,6 +3840,10 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   }
 }
 
+.resource-list__carousel a {
+  text-decoration: underline;
+}
+
 @container resource-list-carousel (width < 750px) {
   .resource-list__carousel .resource-list__slide {
     --slide-width: clamp(150px, 60cqw, var(--slide-width-max));
