@@ -3888,10 +3888,6 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   opacity: 1;
 }
 
-.resource-list__carousel slideshow-arrows .slideshow-control svg path {
-  stroke: #3A1704;
-}
-
 .resource-list__carousel .resource-list__slide {
   width: var(--slide-width);
   flex: 0 0 auto;
