@@ -5460,7 +5460,6 @@ text-component {
 .hero__content-left {
   display: flex;
   flex-direction: column;
-  justify-content: end;
   gap: 24px;
   flex: 1 1 auto;
 }
