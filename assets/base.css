@@ -5468,7 +5468,6 @@ text-component {
   display: none;
   background-color: #FEFDFA;
   padding: 24px 20px;
-  display: flex;
   flex-direction: column;
   gap: 16px;
   width: 320px;
@@ -5491,7 +5490,7 @@ text-component {
 
 @media(min-width: 1024px) {
   .hero__content-newsletter {
-    display: block;
+    display: flex;
   }
 }
 
