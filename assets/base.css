@@ -5505,6 +5505,10 @@ text-component {
   padding-right: 20px;
 }
 
+.hero__content-newsletter .email-signup__input:focus-visible {
+  outline: 0px;
+}
+
 .hero__content-newsletter .email-signup__input::placeholder {
   color: #3A1704;
 }
