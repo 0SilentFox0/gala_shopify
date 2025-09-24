@@ -13,7 +13,7 @@
     "logo_inverse": "shopify://shop_images/gala-white-logo.svg",
     "favicon": "shopify://shop_images/gala-favicon.png",
     "type_body_font": "inter_n4",
-    "type_subheading_font": "inter_n6",
+    "type_subheading_font": "work_sans_n6",
     "type_heading_font": "inter_n7",
     "type_accent_font": "bricolage_grotesque_n7",
     "custom_fonts": true,
