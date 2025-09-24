@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Let summer unfold: featherlight dresses, muted palettes, and barefoot luxury.</p>",
+            "text": "<p>Let summer unfold: featherlight dresses, muted palettes, and barefoot luxury. <span style=\"text-decoration:underline\">VIEW COLLECTION</span></p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
