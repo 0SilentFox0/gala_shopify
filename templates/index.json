@@ -17,8 +17,8 @@
           "name": "t:names.heading",
           "settings": {
             "text": "<h2>Curated luxury fashion</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
+            "width": "100%",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "h1",
             "font": "var(--font-body--family)",
@@ -33,7 +33,7 @@
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
-            "padding-inline-start": 0,
+            "padding-inline-start": 16,
             "padding-inline-end": 0
           },
           "blocks": {}
@@ -43,12 +43,12 @@
           "name": "t:names.text",
           "settings": {
             "text": "<p>Let summer unfold: featherlight dresses, muted palettes, and barefoot luxury.</p>",
-            "width": "fit-content",
-            "max_width": "narrow",
+            "width": "100%",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-body--family)",
-            "font_size": "2rem",
+            "font_size": "1.25rem",
             "line_height": "normal",
             "letter_spacing": "normal",
             "case": "none",
@@ -59,7 +59,7 @@
             "corner_radius": 0,
             "padding-block-start": 0,
             "padding-block-end": 0,
-            "padding-inline-start": 0,
+            "padding-inline-start": 24,
             "padding-inline-end": 0
           },
           "blocks": {}
@@ -84,7 +84,7 @@
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 24,
-        "section_width": "page-width",
+        "section_width": "full-width",
         "section_height": "large",
         "section_height_custom": 50,
         "color_scheme": "scheme-6",
@@ -95,7 +95,7 @@
         "blurred_reflection": false,
         "reflection_opacity": 75,
         "padding-block-start": 0,
-        "padding-block-end": 48
+        "padding-block-end": 34
       }
     },
     "collection_list_hx6KVT": {
