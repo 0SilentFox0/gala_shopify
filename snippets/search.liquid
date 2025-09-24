@@ -10,7 +10,7 @@
 {%- enddoc -%}
 
 {% if section.settings.left_menu != blank %}
-  <ul class="mobile:hidden header-left-menu">
+  <ul class="mobile:hidden header-left-menu {% if class != blank %} {{ class | strip }}{% endif %}">
     {% for link in section.settings.left_menu.links %}
       <li>
         <a
