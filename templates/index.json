@@ -377,38 +377,13 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Complete<br/>your capsule</h2>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
+                "text": "<h2>Complete your capsule</h2>",
+                "width": "100%",
+                "max_width": "none",
+                "alignment": "center",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_LcXw4J": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Lorem ipsum dolor sit amet, consectetur</p>",
-                "width": "fit-content",
-                "max_width": "narrow",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
+                "font_size": "4.5rem",
                 "line_height": "normal",
                 "letter_spacing": "normal",
                 "case": "none",
@@ -441,7 +416,6 @@
           },
           "block_order": [
             "text_c8hjXV",
-            "text_LcXw4J",
             "button_P4rdAT"
           ]
         },
@@ -509,7 +483,7 @@
       ],
       "name": "t:names.image_with_text",
       "settings": {
-        "content_direction": "row",
+        "content_direction": "column",
         "vertical_on_mobile": true,
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
