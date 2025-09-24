@@ -4181,7 +4181,6 @@ text-component {
 }
 
 .header-left-menu a {
-  min-height: 44px;
   display: flex;
   align-items: center;
   line-height: 100%;
