@@ -822,14 +822,14 @@
           "settings": {
             "link": "",
             "open_in_new_tab": false,
-            "content_direction": "column",
+            "content_direction": "row",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
+            "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 24,
+            "gap": 16,
             "width": "custom",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -860,11 +860,11 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Most popular <br/>brands</h2>",
+                "text": "<h2>Most popular  brands</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "custom",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "3rem",
                 "line_height": "normal",
@@ -881,25 +881,41 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "button_NamaRf": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "see more",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "text_9X4F4L"
+            "text_9X4F4L",
+            "button_NamaRf"
           ]
         },
-        "group_mtP6qb": {
+        "group_DFzJAw": {
           "type": "group",
           "settings": {
             "link": "",
             "open_in_new_tab": false,
-            "content_direction": "column",
+            "content_direction": "row",
             "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
+            "horizontal_alignment": "center",
             "vertical_alignment": "center",
             "align_baseline": false,
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 24,
+            "gap": 16,
             "width": "custom",
             "custom_width": 100,
             "width_mobile": "fill",
@@ -926,15 +942,15 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "text_ERVfDJ": {
+            "text_hcymUF": {
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Most popular <br/>brands</h2>",
+                "text": "<h2>Our jewelry selection</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "custom",
+                "type_preset": "rte",
                 "font": "var(--font-body--family)",
                 "font_size": "3rem",
                 "line_height": "normal",
@@ -951,16 +967,32 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "button_3jNLab": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "see more",
+                "link": "shopify://collections/all",
+                "open_in_new_tab": false,
+                "style_class": "link",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
             }
           },
           "block_order": [
-            "text_ERVfDJ"
+            "text_hcymUF",
+            "button_3jNLab"
           ]
         }
       },
       "block_order": [
         "group_UaMEzq",
-        "group_mtP6qb"
+        "group_DFzJAw"
       ],
       "name": "t:names.image_with_text",
       "settings": {
@@ -971,11 +1003,11 @@
         "align_baseline": false,
         "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
-        "gap": 40,
-        "section_width": "page-width",
-        "section_height": "",
+        "gap": 0,
+        "section_width": "full-width",
+        "section_height": "large",
         "section_height_custom": 50,
-        "color_scheme": "",
+        "color_scheme": "scheme-6",
         "background_media": "none",
         "video_position": "cover",
         "background_image_position": "cover",
@@ -987,8 +1019,8 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 40,
-        "padding-block-end": 40
+        "padding-block-start": 0,
+        "padding-block-end": 0
       }
     },
     "product_list_YxnXze": {
