@@ -551,7 +551,7 @@
               "type": "_product-list-text",
               "name": "t:names.collection_title",
               "settings": {
-                "text": "<h2>Elevated Essentials</h2>",
+                "text": "<h2>{{ closest.collection.title }}</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -795,7 +795,7 @@
       },
       "name": "t:names.products_carousel",
       "settings": {
-        "collection": "elevated-essentials",
+        "collection": "zimmermann",
         "layout_type": "carousel",
         "carousel_on_mobile": false,
         "max_products": 10,
