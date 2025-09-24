@@ -5480,6 +5480,7 @@ text-component {
   font-size: 16px;
   margin: 0px;
   color: #3A1704;
+  text-transform: uppercase;
 }
 
 .hero__content-newsletter-text {
