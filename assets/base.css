@@ -4267,7 +4267,7 @@ text-component {
 .faq-item-question {
   margin: 0px;
   font-size: 16px;
-  font-weight: "Gotham-Book", sans-serif;
+  /* font-weight: "Gotham-Book", sans-serif; */
   line-height: 140%;
 }
 
@@ -4489,7 +4489,7 @@ text-component {
   font-size: 16px;
   line-height: 100%;
   color: black;
-  font-family: "Gotham-Book", sans-serif;
+  /* font-family: "Gotham-Book", sans-serif; */
   cursor: pointer;
 }
 
