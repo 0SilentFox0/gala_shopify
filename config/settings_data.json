@@ -135,11 +135,11 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#ffffff",
-          "foreground_heading": "#000000",
-          "foreground": "#000000cf",
-          "primary": "#000000cf",
-          "primary_hover": "#000000",
+          "background": "#fffefa",
+          "foreground_heading": "#3a1704",
+          "foreground": "#3a1704",
+          "primary": "#3a1704",
+          "primary_hover": "#3a1704a6",
           "border": "#0000000f",
           "shadow": "#000000",
           "primary_button_background": "#000000",
