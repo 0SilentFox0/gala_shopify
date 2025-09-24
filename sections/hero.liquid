@@ -229,6 +229,7 @@
         section-content-wrapper
         {{section.settings.section_width}}
         {% if request.design_mode %}hero__content-wrapper--design-mode{% endif %}
+        {% if section.settings.use_newsletter %}row{% endif %}
       "
       style="{% render 'layout-panel-style', settings: section.settings %}"
     >
