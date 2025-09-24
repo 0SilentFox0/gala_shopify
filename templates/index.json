@@ -577,7 +577,7 @@
               "type": "_product-list-button",
               "name": "t:names.product_list_button",
               "settings": {
-                "label": "Shop now",
+                "label": "SHOP NOW",
                 "collection": "{{ closest.collection }}",
                 "open_in_new_tab": false,
                 "style_class": "link",
@@ -768,7 +768,8 @@
         }
       },
       "custom_css": [
-        ".product-media-container img {object-fit: cover !important;}"
+        ".product-media-container img {object-fit: cover !important;}",
+        ".link {text-decoration: underline; font-size: 11px;}"
       ],
       "name": "t:names.products_carousel",
       "settings": {
