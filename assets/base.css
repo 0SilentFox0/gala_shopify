@@ -5477,11 +5477,13 @@ text-component {
   font-weight: 600;
   font-size: 16px;
   margin: 0px;
+  color: #3A1704;
 }
 
 .hero__content-newsletter-text {
   font-size: 12px;
   margin: 0px;
+  color: #3A1704;
 }
 
 @media(min-width: 1024px) {
