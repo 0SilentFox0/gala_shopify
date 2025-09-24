@@ -240,8 +240,8 @@
       {% if section.settings.use_newsletter %}
         </div>
         <div class="hero__content-newsletter">
-          <h3>10% off</h3>
-          <p>Sign up to further explore Gala’s world and find out more about our products and upcoming events.</p>
+          <p class="hero__content-newsletter-title">10% off</p>
+          <p class="hero__content-newsletter-text">Sign up to further explore Gala’s world and find out more about our products and upcoming events.</p>
           {%- form 'customer', class: 'email-signup__form spacing-style' %}
             <div
               class="email-signup__input-group {% if block.settings.inherit_color_scheme == false %}color-{{ block.settings.color_scheme }}{% endif %}"
