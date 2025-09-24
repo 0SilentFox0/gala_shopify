@@ -5471,6 +5471,8 @@ text-component {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  width: 320px;
+  flex-shrink: 0;
 }
 
 .hero__content-newsletter-title {
