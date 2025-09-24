@@ -239,7 +239,7 @@
       {% if section.settings.use_newsletter %}
         </div>
         <div class="hero__content-newsletter">
-          
+
         </div>
       {% endif %}
     </div>
@@ -793,6 +793,11 @@
       "unit": "%",
       "default": 75,
       "visible_if": "{{ section.settings.blurred_reflection }}"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_newsletter",
+      "label": "Use newsletter"
     },
     {
       "type": "header",
