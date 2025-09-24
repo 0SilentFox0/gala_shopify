@@ -4176,11 +4176,15 @@ text-component {
   list-style: none;
   margin: 0px;
   padding: 0px;
+}
+
+.header-left-menu li:last-child {
   padding-right: 16px;
   border-right: 1px solid #3A1704;
 }
 
 .header-left-menu a {
+  min-height: 44px;
   display: flex;
   align-items: center;
   line-height: 100%;
