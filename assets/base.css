@@ -5456,3 +5456,10 @@ text-component {
   text-transform: uppercase !important;
   font-weight: 700 !important;
 }
+
+.hero__content-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  flex: 1 1 auto;
+}
