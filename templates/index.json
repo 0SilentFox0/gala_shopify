@@ -42,7 +42,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Let summer unfold: featherlight dresses, muted palettes, and barefoot luxury. <span style=\"text-decoration:underline\">VIEW COLLECTION</span></p>",
+            "text": "<p>Let summer unfold: featherlight dresses, muted palettes, and barefoot luxury. <a href=\"/collections\" title=\"All collections\"><span style=\"text-decoration:underline\">VIEW COLLECTION</span></a></p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -68,6 +68,9 @@
       "block_order": [
         "text_jPtgDz",
         "text_iXYWz6"
+      ],
+      "custom_css": [
+        "a {font-size: 11px; margin-left: 10px;}"
       ],
       "name": "t:names.hero",
       "settings": {
