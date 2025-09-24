@@ -1772,7 +1772,7 @@
         "group_8yJxbF"
       ],
       "custom_css": [
-        "iframe,.group-block-content > div {width: 100%; height: 100%; display: block;}"
+        "iframe {width: 100%; height: 100%; display: block;}"
       ],
       "name": "t:names.split_showcase",
       "settings": {
