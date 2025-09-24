@@ -33,23 +33,6 @@
       %}
     </div>
 
-    <ul class="mobile:hidden header-left-menu">
-      {% for link in block.settings.left_menu.links %}
-        <li>
-          <a
-            href="{{ link.url }}"
-            id="MenuItem-{{ link.handle }}"
-            class="menu-list__item"
-            {% if link.current %}
-              aria-current="page"
-            {% endif %}
-          >
-            {{- link.title -}}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-
   {% when 'navigation_bar' %}
     {% if block.settings.navigation_bar == true %}
       <div
