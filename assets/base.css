@@ -3889,7 +3889,7 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
 }
 
 .resource-list__carousel slideshow-arrows .slideshow-control svg path {
-  fill: #3A1704;
+  stroke: #3A1704;
 }
 
 .resource-list__carousel .resource-list__slide {
