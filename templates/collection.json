@@ -367,6 +367,7 @@
                     "product": "{{ closest.product }}",
                     "variant_style": "buttons",
                     "show_swatches": true,
+                    "size_guide": "",
                     "alignment": "center",
                     "padding-block-start": 0,
                     "padding-block-end": 8,
