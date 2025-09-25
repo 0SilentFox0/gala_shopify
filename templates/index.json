@@ -71,7 +71,7 @@
       ],
       "custom_css": [
         "a {font-size: 11px; margin-left: 10px;}",
-        "@media (max-width: 750px) {h1 {font-size: 40px; }}"
+        "@media (max-width: 750px) {h1 {font-size: 40px; } p {font-size: 14px; }}"
       ],
       "name": "t:names.hero",
       "settings": {
