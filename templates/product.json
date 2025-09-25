@@ -1233,6 +1233,12 @@
                       },
                       "blocks": {}
                     },
+                    "swishlist_simple_wishlist_wishlist_product_button_CjeaUP": {
+                      "type": "shopify://apps/swishlist-simple-wishlist/blocks/wishlist_product_button/bfcb80f2-f00d-42ae-909a-9f00c726327b",
+                      "settings": {
+                        "custom_liquid": ""
+                      }
+                    },
                     "price_FYwXE3": {
                       "type": "price",
                       "settings": {
@@ -1259,6 +1265,7 @@
                   },
                   "block_order": [
                     "text_Y3Gend",
+                    "swishlist_simple_wishlist_wishlist_product_button_CjeaUP",
                     "price_FYwXE3"
                   ]
                 },
