@@ -303,6 +303,18 @@
                 "price_tVjtKg"
               ]
             },
+            "divider_ey7UMp": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -1055,6 +1067,7 @@
           },
           "block_order": [
             "group_icgrde",
+            "divider_ey7UMp",
             "variant_picker_R3rGDr",
             "group_ygG6UE",
             "group_n3iX7h",
