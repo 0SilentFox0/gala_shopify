@@ -407,14 +407,9 @@
   }
 
   .variant-option--equal-width-buttons {
-    --variant-min-width: clamp(44px, calc(var(--variant-option-padding-inline) * 2 + var(--variant-ch)), 100%);
-
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(var(--variant-min-width), 1fr));
-
-    .variant-option__button-label {
-      min-width: var(--variant-min-width);
-    }
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 
     .variant-option__button-label__text {
       text-align: center;
