@@ -308,6 +308,9 @@
       "block_order": [
         "group_XaPza4"
       ],
+      "custom_css": [
+        ".link {text-transform: uppercase;}"
+      ],
       "name": "t:names.collections_carousel",
       "settings": {
         "collection_list": [
