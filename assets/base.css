@@ -1986,6 +1986,10 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   font-size: 18px;
 }
 
+.section-resource-list .price {
+  font-size: 13px;
+}
+
 .unit-price {
   display: block;
   font-size: 0.85em;
