@@ -24,7 +24,7 @@
             "icons_style": "none",
             "slideshow_controls_style": "thumbnails",
             "slideshow_mobile_controls_style": "dots",
-            "thumbnail_position": "left",
+            "thumbnail_position": "bottom",
             "thumbnail_width": 120,
             "aspect_ratio": "1/1.25",
             "media_radius": 0,
