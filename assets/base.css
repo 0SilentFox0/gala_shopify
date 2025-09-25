@@ -4617,6 +4617,7 @@ text-component {
   background-color: white;
   flex-shrink: 0;
   aspect-ratio: 1/1;
+  border: 0px;
 }
 
 .capsule-slider .swiper-button-prev:after,
