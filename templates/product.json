@@ -200,7 +200,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p><a href=\"#\" title=\"#\">NEW IN</a></p>",
+                    "text": "<p>NEW IN</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
