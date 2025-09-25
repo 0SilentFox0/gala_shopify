@@ -716,7 +716,8 @@
         "group_mc6Qxq"
       ],
       "custom_css": [
-        "a,input {text-transform: uppercase;}"
+        "a,input {text-transform: uppercase;}",
+        "@media screen and (width < 990px) {.mobile-column {flex-flow: column nowrap; align-items: var(--horizontal-alignment); justify-content: var(--vertical-alignment-mobile); }}"
       ],
       "name": "Footer",
       "settings": {
