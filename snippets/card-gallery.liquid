@@ -191,10 +191,6 @@
       show_arrows: show_arrows,
       attributes: slideshow_attributes
     %}
-  {% elsif product != blank and product.media.size == 0 %}
-    <product-title class="product-card-gallery__title-placeholder">
-      <span class="title-text">{{- product.title -}}</span>
-    </product-title>
   {% elsif product == blank %}
     {{ slideshow_placeholder }}
   {%- endif -%}
