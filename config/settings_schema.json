@@ -486,6 +486,10 @@
             "label": "72px"
           },
           {
+            "value": "80",
+            "label": "80px"
+          },
+          {
             "value": "88",
             "label": "88px"
           },
@@ -628,6 +632,10 @@
           {
             "value": "56",
             "label": "56px"
+          },
+          {
+            "value": "64",
+            "label": "64px"
           },
           {
             "value": "72",
