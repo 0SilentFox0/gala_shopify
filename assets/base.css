@@ -5531,6 +5531,6 @@ text-component {
   display: flex;
 }
 
-footer .size-style .group-block__media-wrapper + .layout-panel-flex--row.group-block-content {
+/* footer .size-style .group-block__media-wrapper + .layout-panel-flex--row.group-block-content {
   flex-wrap: wrap;
-}
+} */
