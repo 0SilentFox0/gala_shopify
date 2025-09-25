@@ -489,7 +489,7 @@
       padding-inline: 0 var(--padding-3xs);
 
       .header-logo {
-        grid-area: center;
+        grid-area: leftA;
       }
 
       &:not(:has(header-actions)) .search-action {
@@ -505,6 +505,10 @@
       }
 
       header-actions {
+        grid-area: rightB;
+      }
+
+      header-drawer {
         grid-area: rightB;
       }
     }
