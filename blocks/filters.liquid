@@ -84,7 +84,7 @@
       style="{% render 'spacing-style', settings: block.settings %}{% if block.settings.text_label_case == 'uppercase' %} --facet-label-transform: uppercase;{% endif %}"
     >
       {% if block.settings.enable_filtering %}
-          <h4 class="facets--filters-title">{{ 'content.filters' | t }}</h4>
+          <p class="facets--filters-title">{{ 'content.filters' | t }}</p>
       {% endif %}
 
       <div class="products-count-wrapper">
