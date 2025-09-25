@@ -1529,7 +1529,7 @@ media-gallery:where(.media-gallery--grid) .media-gallery__grid {
 
 .product-media-container img {
   aspect-ratio: inherit;
-  object-fit: contain !important;
+  /* object-fit: contain !important; */
   object-position: center center;
 }
 
