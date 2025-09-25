@@ -4181,6 +4181,7 @@ text-component {
   margin: 0px;
   padding: 0px;
   min-height: 44px;
+  margin-right: 16px;
 }
 
 .header-left-menu li:last-child {
