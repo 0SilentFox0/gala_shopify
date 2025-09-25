@@ -1640,7 +1640,7 @@
                       "settings": {
                         "text": "<p>{{ closest.product.title }}</p>",
                         "width": "100%",
-                        "max_width": "normal",
+                        "max_width": "none",
                         "alignment": "left",
                         "type_preset": "custom",
                         "font": "var(--font-body--family)",
@@ -1669,7 +1669,7 @@
                         "show_installments": false,
                         "show_tax_info": false,
                         "type_preset": "custom",
-                        "width": "100%",
+                        "width": "fit-content",
                         "alignment": "left",
                         "font": "var(--font-body--family)",
                         "font_size": "1rem",
