@@ -5522,6 +5522,9 @@ text-component {
   padding: 0px;
   width: 12px;
   cursor: pointer;
+  color: #3A1704;
+  border: 0px;
+  background: transparent;
 }
 .hero__content-newsletter .email-signup__button svg {
   padding: 0px;
