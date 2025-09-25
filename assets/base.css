@@ -5520,9 +5520,9 @@ text-component {
   transform: translateY(-50%);
   right: 0;
   padding: 0px;
-  width: 12px;
+  width: 24px;
   cursor: pointer;
-  color: #3A1704;
+  color: #3A1704 !important;
   border: 0px;
   background: transparent;
 }
