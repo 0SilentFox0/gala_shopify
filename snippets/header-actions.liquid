@@ -6,6 +6,24 @@
 <header-actions
   {{- block.shopify_attributes -}}
 >
+  {% if section.settings.left_menu != blank %}
+    <ul class="mobile:hidden header-left-menu {% if class != blank %} {{ class | strip }}{% endif %}">
+      {% for link in section.settings.left_menu.links %}
+        <li>
+          <a
+            href="{{ link.url }}"
+            id="MenuItem-{{ link.handle }}"
+            class="menu-list__item"
+            {% if link.current %}
+              aria-current="page"
+            {% endif %}
+          >
+            {{- link.title -}}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
   {% assign search_style = 'modal' %}
   {% render 'search', style: search_style %}
   {% if shop.customer_accounts_enabled %}
