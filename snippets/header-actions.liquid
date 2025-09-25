@@ -7,7 +7,7 @@
   {{- block.shopify_attributes -}}
 >
   {% assign search_style = 'modal' %}
-  {% render 'search', class: 'mobile:hidden', style: search_style %}
+  {% render 'search', style: search_style %}
   {% if shop.customer_accounts_enabled %}
     {% render 'account-popover' %}
     {% render 'account-drawer' %}
