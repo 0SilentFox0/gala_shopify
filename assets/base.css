@@ -4610,8 +4610,6 @@ text-component {
 .capsule-slider-block .swiper-button-next {
   width: 32px;
   height: 32px;
-  border-radius: 50%;
-  border: 1px solid black;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -5131,7 +5129,7 @@ text-component {
   .capsule-slider .swiper-button-next:after,
   .capsule-slider-block .swiper-button-prev:after,
   .capsule-slider-block .swiper-button-next:after {
-    font-size: 16px;
+    font-size: 24px;
   }
 }
 
