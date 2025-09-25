@@ -307,7 +307,7 @@
               "type": "variant-picker",
               "settings": {
                 "product": "{{ closest.product }}",
-                "variant_style": "dropdowns",
+                "variant_style": "buttons",
                 "show_swatches": true,
                 "size_guide": "size-guide",
                 "alignment": "left",
