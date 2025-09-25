@@ -5,7 +5,7 @@
   assign right = ''
 
   if first != blank
-    assign left = 'first '
+    assign right = 'first '
   endif
 
   for item in order
@@ -56,8 +56,6 @@
       {% for key in items_array %}
         {% unless key == blank %}
           {% case key %}
-            {% when 'first' %}
-              {{ first }}
             {% when 'logo' %}
               {{ logo }}
             {% when 'menu' %}
@@ -68,8 +66,8 @@
               {{ search }}
             {% when 'mobile_search' %}
               {{ mobile_search }}
-            {% when 'pre_last' %}
-              {{ pre_last }}
+            {% when 'first' %}
+              {{ first }}
             {% when 'actions' %}
               {{ actions }}
           {% endcase %}
