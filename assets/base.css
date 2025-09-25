@@ -1983,10 +1983,6 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 .compare-at-price,
 .unit-price {
   white-space: nowrap;
-  font-size: 18px;
-}
-
-.section-resource-list .price {
   font-size: 13px;
 }
 
