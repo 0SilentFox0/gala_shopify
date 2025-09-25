@@ -191,6 +191,8 @@
       show_arrows: show_arrows,
       attributes: slideshow_attributes
     %}
+  {% elsif product != blank and product.media.size == 0 %}
+    {{ slideshow_placeholder }}
   {% elsif product == blank %}
     {{ slideshow_placeholder }}
   {%- endif -%}
