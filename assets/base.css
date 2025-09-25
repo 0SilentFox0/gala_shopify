@@ -4626,6 +4626,7 @@ text-component {
 .capsule-slider-block .swiper-button-prev:after,
 .capsule-slider-block .swiper-button-next:after {
   font-size: 12px;
+  color: #3A1704;
 }
 
 .capsule-section .st-wishlist-button,
