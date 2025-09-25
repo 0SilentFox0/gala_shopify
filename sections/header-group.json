@@ -63,7 +63,7 @@
         "menu_position": "center",
         "menu_row": "top",
         "left_menu": "left-menu",
-        "show_search": true,
+        "show_search": false,
         "search_position": "right",
         "search_row": "top",
         "show_country": true,
