@@ -3551,8 +3551,7 @@ slideshow-controls:has(.slideshow-controls__dots) {
     }
 
     &:is([aria-selected='true']) {
-      outline: var(--focus-outline-width) solid currentcolor;
-      border: var(--style-border-width) solid rgba(from var(--color-border) r g b / var(--media-border-opacity));
+      border: var(--style-border-width) solid currentcolor;
     }
   }
 }
