@@ -3531,6 +3531,7 @@ slideshow-controls:has(.slideshow-controls__dots) {
 
 .slideshow-controls__thumbnails {
   display: inline-flex;
+  padding-inline: var(--slideshow-thumbnails-padding-inline, var(--padding-lg));
   padding-block: var(--slideshow-thumbnails-padding-block, var(--padding-sm));
   gap: var(--gap-xs);
   margin-inline: auto;
