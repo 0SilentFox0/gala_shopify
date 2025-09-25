@@ -330,6 +330,18 @@
               },
               "blocks": {}
             },
+            "divider_MpELV8": {
+              "type": "_divider",
+              "name": "t:names.divider",
+              "settings": {
+                "thickness": 1,
+                "corner_radius": "square",
+                "width_percent": 100,
+                "padding-block-start": 0,
+                "padding-block-end": 0
+              },
+              "blocks": {}
+            },
             "group_ygG6UE": {
               "type": "group",
               "name": "t:names.group",
@@ -893,7 +905,7 @@
               "type": "accordion",
               "name": "t:names.accordion",
               "settings": {
-                "icon": "plus",
+                "icon": "caret",
                 "dividers": true,
                 "type_preset": "h5",
                 "inherit_color_scheme": true,
@@ -1069,6 +1081,7 @@
             "group_icgrde",
             "divider_ey7UMp",
             "variant_picker_R3rGDr",
+            "divider_MpELV8",
             "group_ygG6UE",
             "group_n3iX7h",
             "buy_buttons_eYQEYi",
