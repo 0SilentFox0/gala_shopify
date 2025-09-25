@@ -1223,6 +1223,9 @@
         "text_cbcgyb",
         "button_q4NkXE"
       ],
+      "custom_css": [
+        ".product-media-container img {object-fit: cover !important;}"
+      ],
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",
