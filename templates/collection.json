@@ -289,12 +289,12 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p><strong>{{ closest.product.vendor }}</strong></p>",
+                    "text": "<p>{{ closest.product.vendor }}</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
                     "type_preset": "custom",
-                    "font": "var(--font-body--family)",
+                    "font": "var(--font-subheading--family)",
                     "font_size": "1rem",
                     "line_height": "normal",
                     "letter_spacing": "normal",
@@ -415,7 +415,7 @@
                     "size_guide": "",
                     "alignment": "left",
                     "padding-block-start": 0,
-                    "padding-block-end": 8,
+                    "padding-block-end": 0,
                     "padding-inline-start": 0,
                     "padding-inline-end": 0
                   },
