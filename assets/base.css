@@ -3558,6 +3558,7 @@ slideshow-controls:has(.slideshow-controls__dots) {
 
 .slideshow-controls__thumbnail {
   position: relative;
+  flex: 1 0;
 }
 
 .slideshow-controls__thumbnail-badge {
