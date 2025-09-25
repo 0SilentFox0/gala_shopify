@@ -1276,6 +1276,9 @@
           ]
         }
       },
+      "custom_css": [
+        ".link {text-transform: uppercase;}"
+      ],
       "name": "t:names.products_carousel",
       "settings": {
         "collection": "magda-butrym",
