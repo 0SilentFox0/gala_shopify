@@ -183,8 +183,7 @@
 
       case row
         when 'top'
-          assign first = ''
-          assign pre_last = mobile_menu
+          assign first = mobile_menu
 
           if bottom_row_blocks.size > 0 and section.settings.divider_size == 'page-width'
             assign class = class | append: ' divider--page-width'
@@ -215,7 +214,6 @@
         order: order,
         settings: section.settings,
         first: first,
-        pre_last: pre_last,
         logo: logo,
         menu: menu,
         actions: actions,
