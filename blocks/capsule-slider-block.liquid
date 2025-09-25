@@ -1,3 +1,9 @@
+{% capture placeholder_image %}
+  <placeholder-image data-block-id="{{ section.id }}-{{ block.id }}" data-type="product"></placeholder-image>
+{% endcapture %}
+{% capture placeholder_slide %}
+  {% render 'slideshow-slide', index: 1, children: placeholder_image, class: 'product-media-container card-gallery__placeholder' %}
+{% endcapture %}
 {% capture slideshow_placeholder %}
   {% render 'slideshow', ref: 'slideshow', slides: placeholder_slide, slide_count: 1, attributes: 'disabled="true"' %}
 {% endcapture %}
@@ -33,7 +39,7 @@
       {% endfor %}
         <div class="swiper-slide capsule-slider-slide" data-id="{{ product.selected_or_first_available_variant.id }}" data-collection="{{ collection_title }}" data-price="{{ product.price |  divided_by: 100 }}">
             {% if product.featured_image != blank %}
-            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
             {% else %}
                 {{ slideshow_placeholder }}
             {% endif %}
