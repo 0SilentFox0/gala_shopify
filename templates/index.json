@@ -1136,7 +1136,7 @@
                 "align_baseline": false,
                 "horizontal_alignment_flex_direction_column": "flex-start",
                 "vertical_alignment_flex_direction_column": "center",
-                "gap": 16,
+                "gap": 4,
                 "width": "fill",
                 "custom_width": 100,
                 "width_mobile": "fill",
@@ -1277,7 +1277,8 @@
         }
       },
       "custom_css": [
-        ".link {font-size: 11px; text-transform: uppercase;}"
+        ".product-media-container img {object-fit: cover !important;}",
+        ".link {text-decoration: underline; font-size: 11px;}"
       ],
       "name": "t:names.products_carousel",
       "settings": {
