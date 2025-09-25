@@ -70,7 +70,8 @@
         "text_iXYWz6"
       ],
       "custom_css": [
-        "a {font-size: 11px; margin-left: 10px;}"
+        "a {font-size: 11px; margin-left: 10px;}",
+        "@media(max-width: 750px) {}"
       ],
       "name": "t:names.hero",
       "settings": {
