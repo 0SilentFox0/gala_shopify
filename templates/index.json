@@ -2101,7 +2101,7 @@
         "group_8yJxbF"
       ],
       "custom_css": [
-        "iframe,.custom-typography + div {width: 100%; height: 100%; display: block; flex: 1 1 auto;}"
+        "iframe,.text-block--AMWdvalNzKzlCS0ZCZ__text_WwkDdf + div {width: 100%; height: 100%; display: block; flex: 1 1 auto;}"
       ],
       "name": "t:names.split_showcase",
       "settings": {
