@@ -475,8 +475,7 @@
     }
 
     @media screen and (width < 750px) {
-      --header-template-columns: var(--header-mobile-bookend) var(--header-mobile-bookend) fit-content
-        var(--header-mobile-bookend) var(--header-mobile-bookend);
+      --header-template-columns: 1fr 1fr 1fr;
       grid-template-areas: 'leftA leftB center rightA rightB';
       grid-column: span 3;
       column-gap: 0;
