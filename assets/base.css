@@ -4618,6 +4618,7 @@ text-component {
   flex-shrink: 0;
   aspect-ratio: 1/1;
   border: 0px;
+  color: #3A1704;
 }
 
 .capsule-slider .swiper-button-prev:after,
