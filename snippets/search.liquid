@@ -9,24 +9,6 @@
   {% render 'search', style: 'default', class: 'custom-class' %}
 {%- enddoc -%}
 
-{% if section.settings.left_menu != blank %}
-  <ul class="mobile:hidden header-left-menu {% if class != blank %} {{ class | strip }}{% endif %}">
-    {% for link in section.settings.left_menu.links %}
-      <li>
-        <a
-          href="{{ link.url }}"
-          id="MenuItem-{{ link.handle }}"
-          class="menu-list__item"
-          {% if link.current %}
-            aria-current="page"
-          {% endif %}
-        >
-          {{- link.title -}}
-        </a>
-      </li>
-    {% endfor %}
-  </ul>
-{% endif %}
 {% unless style == 'none' %}
   <search-button class="search-action{% if class != blank %} {{ class | strip }}{% endif %}">
     <button
