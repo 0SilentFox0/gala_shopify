@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h2>Curated luxury fashion</h2>",
+            "text": "<h1>Curated luxury fashion</h1>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
