@@ -1061,7 +1061,7 @@
         }
       },
       "custom_css": [
-        "@media (max-width: 1023px) {.breadcrumbs {display: none; }}"
+        "@media (max-width: 1023px) {.breadcrumbs {display: none; } rte-formatter {padding-top: 0px; }}"
       ],
       "settings": {
         "product": "{{ closest.product }}",
