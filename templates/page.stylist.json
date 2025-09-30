@@ -1791,7 +1791,7 @@
       "custom_css": [
         ".icon-block img {width: 8px !important;}",
         ".divider {justify-content: start;}",
-        "@media (max-width: 1023px) {.icon-block img {display: none; } .group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-column {flex-direction: row; gap: 24px; } .group-block--width-fill {width: fit-content; } .divider, .divider__line {padding: 0px; height: 100%; } .custom-typography p {font-size: 18px; }}"
+        "@media (max-width: 1023px) {.icon-block img {display: none; } .group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-column {flex-direction: row; gap: 24px; } .group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-column > div:first-child {width: 17px; flex-shrink: 0; } .group-block--width-fill {width: fit-content; } .divider, .divider__line {padding: 0px; height: 100%; } .custom-typography p {font-size: 18px; }}"
       ],
       "name": "t:names.custom_section",
       "settings": {
