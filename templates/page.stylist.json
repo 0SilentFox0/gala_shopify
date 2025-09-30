@@ -1788,6 +1788,9 @@
         "text_p36Qde",
         "group_bBhrdB"
       ],
+      "custom_css": [
+        ".divider {justify-content: start;}"
+      ],
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "column",
