@@ -1790,7 +1790,8 @@
       ],
       "custom_css": [
         ".icon-block img {width: 8px !important;}",
-        ".divider {justify-content: start;}"
+        ".divider {justify-content: start;}",
+        "@media (max-width: 1023px) {.icon-block img {display: none; } .group-block-content.layout-panel-flex.layout-panel-flex--column.mobile-column {flex-direction: row; gap: 0px; } }"
       ],
       "name": "t:names.custom_section",
       "settings": {
