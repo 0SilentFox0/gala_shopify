@@ -1789,6 +1789,7 @@
         "group_bBhrdB"
       ],
       "custom_css": [
+        ".icon-block img {width: 8px !important;}",
         ".divider {justify-content: start;}"
       ],
       "name": "t:names.custom_section",
