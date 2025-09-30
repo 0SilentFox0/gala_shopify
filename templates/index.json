@@ -1398,7 +1398,8 @@
         "group_7J97M7"
       ],
       "custom_css": [
-        "a {margin-top: 20px; text-decoration: underline; text-transform: uppercase; font-size: 11px;}"
+        "a {margin-top: 20px; text-decoration: underline; text-transform: uppercase; font-size: 11px;}",
+        "@media (max-width: 1023px) {.h2 p {font-size: 24px; } a {margin-top: 10px; }}"
       ],
       "name": "t:names.custom_section",
       "settings": {
