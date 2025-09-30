@@ -111,6 +111,7 @@
     </div>
   {% endif %}
 
+  {% if collection.products.size > 0 %}
   <div
     class="
       {% if should_show_pane == false %}
@@ -376,6 +377,7 @@
       </facets-form-component>
     </div>
   </div>
+{% endif %}
 
   <div
     class="facets-toggle{% if block.settings.enable_filtering == false %} facets-toggle--no-filters{% endif %}{% if block.settings.filter_style == 'horizontal' and block.settings.inherit_color_scheme == false %} color-{{ block.settings.color_scheme }}{% endif %}"
