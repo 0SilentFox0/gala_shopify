@@ -8,6 +8,7 @@
   {% assign product_title = '<p class="product-card-title">' | append: block.settings.product.title | append: '<button class="st-wishlist-button" data-type="details" data-handle="{{ product.handle }}"></button></p>' %}
   {% render 'text', fallback_text: product_title, block: block %}
 {% endif %}
+<button class="st-wishlist-button" data-type="details" data-handle="{{ block.settings.product.handle }}"></button>
 
 {% schema %}
 {
