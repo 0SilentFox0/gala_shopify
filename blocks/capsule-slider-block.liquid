@@ -51,24 +51,14 @@
     <div class="capsule-slider-inner">
         <div class="capsule-slider-top swiper">
             <div class="swiper-wrapper">
-                {% if block.settings.collection_top.products.size < 3 %}
-                  {{ top_products }}
-                  {{ top_products }}
-                {% else %}
-                    {{ top_products }}
-                {% endif %}
+                {{ top_products }}
             </div>
             <button class="swiper-button-prev"></button>
             <button class="swiper-button-next"></button>
         </div>
         <div class="capsule-slider-bottom swiper">
             <div class="swiper-wrapper">
-                {% if block.settings.collection_bottom.products.size < 3 %}
-                  {{ bottom_products }}
-                  {{ bottom_products }}
-                {% else %}
-                  {{ bottom_products }}
-                {% endif %}
+                {{ bottom_products }}
             </div>
             <button class="swiper-button-prev"></button>
             <button class="swiper-button-next"></button>
