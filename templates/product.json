@@ -438,6 +438,20 @@
                 "text_yGA4wU"
               ]
             },
+            "product_inventory_WNbPJr": {
+              "type": "product-inventory",
+              "name": "t:names.product_inventory",
+              "settings": {
+                "product": "{{ closest.product }}",
+                "inventory_threshold": 10,
+                "show_inventory_quantity": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "group_n3iX7h": {
               "type": "group",
               "name": "t:names.group",
@@ -1053,6 +1067,7 @@
             "variant_picker_R3rGDr",
             "divider_MpELV8",
             "group_ygG6UE",
+            "product_inventory_WNbPJr",
             "group_n3iX7h",
             "buy_buttons_eYQEYi",
             "text_aEtTtq",
