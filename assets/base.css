@@ -3500,10 +3500,6 @@ slideshow-controls:has(.slideshow-controls__dots) {
   }
 }
 
-.slideshow-control .icon-caret {
-  rotate: -90deg;
-}
-
 .slideshow-control--shape-square,
 .slideshow-control--shape-circle {
   justify-content: center;
