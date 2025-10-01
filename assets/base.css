@@ -4199,8 +4199,8 @@ text-component {
 }
 
 .st-wishlist-button[data-type="details"] {
-  width: 20px !important;
-  height: 20px  !important;
+  width: 16px !important;
+  height: 16px  !important;
   background-color: transparent !important;
   border-radius: 0px !important;
   color: #3A1704 !important;
