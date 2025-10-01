@@ -4574,7 +4574,7 @@ text-component {
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
-  overflow: visible !important;
+  overflow: hidden !important;
 }
 
 .capsule-slider .swiper-slide {
@@ -4997,7 +4997,7 @@ text-component {
 
 .capsule-slider-inner {
   display: grid;
-  max-width: 400px;
+  max-width: 200px;
   margin-left: auto;
   margin-right: auto;
 }
