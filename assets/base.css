@@ -5005,6 +5005,7 @@ text-component {
 
 .capsule-slider-top {
   max-width: 600px;
+  overflow: hidden !important;
 }
 
 .capsule-slider-inner .swiper {
