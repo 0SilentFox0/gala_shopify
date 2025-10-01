@@ -5003,7 +5003,9 @@ text-component {
   overflow: hidden;
 }
 
-
+.capsule-slider-top img {
+  max-height: 250px;
+}
 
 .capsule-slider-inner .swiper {
   width: 100% !important;
