@@ -5019,6 +5019,14 @@ text-component {
   transform: scale(0.5);
 }
 
+.capsule-slider-block .swiper-button-prev {
+  left: 25%;
+}
+
+.capsule-slider-block .swiper-button-next {
+  right: 25%;
+}
+
 @media(max-width: 767px) {
   .capsule-section .product-form-buttons > span {
     flex-direction: column;
