@@ -59,7 +59,7 @@
       {{ 'icon-inventory.svg' | inline_asset_content }}
     </span>
     <span
-      class="product-inventory__text"
+      class="product-inventory__text product-inventory__text-{{ status }}"
       id="Inventory-{{ section.id }}"
       role="status"
       aria-label="{{ 'accessibility.inventory_status' | t }}"

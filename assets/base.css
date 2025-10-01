@@ -5552,7 +5552,3 @@ text-component {
 /* footer .size-style .group-block__media-wrapper + .layout-panel-flex--row.group-block-content {
   flex-wrap: wrap;
 } */
-
-.product-inventory__text {
-  text-transform: uppercase;
-}
