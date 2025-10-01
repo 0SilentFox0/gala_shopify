@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loop: true,
             centeredSlides: true,
             slidesPerView: 3,
-            spaceBetwee: 200,
+            spaceBetwee: 300,
             navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             loop: true,
             centeredSlides: true,
             slidesPerView: 3,
-            spaceBetwee: 200,
+            spaceBetwee: 300,
             navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
