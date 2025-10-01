@@ -573,7 +573,7 @@
                           "type": "text",
                           "name": "t:names.heading",
                           "settings": {
-                            "text": "<p>Suscribe</p>",
+                            "text": "<p>Subscribe</p>",
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
@@ -599,7 +599,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali.</p>",
+                            "text": "<p>Receive</p>",
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
