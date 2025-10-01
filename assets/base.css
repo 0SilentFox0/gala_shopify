@@ -4614,7 +4614,7 @@ text-component {
   align-items: center;
   justify-content: center;
   color: black;
-  background-color: white;
+  background-color: transparent;
   flex-shrink: 0;
   aspect-ratio: 1/1;
   border: 0px;
