@@ -465,7 +465,7 @@
               "type": "capsule-slider-block",
               "name": "Capsule slider block",
               "settings": {
-                "collection_top": "top",
+                "collection_top": "magda-butrym",
                 "collection_bottom": "bottom",
                 "products_limit": 16
               },
