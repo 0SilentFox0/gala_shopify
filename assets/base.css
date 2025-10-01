@@ -4997,7 +4997,7 @@ text-component {
 
 .capsule-slider-inner {
   display: grid;
-  max-width: 600px;
+  max-width: 900px;
   margin-left: auto;
   margin-right: auto;
   overflow: hidden;
