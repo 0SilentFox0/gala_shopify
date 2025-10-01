@@ -5549,3 +5549,9 @@ text-component {
 /* footer .size-style .group-block__media-wrapper + .layout-panel-flex--row.group-block-content {
   flex-wrap: wrap;
 } */
+
+.product-card-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
