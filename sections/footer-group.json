@@ -599,7 +599,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Unlock your exclusive Gala discount code by subscribing to content from Gala Dubai</p>",
+                            "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna ali.<br/><br/></p>",
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
