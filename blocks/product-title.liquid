@@ -2,7 +2,7 @@
 
 {% if block.settings.product == blank and request.design_mode %}
   {% assign text = 'placeholders.product_title' | t %}
-  {% assign product_title = '<p>' | append: text | append: '</p>' %}
+  {% assign product_title = '<p>' | append: text | append: '<button class="st-wishlist-button" data-type="details" data-handle="{{ product.handle }}"></button></p>' %}
   {% render 'text', fallback_text: product_title, block: block %}
 {% elsif block.settings.product != blank %}
   {% assign product_title = '<p class="product-card-title">' | append: block.settings.product.title | append: '<button class="st-wishlist-button" data-type="details" data-handle="{{ product.handle }}"></button></p>' %}
