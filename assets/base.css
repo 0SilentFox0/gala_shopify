@@ -4997,9 +4997,10 @@ text-component {
 
 .capsule-slider-inner {
   display: grid;
-  max-width: 200px;
+  max-width: 600px;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
 }
 
 .capsule-slider-inner .swiper {
