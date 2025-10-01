@@ -82,13 +82,6 @@
     "variant_button_width": "default-width-buttons",
     "content_for_index": [],
     "blocks": {
-      "6933373160360723723": {
-        "type": "shopify://apps/swishlist-simple-wishlist/blocks/wishlist_settings/bfcb80f2-f00d-42ae-909a-9f00c726327b",
-        "disabled": false,
-        "settings": {
-          "custom_css": ""
-        }
-      },
       "12046557757412368804": {
         "type": "shopify://apps/froonze-loyalty-wishlist/blocks/customer_account_page/3c495b68-652c-468d-a0ef-5bad6935d104",
         "disabled": false,
@@ -108,7 +101,7 @@
       },
       "11074193060611426105": {
         "type": "shopify://apps/froonze-loyalty-wishlist/blocks/product_wishlist/3c495b68-652c-468d-a0ef-5bad6935d104",
-        "disabled": true,
+        "disabled": false,
         "settings": {
           "add_button_color": "#5873f9",
           "add_button_text_color": "#ffffff",
@@ -131,6 +124,13 @@
           "floating_link_border_radius": 4,
           "navigation_link": false,
           "navigation_link_css_selector": "",
+          "custom_css": ""
+        }
+      },
+      "6933373160360723723": {
+        "type": "shopify://apps/swishlist-simple-wishlist/blocks/wishlist_settings/bfcb80f2-f00d-42ae-909a-9f00c726327b",
+        "disabled": true,
+        "settings": {
           "custom_css": ""
         }
       }
@@ -161,16 +161,16 @@
           "input_text_color": "#3a1704",
           "input_border_color": "#3a1704",
           "input_hover_background": "#fffefa",
-          "variant_background_color": "#ffffff00",
+          "variant_background_color": "rgba(0,0,0,0)",
           "variant_text_color": "#3a1704",
           "variant_border_color": "#00000021",
-          "variant_hover_background_color": "#f5f5f500",
+          "variant_hover_background_color": "rgba(0,0,0,0)",
           "variant_hover_text_color": "#3a1704",
           "variant_hover_border_color": "#e6e6e6",
-          "selected_variant_background_color": "#00000000",
+          "selected_variant_background_color": "rgba(0,0,0,0)",
           "selected_variant_text_color": "#3a1704",
           "selected_variant_border_color": "#000000",
-          "selected_variant_hover_background_color": "#1a1a1a00",
+          "selected_variant_hover_background_color": "rgba(0,0,0,0)",
           "selected_variant_hover_text_color": "#3a1704",
           "selected_variant_hover_border_color": "#1a1a1a"
         }
