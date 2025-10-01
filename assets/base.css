@@ -5005,13 +5005,11 @@ text-component {
 
 .capsule-slider-top {
   max-width: 600px;
-  overflow: hidden !important;
 }
 
 .capsule-slider-inner .swiper {
   width: 100% !important;
   min-width: 0px !important;
-  overflow: visible !important;
 }
 
 .capsule-slider-inner .swiper-slide {
