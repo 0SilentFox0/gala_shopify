@@ -4571,7 +4571,7 @@ text-component {
 
 .capsule-slider {
   padding-top: 24px !important;
-  max-width: 620px;
+  max-width: 200px;
   margin-left: auto;
   margin-right: auto;
   overflow: visible !important;
