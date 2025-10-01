@@ -3652,7 +3652,7 @@ slideshow-arrows .slideshow-control {
 }
 
 slideshow-arrows .slideshow-control.slideshow-control--shape-none {
-  color: #3A1704;
+  color: var(--color-white);
 }
 
 slideshow-arrows .slideshow-control.slideshow-control--style-none {
