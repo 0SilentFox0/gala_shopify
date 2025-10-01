@@ -5,8 +5,7 @@
   {% assign product_title = '<p>' | append: text | append: '</p>' %}
   {% render 'text', fallback_text: product_title, block: block %}
 {% elsif block.settings.product != blank %}
-  {% assign product_title = '<p class="product-card-title">' | append: block.settings.product.title | append: '<button class="st-wishlist-button" data-type="details" data-handle="{{ product.handle }}"></button></p>' %}
-  {% render 'text', fallback_text: product_title, block: block %}
+  <p class="product-card-title">{{ block.settings.product.title }} <button class="st-wishlist-button" data-type="details" data-handle="{{ block.settings.product.handle }}"></button></p>
 {% endif %}
 
 {% schema %}
