@@ -5000,6 +5000,7 @@ text-component {
   max-width: 200px;
   margin-left: auto;
   margin-right: auto;
+  overflow: hidden;
 }
 
 .capsule-slider-inner .swiper {
