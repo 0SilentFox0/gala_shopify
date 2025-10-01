@@ -4,7 +4,8 @@ document.addEventListener('DOMContentLoaded', () => {
         new Swiper(capsuleSliderTop, {
             loop: true,
             centeredSlides: true,
-            slidesPerView: 2,
+            slidesPerView: 1,
+            spaceBetwee: 100,
             navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
@@ -17,7 +18,8 @@ document.addEventListener('DOMContentLoaded', () => {
         new Swiper(capsuleSliderBottom, {
             loop: true,
             centeredSlides: true,
-            slidesPerView: 2,
+            slidesPerView: 1,
+            spaceBetwee: 100,
             navigation: {
             nextEl: '.swiper-button-next',
             prevEl: '.swiper-button-prev',
