@@ -466,7 +466,7 @@
               "name": "Capsule slider block",
               "settings": {
                 "collection_top": "top",
-                "collection_bottom": "shoes",
+                "collection_bottom": "bottom",
                 "products_limit": 16
               },
               "blocks": {}
