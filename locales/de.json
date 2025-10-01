@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin language editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "blocks": {
     "load_video": "Video laden: {{ description }}",
@@ -15,7 +24,12 @@
       "phone": "Telefonnummer",
       "comment": "Kommentar",
       "post_success": "Danke, dass du uns kontaktiert hast. Wir werden uns so schnell wie möglich bei dir melden.",
-      "error_heading": "Bitte passe Folgendes an:"
+      "error_heading": "Bitte passe Folgendes an:",
+      "topic": "Thema",
+      "topic_default": "Thema auswählen",
+      "surname": "Nachname",
+      "email_placeholder": "Geben Sie Ihre E-Mail ein",
+      "comment_placeholder": "Geben Sie hier Ihre Anfrage oder Ihr Feedback ein"
     },
     "unit_price": {
       "per_item_html": {
@@ -138,7 +152,13 @@
     "sign_up": "Registrieren",
     "open_image_in_full_screen": "Bild im Vollbildmodus öffnen",
     "sort": "Sortieren",
-    "show_all_options": "Alle Optionen anzeigen"
+    "show_all_options": "Alle Optionen anzeigen",
+    "duplicate": "Duplikat",
+    "capsule_add": "Komplettes Outfit in den Warenkorb legen",
+    "capsule_edit": "Bearbeiten Sie das Outfit",
+    "capsule_review": "Weiter zur Überprüfung",
+    "delete": "Löschen",
+    "hide_hotspots": "Hotspots ausblenden"
   },
   "content": {
     "reviews": "Reviews",
@@ -251,7 +271,13 @@
     "powered_by": "Dieser Shop wird unterstützt werden von",
     "store_owner_link_html": "Bist du der Shop-Inhaber? <a href=\"{{ link }}\">Hier einloggen</a>",
     "shipping_discount_error": "Versandrabatte werden beim Checkout angezeigt, nachdem die Adresse hinzugefügt wurde",
-    "discount_code_error": "Rabattcode kann nicht auf den Warenkorb angewendet werden"
+    "discount_code_error": "Rabattcode kann nicht auf den Warenkorb angewendet werden",
+    "cart_summary_title": "Zahlungsübersicht",
+    "cart_link": "Zum Warenkorb",
+    "price_filter_html_lowest": "Min {{ price }}",
+    "price_filter_min_label": "Mindestbetrag",
+    "price_filter_max_label": "Höchstbetrag",
+    "size": "Größe"
   },
   "gift_cards": {
     "issued": {
@@ -280,7 +306,8 @@
       "adding_to_cart": "Wird hinzugefügt...",
       "add_to_cart_error": "Fehler beim Hinzufügen zum Warenkorb",
       "sold_out": "Ausverkauft",
-      "unavailable": "Nicht verfügbar"
+      "unavailable": "Nicht verfügbar",
+      "size_guide": "Größentabelle"
     }
   },
   "fields": {
@@ -304,6 +331,131 @@
       "post": "Kommentar posten",
       "success_moderated": "Kommentar gepostet, Moderation ausstehend",
       "success": "Kommentar gepostet"
+    }
+  },
+  "shopify": {
+    "checkout": {
+      "remote": {
+        "errors": {
+          "currency_mismatch": "Die Remote-Verhandlungswährung ( {{remote_currency}} ) stimmt nicht mit der übergeordneten Währung ( {{parent_currency}} ) überein."
+        }
+      }
+    }
+  },
+  "customer_accounts": {
+    "payment_methods": {
+      "payment_details": {
+        "replace_payment_method_button": "Ersetzen"
+      }
+    }
+  },
+  "sections": {
+    "main-account": {
+      "name": "Konto"
+    },
+    "main-activate-account": {
+      "name": "Kontoaktivierung"
+    },
+    "main-addresses": {
+      "name": "Adressen"
+    },
+    "main-login": {
+      "shop_login_button": {
+        "enable": "Mit Shop anmelden aktivieren"
+      }
+    },
+    "main-order": {
+      "name": "Befehl"
+    },
+    "main-register": {
+      "name": "Anmeldung"
+    },
+    "main-reset-password": {
+      "name": "Passwort zurücksetzen"
+    }
+  },
+  "general": {
+    "cart": {
+      "view": "Warenkorb anzeigen ( {{ count }} )",
+      "view_empty_cart": "Warenkorb ansehen",
+      "item_added": "Artikel zum Warenkorb hinzugefügt"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Konto",
+      "details": "Kontodetails",
+      "view_addresses": "Adressen anzeigen",
+      "return": "Zurück zu den Kontodetails"
+    },
+    "account_fallback": "Konto",
+    "activate_account": {
+      "title": "Konto aktivieren",
+      "subtext": "Erstellen Sie Ihr Passwort, um Ihr Konto zu aktivieren.",
+      "password": "Passwort",
+      "password_confirm": "Passwort bestätigen",
+      "submit": "Konto aktivieren",
+      "cancel": "Einladung ablehnen"
+    },
+    "addresses": {
+      "title": "Adressen",
+      "default": "Standard",
+      "add_new": "Neue Adresse hinzufügen",
+      "edit_address": "Adresse bearbeiten",
+      "last_name": "Nachname",
+      "company": "Unternehmen",
+      "address1": "Adresse 1",
+      "address2": "Adresse 2",
+      "city": "Stadt",
+      "country": "Land/Region",
+      "province": "Provinz",
+      "zip": "Postleitzahl",
+      "phone": "Telefon",
+      "set_default": "Als Standardadresse festlegen",
+      "add": "Adresse hinzufügen",
+      "update": "Adresse aktualisieren",
+      "cancel": "Stornieren",
+      "edit": "Bearbeiten",
+      "delete": "Löschen",
+      "delete_confirm": "Möchten Sie diese Adresse wirklich löschen?"
+    },
+    "log_in": "Einloggen",
+    "log_out": "Ausloggen",
+    "login_page": {
+      "cancel": "Stornieren",
+      "create_account": "Sie haben noch kein Konto?",
+      "create_link": "Erstellen Sie eins.",
+      "email": "E-Mail",
+      "forgot_password": "Passwort vergessen?",
+      "guest_continue": "Weitermachen",
+      "guest_title": "Als Gast fortfahren",
+      "password": "Passwort",
+      "sign_in": "anmelden",
+      "submit": "Einreichen",
+      "alternate_provider_separator": "oder"
+    },
+    "order": {
+      "title": "Bestellung {{ name }}",
+      "date_html": "Platziert am {{ date }}",
+      "cancelled_html": "Bestellung storniert am {{ date }}",
+      "cancelled_reason": "Grund: {{ reason }}",
+      "billing_address": "Rechnungsadresse",
+      "payment_status": "Zahlungsstatus",
+      "shipping_address": "Lieferadresse",
+      "fulfillment_status": "Erfüllungsstatus",
+      "discount": "Rabatt",
+      "shipping": "Versand",
+      "tax": "Steuer",
+      "product": "Produkt",
+      "sku": "Artikelnummer",
+      "price": "Preis",
+      "quantity": "Menge",
+      "total": "Gesamt",
+      "total_refunded": "Rückerstattung",
+      "fulfilled_at_html": "Erfüllt {{ date }}",
+      "track_shipment": "Sendung verfolgen",
+      "tracking_url": "Tracking-Link",
+      "tracking_company": "Träger"
     }
   }
 }
