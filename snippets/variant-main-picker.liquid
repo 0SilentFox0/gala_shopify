@@ -141,14 +141,14 @@
                     <div class="popup-link__inner">
                       {{ block.settings.size_guide.content }}
                     </div>
-                    <button
+                    <div
                       ref="closeButton"
                       on:click="/closeDialog"
                       class="button popup-link__close"
                       aria-label="{{ 'accessibility.close_dialog' | t }}"
                     >
                       {{- 'icon-close.svg' | inline_asset_content -}}
-                    </button>
+                    </div>
                   </dialog>
                 </dialog-component>
                 <style>
