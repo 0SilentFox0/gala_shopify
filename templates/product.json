@@ -69,7 +69,7 @@
             "media_columns": "two",
             "image_gap": 4,
             "large_first_image": true,
-            "icons_style": "none",
+            "icons_style": "arrows_large",
             "slideshow_controls_style": "thumbnails",
             "slideshow_mobile_controls_style": "dots",
             "thumbnail_position": "bottom",
