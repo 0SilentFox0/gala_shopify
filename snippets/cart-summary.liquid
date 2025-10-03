@@ -87,12 +87,15 @@
   <div class="cart__summary_payments">
     <accordion-custom>
        <details
-          class="details discount-details"
+          class="details"
           open
         >
           <summary class="cart-discount__summary">
             <span class="cart-discount__label">{{ 'content.cart_payments' | t }}</span>
           </summary>
+          <div class="details-content">
+            {{ children }}
+          </div>
         </details>
     </accordion-custom>
   </div>
