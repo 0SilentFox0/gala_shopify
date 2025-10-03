@@ -5572,3 +5572,8 @@ text-component {
   color: #C25418;
   z-index: 2;
 }
+
+.st-wishlist-details .st-wishlist-details_header h3 {
+  color: #3A1704 !important;
+  font-size: 32px !important;
+}
