@@ -71,7 +71,7 @@
     "currency_code_enabled_cart_items": true,
     "product_corner_radius": 0,
     "card_corner_radius": 4,
-    "show_variant_image": true,
+    "show_variant_image": false,
     "variant_swatch_width": 24,
     "variant_swatch_height": 24,
     "variant_swatch_radius": 0,
