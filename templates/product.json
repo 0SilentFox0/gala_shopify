@@ -987,7 +987,7 @@
                     "text_3AeDMt": {
                       "type": "text",
                       "settings": {
-                        "text": "<ul><li>True to size</li><li>Stretchy fabric for a close, flattering fit</li><li>Model is 175 cm / 5’9” and wears size S</li></ul>",
+                        "text": "{{ closest.product.metafields.custom.size_fit | metafield_tag }}",
                         "width": "100%",
                         "max_width": "none",
                         "alignment": "left",
