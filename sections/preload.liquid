@@ -1,0 +1,38 @@
+<style>
+    .preload {
+        background-image: url('{{ section.settings.bg | image_url }}');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+</style>
+<div class="preload">
+    {% if section.settings.logo != blank %}
+        <div class="preload-logo">
+            <img src="{{ section.settings.logo | image_url }}" alt="{{ section.settings.logo.alt }}">
+        </div>
+    {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Preload",
+  "settings": [
+    {
+        "type": "image_picker",
+        "id": "bg",
+        "label": "Background"
+    },
+    {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo"
+    }
+  ],
+  "presets": [
+    {
+        "name": "Preload"
+    }
+  ]
+}
+{% endschema %}
