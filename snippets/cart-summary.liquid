@@ -39,10 +39,6 @@
       {% if settings.show_cart_note %}
         {% render 'cart-note' %}
       {% endif %}
-
-      {% if settings.show_add_discount_code %}
-        {% render 'cart-discount', section_id: section.id %}
-      {% endif %}
     </div>
   {% endif %}
 
@@ -83,6 +79,9 @@
     </div>
     {% endcomment %}
   </div>
+  {% if settings.show_add_discount_code %}
+    {% render 'cart-discount', section_id: section.id %}
+  {% endif %}
 </div>
 
 <div class="cart__ctas">
