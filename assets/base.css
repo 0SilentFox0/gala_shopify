@@ -3645,7 +3645,7 @@ slideshow-arrows {
 }
 
 media-gallery slideshow-container {
-  padding-bottom: 40px;
+  padding-bottom: 50px;
 }
 
 media-gallery slideshow-arrows {
@@ -3653,7 +3653,7 @@ media-gallery slideshow-arrows {
 }
 
 media-gallery slideshow-arrows button {
-  color: #3A1704;
+  color: #3A1704 !important;
 }
 
 slideshow-component[disabled='true'] slideshow-arrows {
