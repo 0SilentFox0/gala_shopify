@@ -1,6 +1,6 @@
 
 
-{% if block.blocks.size > 0 %}
+{% if block.blocks[0].settings.text != blank %}
 <accordion-custom
   {% if block.settings.open_by_default %}
     open-by-default-on-desktop
