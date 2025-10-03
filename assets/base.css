@@ -2254,7 +2254,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 }
 
 .field__input:is(:focus, :hover) {
-  box-shadow: var(--input-box-shadow-focus);
+  /* box-shadow: var(--input-box-shadow-focus); */
   background-color: var(--color-input-hover-background);
 }
 
