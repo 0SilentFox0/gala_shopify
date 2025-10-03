@@ -58,7 +58,15 @@
                     {% for block in section.blocks %}
                         {% if block.settings.category == category %}
                             <details class="faq-item">
-                                <summary class="faq-item-question">{{ block.settings.question }}</summary>
+                                <summary class="faq-item-question">
+                                    {{ block.settings.question }}
+                                    <span class="svg-wrapper icon-caret icon-animated">
+                                        {{- 'icon-caret.svg' | inline_asset_content -}}
+                                    </span>
+                                    <span class="svg-wrapper icon-plus">
+                                        {{- 'icon-plus.svg' | inline_asset_content -}}
+                                    </span>
+                                </summary>
                                 <div class="faq-item-answer details-content">
                                     {{ block.settings.answer }}
                                 </div>
