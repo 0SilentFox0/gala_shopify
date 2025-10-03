@@ -53,7 +53,23 @@
 </div>
 
 <script>
+  (function () {
+    const preload = document.querySelector('.preload');
+    if (!preload) return;
 
+    const hidePreload = () => {
+      preload.classList.add('hide-preload');
+      preload.addEventListener('transitionend', () => {
+        if (preload && preload.parentNode) preload.parentNode.removeChild(preload);
+      }, { once: true });
+    };
+
+    if (document.readyState === 'complete') {
+      setTimeout(hidePreload, 1000);
+    } else {
+      window.addEventListener('load', () => setTimeout(hidePreload, 1000), { once: true });
+    }
+  })();
 </script>
 
 {% schema %}
