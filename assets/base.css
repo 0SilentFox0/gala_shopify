@@ -5581,6 +5581,7 @@ text-component {
 .st-wishlist-details .st-product-card .st-atc-button {
   border-radius: 0px !important;
   background-color: #3b1704 !important;
+  text-transform: uppercase !important;
 }
 
 .st-wishlist-details .st-product-card_form {
