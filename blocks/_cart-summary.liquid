@@ -10,6 +10,10 @@
   {%- endif -%}
 {%- endcapture -%}
 
+{% capture children %}
+  {% content_for 'blocks' %}
+{% endcapture %}
+
 {% if block.settings.extend_summary %}
   <div
     class="section-background {% if block.settings.inherit_color_scheme == false %} color-{{ block.settings.color_scheme }} inherit-parent-scheme--mobile{% endif %}"
@@ -22,7 +26,7 @@
 >
   <div class="{{ cart_summary_inner_class }}">
     <h2 class="h3">{{ 'content.cart_summary_title' | t }}</h2>
-    {% render 'cart-summary' %}
+    {% render 'cart-summary', children: children %}
   </div>
 </div>
 
@@ -163,6 +167,11 @@
 {
   "name": "t:names.summary",
   "tag": null,
+  "blocks": [
+    {
+      "type": "@theme"
+    }
+  ],
   "settings": [
     {
       "type": "checkbox",
