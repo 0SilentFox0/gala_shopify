@@ -2280,7 +2280,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 
 .field__label.field__label-price-info {
   left: unset;
-  right: var(--input-padding-x);;
+  right: 0;
 }
 
 .price-facet-label {
