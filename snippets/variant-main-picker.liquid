@@ -115,11 +115,6 @@
             {% endif %}
             {% assign option_escape = product_option.name | escape  %}
             {% if option_escape == "Size" %}
-                <script
-                  src="{{ 'dialog.js' | asset_url }}"
-                  type="module"
-                ></script>
-
                 <dialog-component
                   class="popup-link popul-link-{{ block.id }}"
                   {{ block.shopify_attributes }}
@@ -150,6 +145,10 @@
                     </div>
                   </dialog>
                 </dialog-component>
+                <script
+                  src="{{ 'dialog.js' | asset_url }}"
+                  type="module"
+                ></script>
                 <style>
                   .dialog-component {
                     margin-left: auto;
