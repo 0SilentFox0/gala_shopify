@@ -125,13 +125,13 @@
                   class="popup-link popul-link-{{ block.id }}"
                   {{ block.shopify_attributes }}
                 >
-                  <button
+                  <div
                     on:click="/showDialog"
                     class="button button-unstyled popup-link__button text-left spacing-style {{ block.settings.type_preset }}"
                     style="{% render 'spacing-style', settings: block.settings %}"
                   >
                     {{ 'products.product.size_guide' | t }}
-                  </button>
+                  </div>
 
                   <dialog
                     ref="dialog"
