@@ -54,18 +54,18 @@
 
         <div class="faq-tabs">
             {% for category in unique_categories %}
-                <div class="faq-tab {% if forloop.first %}active{% endif %}" data-id="{{ category | handle }}">
+                <accordion-custom class="faq-tab {% if forloop.first %}active{% endif %}" data-id="{{ category | handle }}">
                     {% for block in section.blocks %}
                         {% if block.settings.category == category %}
-                            <div class="faq-item">
-                                <p class="faq-item-question">{{ block.settings.question }}</p>
-                                <div class="faq-item-answer">
+                            <details class="faq-item">
+                                <summary class="faq-item-question">{{ block.settings.question }}</summary>
+                                <div class="faq-item-answer details-content">
                                     {{ block.settings.answer }}
                                 </div>
-                            </div>
+                            </details>
                         {% endif %}
                     {% endfor %}
-                </div>
+                </accordion-custom>
             {% endfor %}
         </div>
 
