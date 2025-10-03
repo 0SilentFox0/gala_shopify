@@ -391,6 +391,7 @@
             {%- endfor -%}
           </ul>
         </div>
+        {% assign render_show_more = false %}
         {% if render_show_more %}
           <button
             class="show-more__button button-unstyled button-unstyled--with-icon{% if filter_style == 'horizontal' %} desktop:hidden{% endif %}"
