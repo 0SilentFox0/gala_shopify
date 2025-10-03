@@ -83,6 +83,19 @@
       {% endif %}
     </div>
   {% endif %}
+
+  <div class="cart__summary_payments">
+    <accordion-custom>
+       <details
+          class="details discount-details"
+          open
+        >
+          <summary class="cart-discount__summary">
+            <span class="cart-discount__label">{{ 'content.cart_payments' | t }}</span>
+          </summary>
+        </details>
+    </accordion-custom>
+  </div>
 </div>
 
 <div class="cart__ctas">
