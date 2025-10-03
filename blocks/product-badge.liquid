@@ -1,0 +1,19 @@
+<p class="product-badge">{{ block.settings.text }}</p>
+
+{% schema %}
+{
+  "name": "Product badge",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product badge"
+    }
+  ]
+}
+{% endschema %}
