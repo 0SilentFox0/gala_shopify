@@ -4988,6 +4988,7 @@ text-component {
 }
 
 .product-card-title {
+  width: 100%;
   font-weight: 700;
   text-transform: uppercase;
   margin: 0px;
