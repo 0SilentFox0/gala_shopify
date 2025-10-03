@@ -5586,3 +5586,12 @@ text-component {
 .st-wishlist-details .st-product-card_form {
   text-align: left !important;
 }
+
+.st-product-card .st-product-card_title a {
+  text-transform: uppercase !important;
+}
+
+.st-wishlist-details .st-product-card .st-product-card_price {
+  font-weight: 400 !important;
+  font-size: 12px !important;
+}
