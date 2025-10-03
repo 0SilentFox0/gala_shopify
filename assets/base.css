@@ -4985,6 +4985,7 @@ text-component {
 
 .product-card-title {
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .capsule-slider-block {
