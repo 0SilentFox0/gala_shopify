@@ -210,7 +210,7 @@
     "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy": "Duties included. Taxes, discounts and shipping calculated at checkout.",
     "duties_included_taxes_at_checkout_shipping_at_checkout_without_policy_without_discounts": "Duties included. Shipping is calculated at checkout.",
     "featured_products": "Featured products",
-    "filters": "Filters",
+    "filters": "Filter by",
     "grid_view": {
       "default_view": "Default",
       "grid_fieldset": "Column grid",
