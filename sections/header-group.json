@@ -87,9 +87,18 @@
         "enable_transparent_header_collection": false,
         "collection_color_scheme": "default"
       }
+    },
+    "preload_hj3AKV": {
+      "type": "preload",
+      "name": "Preload",
+      "settings": {
+        "bg": "shopify://shop_images/galadubai.ae_1739201847_3565005945963454035_69361182654_1_1.png",
+        "logo": "shopify://shop_images/Calque_1_1.svg"
+      }
     }
   },
   "order": [
-    "header_section"
+    "header_section",
+    "preload_hj3AKV"
   ]
 }
