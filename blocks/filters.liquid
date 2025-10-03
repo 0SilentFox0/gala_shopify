@@ -87,6 +87,13 @@
           <p class="facets--filters-title">{{ 'content.filters' | t }}</p>
       {% endif %}
 
+      {% render 'filter-remove-buttons',
+        filters: filters,
+        results_url: results_url,
+        show_filter_label: block.settings.show_filter_label,
+        should_show_clear_all: true
+      %}
+
       <div class="products-count-wrapper">
         <span title="{{ 'content.product_count' | t }}">
           {{- 'content.item_count' | t: count: products_count -}}
@@ -228,12 +235,6 @@
                       %}
                     {% endif %}
                   </div>
-                  {% render 'filter-remove-buttons',
-                    filters: filters,
-                    results_url: results_url,
-                    show_filter_label: block.settings.show_filter_label,
-                    should_show_clear_all: true
-                  %}
                   {% if block.settings.filter_style == 'horizontal' %}
                     <div class="products-count-wrapper">
                       <span title="{{ 'content.product_count' | t }}">
