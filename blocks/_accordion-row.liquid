@@ -1,5 +1,6 @@
 
 
+{% if block.blocks.size > 0 %}
 <accordion-custom
   {% if block.settings.open_by_default %}
     open-by-default-on-desktop
@@ -25,6 +26,7 @@
     </div>
   </details>
 </accordion-custom>
+{% endif %}
 
 {% schema %}
 {
