@@ -115,7 +115,6 @@
             {% endif %}
             {% assign option_escape = product_option.name | escape  %}
             {% if option_escape == "Size" %}
-              <div class="variant-option-top">
                 <script
                   src="{{ 'dialog.js' | asset_url }}"
                   type="module"
@@ -225,7 +224,6 @@
                     height: var(--icon-size-xs);
                   }
                 </style>
-              </div>
             {% endif %}
           </fieldset>
         {%- elsif block.settings.variant_style == 'dropdowns' -%}
