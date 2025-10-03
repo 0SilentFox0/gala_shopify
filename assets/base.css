@@ -5595,3 +5595,7 @@ text-component {
   font-weight: 400 !important;
   font-size: 12px !important;
 }
+
+.st-wishlist-details .st-product-card--horizontal .st-product-card_image {
+  flex: 0 0 100px !important;
+}
