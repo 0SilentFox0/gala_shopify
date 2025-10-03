@@ -871,7 +871,7 @@ details:not([open]) .summary-open {
 }
 
 details[open] > summary .icon-animated > svg {
-  transform: rotate(180deg);
+  transform: rotate(90deg);
 }
 
 /* iOS fix: hide the default arrow on the summary */
