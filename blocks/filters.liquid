@@ -276,12 +276,14 @@
               </div>
           {% else %}
             {% if should_show_pane %}
+                {% comment %}
                 {% render 'filter-remove-buttons',
                   filters: filters,
                   results_url: results_url,
                   show_filter_label: block.settings.show_filter_label,
                   should_show_clear_all: true
                 %}
+                {% endcomment %}
 
                 {% if block.settings.enable_filtering %}
                   {% assign total_active_values = 0 %}
