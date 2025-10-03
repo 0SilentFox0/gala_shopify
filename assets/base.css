@@ -1414,8 +1414,8 @@ summary:hover {
 
 summary .svg-wrapper {
   margin-inline-start: auto;
-  height: var(--icon-size-xs);
-  width: var(--icon-size-xs);
+  height: 8px;
+  width: 8px;
   transition: transform var(--animation-speed) var(--animation-easing);
 }
 
