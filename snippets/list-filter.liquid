@@ -25,7 +25,7 @@
   endif
 %}
 
-<accordion-custom
+<div
   class="facets__item"
   {% if filter_style == 'horizontal' %}
     data-disable-animation-on-desktop="true"
@@ -38,14 +38,14 @@
   {% endif %}
   data-filter-param-name="{{ filter.param_name | escape | replace: '.', '-' }}"
 >
-  <details
+  <div
     id="Facet-Details-{{ sectionId }}-{{ filter.param_name | escape | replace: '.', '-' }}"
     class="facets__panel"
     {% if filter_style == 'horizontal' %}
       data-auto-close-details="desktop"
     {% endif %}
   >
-    <summary class="facets__summary">
+    <div class="facets__summary">
       <span class="facets__label">{{ filter.label }}</span>
 
       <div class="facets__status-wrapper">
@@ -95,7 +95,7 @@
           {{- 'icon-caret.svg' | inline_asset_content -}}
         </span>
       </div>
-    </summary>
+    </div>
     <floating-panel-component
       {% unless filter_style == 'vertical' %}
         data-close-on-resize
@@ -432,7 +432,7 @@
       </facet-inputs-component>
     </floating-panel-component>
   </div>
-</accordion-custom>
+</div>
 
 {% stylesheet %}
   .facets input:checked + label {
