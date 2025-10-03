@@ -125,6 +125,8 @@
           if filter.values.size > max_visible_values and should_render_for_swatch == false
             assign render_show_more = true
           endif
+
+          assign render_show_more = false
         %}
         {% liquid
           if render_show_more
@@ -203,6 +205,7 @@
                     assign hidden_class = 'mobile:hidden'
                   endif
                 endif
+                
               %}
               <li
                 data-skip-node-update="true"
@@ -391,7 +394,6 @@
             {%- endfor -%}
           </ul>
         </div>
-        {% assign render_show_more = false %}
         {% if render_show_more %}
           <button
             class="show-more__button button-unstyled button-unstyled--with-icon{% if filter_style == 'horizontal' %} desktop:hidden{% endif %}"
