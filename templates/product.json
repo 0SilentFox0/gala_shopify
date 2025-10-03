@@ -950,7 +950,7 @@
                     "text_98LFck": {
                       "type": "text",
                       "settings": {
-                        "text": "<ul><li>Strapless feather-trim slip-on top</li><li>80% Polyamide, 20% Elastane</li><li>White feather detailing along neckline</li><li>Dry clean only</li><li>Made in France</li></ul><p>Product Code: 952360</p>",
+                        "text": "{{ closest.product.metafields.custom.prdouct_details | metafield_tag }}",
                         "width": "100%",
                         "max_width": "none",
                         "alignment": "left",
