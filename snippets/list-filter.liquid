@@ -25,7 +25,7 @@
   endif
 %}
 
-<accordion-custom
+<div
   class="facets__item"
   {% if filter_style == 'horizontal' %}
     data-disable-animation-on-desktop="true"
@@ -431,8 +431,8 @@
         {% endif %}
       </facet-inputs-component>
     </floating-panel-component>
-  </details>
-</accordion-custom>
+  </div>
+</div>
 
 {% stylesheet %}
   .facets input:checked + label {
