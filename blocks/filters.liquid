@@ -87,12 +87,23 @@
           <p class="facets--filters-title">{{ 'content.filters' | t }}</p>
       {% endif %}
 
-      {% render 'filter-remove-buttons',
-        filters: filters,
-        results_url: results_url,
-        show_filter_label: block.settings.show_filter_label,
-        should_show_clear_all: true
-      %}
+      <facets-form-component
+        class="facets__form-wrapper"
+      >
+        <form
+            action="{{ results_url }}"
+            id="FacetFiltersForm--{{ section.id }}-desktop"
+            class="facets__form"
+            ref="facetsForm"
+          >
+          {% render 'filter-remove-buttons',
+            filters: filters,
+            results_url: results_url,
+            show_filter_label: block.settings.show_filter_label,
+            should_show_clear_all: true
+          %}
+        </form>
+      </facets-form-component>
 
       <div class="products-count-wrapper">
         <span title="{{ 'content.product_count' | t }}">
