@@ -151,6 +151,73 @@
                     </button>
                   </dialog>
                 </dialog-component>
+                <style>
+                  .popul-link-{{ block.id }} .popup-link__button svg {
+                    display: inline-block;
+                    position: relative;
+                    top: var(--margin-2xs);
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content {
+                    box-shadow: var(--shadow-popover);
+                    border: var(--style-border-popover);
+                    border-radius: 0px;
+                    background-color: var(--color-background);
+                    padding: var(--padding-4xl) var(--padding-xl) var(--padding-xl);
+                    max-width: var(--normal-content-width);
+                    max-height: var(--modal-max-height);
+
+                    @media screen and (min-width: 750px) {
+                      padding: var(--padding-5xl);
+                    }
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content[open] {
+                    animation: modalSlideInTop var(--animation-speed) var(--animation-easing) forwards;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content.dialog-closing {
+                    animation: modalSlideOutTop var(--animation-speed) var(--animation-easing) forwards;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__content--drawer {
+                    position: fixed;
+                    border-radius: 0;
+                    width: var(--sidebar-width);
+                    max-width: 95vw;
+                    height: 100%;
+                    margin: 0 0 0 auto;
+                  }
+
+                  /* Needed to ensure the drawer is full height */
+                  .popul-link-{{ block.id }} .popup-link__content--drawer:modal {
+                    max-height: 100dvh;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__close {
+                    position: absolute;
+                    top: var(--margin-2xs);
+                    right: var(--margin-2xs);
+                    width: var(--minimum-touch-target);
+                    height: var(--minimum-touch-target);
+                    color: var(--color-foreground);
+                    background-color: transparent;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    padding: 0;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__close {
+                    background-color: transparent;
+                    opacity: 0.8;
+                  }
+
+                  .popul-link-{{ block.id }} .popup-link__close svg {
+                    width: var(--icon-size-xs);
+                    height: var(--icon-size-xs);
+                  }
+                </style>
               </div>
             {% endif %}
           </fieldset>
