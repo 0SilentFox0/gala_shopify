@@ -927,6 +927,11 @@
     display: flex;
     gap: 8px;
     flex-direction: column;
+
+    @media screen and (width >= 750px) {
+      max-height: 300px;
+      overflow-y: auto;
+    }
   }
 
   @media screen and (width >= 750px) {
