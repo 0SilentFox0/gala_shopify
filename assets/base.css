@@ -3644,6 +3644,11 @@ slideshow-arrows {
   }
 }
 
+media-gallery slideshow-arrows {
+  top: unset;
+  bottom: -40px;
+}
+
 slideshow-component[disabled='true'] slideshow-arrows {
   display: none;
 }
