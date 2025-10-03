@@ -181,7 +181,8 @@
     }
   },
   "content": {
-    "discount": "Discount",
+    "discount": "Coupon",
+    "discount_add": "Add coupon",
     "account_title": "Account",
     "account_title_personalized": "Hi {{ first_name }}",
     "account_orders": "Orders",
