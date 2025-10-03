@@ -2291,6 +2291,10 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
   font-weight: 500;
 }
 
+.price-facet-label:not(:first-child) {
+  margin-top: 12px;
+}
+
 /* RTE styles */
 .rte,
 .shopify-policy__title {
