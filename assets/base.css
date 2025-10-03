@@ -5520,11 +5520,11 @@ text-component {
   color: #3A1704;
 }
 
-@media(min-width: 1024px) {
+/* @media(min-width: 1024px) {
   .hero__content-newsletter {
     display: flex;
   }
-}
+} */
 
 .hero__content-newsletter .email-signup__input {
   border: 0px;
