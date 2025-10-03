@@ -168,7 +168,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>NEW IN</p>",
+                    "text": "<p>{{ closest.product.metafields.custom.badge.value }}</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
