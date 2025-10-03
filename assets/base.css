@@ -3644,8 +3644,16 @@ slideshow-arrows {
   }
 }
 
+media-gallery slideshow-container {
+  padding-bottom: 40px;
+}
+
 media-gallery slideshow-arrows {
   top: unset;
+}
+
+media-gallery slideshow-arrows button {
+  color: #3A1704;
 }
 
 slideshow-component[disabled='true'] slideshow-arrows {
