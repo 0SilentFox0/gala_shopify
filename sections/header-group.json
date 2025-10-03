@@ -92,8 +92,8 @@
       "type": "preload",
       "name": "Preload",
       "settings": {
-        "bg": "shopify://shop_images/galadubai.ae_1739201847_3565005945963454035_69361182654_1_1.png",
-        "bg_mobile": "shopify://shop_images/galadubai.ae_1739201847_3565005945963454035_69361182654_1_2.png",
+        "bg": "shopify://shop_images/galadubai.ae_1739201847_3565005945963454035_69361182654_1_1.webp",
+        "bg_mobile": "shopify://shop_images/galadubai.ae_1739201847_3565005945963454035_69361182654_1_2.webp",
         "logo": "shopify://shop_images/Calque_1_1.svg"
       }
     }
