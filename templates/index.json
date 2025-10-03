@@ -617,6 +617,14 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "product_badge_FDtmDD": {
+              "type": "product-badge",
+              "name": "Product badge",
+              "settings": {
+                "text": "{{ closest.product.metafields.custom.badge.value }}"
+              },
+              "blocks": {}
+            },
             "product_card_gallery_w6kxQG": {
               "type": "_product-card-gallery",
               "name": "t:names.product_image",
@@ -766,6 +774,7 @@
             }
           },
           "block_order": [
+            "product_badge_FDtmDD",
             "product_card_gallery_w6kxQG",
             "group_kjfFcF"
           ]
