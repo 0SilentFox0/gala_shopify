@@ -4135,6 +4135,9 @@ text-component {
 }
 
 /* Product card title truncation - applied only to zoom-out view */
+product-card dialog-component {
+  display: none;
+}
 [product-grid-view='zoom-out'] :is(.product-card, .product-grid__card) :is(h4, .h4) {
   display: -webkit-box;
   -webkit-box-orient: vertical;
