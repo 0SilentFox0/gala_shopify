@@ -3654,6 +3654,13 @@ slideshow-arrows {
   }
 }
 
+@media(min-width: 750px) {
+  media-gallery slideshow-container {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}
+
 media-gallery slideshow-arrows button {
   color: #3A1704 !important;
 }
