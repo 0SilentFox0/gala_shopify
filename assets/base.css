@@ -5615,3 +5615,8 @@ product-card dialog-component {
 .st-wishlist-details .st-product-card--horizontal .st-product-card_image {
   flex: 0 0 100px !important;
 }
+
+.login a[href="#recover"] {
+  margin-left: auto;
+  margin-right: auto;
+}
