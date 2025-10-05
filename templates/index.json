@@ -819,7 +819,7 @@
         "group_UaMEzq": {
           "type": "group",
           "settings": {
-            "link": "",
+            "link": "https://galadubai.myshopify.com/collections/all?filter.p.m.custom.designer=Christopher+Esber&filter.p.m.custom.designer=Magda+Butrym&filter.p.m.custom.designer=The+Row",
             "open_in_new_tab": false,
             "content_direction": "row",
             "vertical_on_mobile": true,
@@ -905,7 +905,7 @@
         "group_DFzJAw": {
           "type": "group",
           "settings": {
-            "link": "",
+            "link": "shopify://collections/jewerly",
             "open_in_new_tab": false,
             "content_direction": "row",
             "vertical_on_mobile": true,
