@@ -4450,7 +4450,7 @@ product-card dialog-component {
 }
 
 .capsule-first-step-body .capsule-slider {
-  max-width: 100%;
+  max-width: 500px;
 }
 
 .capsule-content {
