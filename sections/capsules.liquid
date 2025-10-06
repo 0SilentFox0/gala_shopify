@@ -173,34 +173,36 @@
                     <div class="capsule-edit-right-selector">
                         <h4 class="capsule-edit-right-heading"></h4>
                         <div class="capsule-edit-grid">
-                            {% for product in collections.all.products %}
-                                {% assign collection_title = '' %}
-                                {% for collection in product.collections %}
-                                    {% if collection.metafields.custom.level.value == "1" %}
-                                        {% if collection.title != "Capsule" or collection.handle != "all" %}
-                                            {% assign collection_title = collection.title %}
-                                        {% endif %}
-                                    {% endif %}
-                                {% endfor %}
-                                <div class="capsule-product-card" data-collection="{{ collection_title }}" data-price="{{ product.price |  divided_by: 100 }}" data-id="{{ product.selected_or_first_available_variant.id }}">  
-                                    <div class="capsule-product-card-inner">
-                                        <div class="capsule-product-card-img">
-                                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
-                                        </div>
-                                        <div class="capsule-product-card-content">
-                                            <h4 class="capsule-product-card-title">{{ product.title }}</h4>
-                                            {% if product.metafields.custom.short_description.value != blank %}
-                                                <p class="capsule-product-card-desc">
-                                                    {{ product.metafields.custom.short_description.value }}
-                                                </p>
+                            {% paginate collections.all.products by 1000 %}
+                                {% for product in collections.all.products %}
+                                    {% assign collection_title = '' %}
+                                    {% for collection in product.collections %}
+                                        {% if collection.metafields.custom.level.value == "1" %}
+                                            {% if collection.title != "Capsule" or collection.handle != "all" %}
+                                                {% assign collection_title = collection.title %}
                                             {% endif %}
-                                            <p class="capsule-product-card-price">{{ product.price | money }}</p>
+                                        {% endif %}
+                                    {% endfor %}
+                                    <div class="capsule-product-card" data-collection="{{ collection_title }}" data-price="{{ product.price |  divided_by: 100 }}" data-id="{{ product.selected_or_first_available_variant.id }}">  
+                                        <div class="capsule-product-card-inner">
+                                            <div class="capsule-product-card-img">
+                                                <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                                            </div>
+                                            <div class="capsule-product-card-content">
+                                                <h4 class="capsule-product-card-title">{{ product.title }}</h4>
+                                                {% if product.metafields.custom.short_description.value != blank %}
+                                                    <p class="capsule-product-card-desc">
+                                                        {{ product.metafields.custom.short_description.value }}
+                                                    </p>
+                                                {% endif %}
+                                                <p class="capsule-product-card-price">{{ product.price | money }}</p>
+                                            </div>
                                         </div>
+                                        <button class="capsule-product-card-replace-btn">Replace item</button>
+                                        <button class="capsule-product-card-delete-btn hidden">Delete item</button>
                                     </div>
-                                    <button class="capsule-product-card-replace-btn">Replace item</button>
-                                    <button class="capsule-product-card-delete-btn hidden">Delete item</button>
-                                </div>
-                            {% endfor %}
+                                {% endfor %}
+                            {% endpaginate %}
                         </div>
                     </div>
 
