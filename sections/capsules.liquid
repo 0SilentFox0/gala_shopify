@@ -173,7 +173,7 @@
                     <div class="capsule-edit-right-selector">
                         <h4 class="capsule-edit-right-heading"></h4>
                         <div class="capsule-edit-grid">
-                            {% paginate collections.all.products by 1000 %}
+                            {% paginate collections.all.products by 10000 %}
                                 {% for product in collections.all.products %}
                                     {% assign collection_title = '' %}
                                     {% for collection in product.collections %}
