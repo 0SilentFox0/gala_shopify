@@ -178,7 +178,7 @@
                                     {% assign collection_title = '' %}
                                     {% for collection in product.collections %}
                                         {% if collection.metafields.custom.level.value == "1" %}
-                                            {% if collection.title != "Capsule" or collection.handle != "all" %}
+                                            {% if collection.title != "Capsule" and collection.handle != "all" and collection.title != "All Products" %}
                                                 {% assign collection_title = collection.title %}
                                             {% endif %}
                                         {% endif %}
