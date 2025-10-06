@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
 
-    const oldLink = document.querySelector('.button--AcmZuL1dIRVNhbEx5R__button_P4rdAT');
+    const oldLink = document.querySelector('.link--AcmZuL1dIRVNhbEx5R__button_P4rdAT');
 
     if (oldLink && oldLink.tagName === 'A') {
       const href = oldLink.getAttribute('href');
