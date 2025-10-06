@@ -4449,6 +4449,10 @@ product-card dialog-component {
   background-color: #CCCCCC;
 }
 
+.capsule-first-step-body .capsule-slider {
+  max-width: 100%;
+}
+
 .capsule-content {
   display: flex;
   flex-direction: column;
