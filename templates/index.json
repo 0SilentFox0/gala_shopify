@@ -492,7 +492,7 @@
       ],
       "custom_css": [
         "img {object-fit: contain;}",
-        ".link {background-color: transparent; border: 0px; text-decoration: underline;}"
+        ".link {background-color: transparent; border: 0px; text-decoration: underline; cursor: pointer; color: #3A1704;}"
       ],
       "name": "t:names.image_with_text",
       "settings": {
