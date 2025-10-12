@@ -182,11 +182,21 @@ document.addEventListener('DOMContentLoaded', () => {
         img.alt = newImg.alt;
       }
 
-      activeEditProductItem = null;
-      document.querySelector('.capsule-edit-right-selector')?.classList.add('hidden');
-      document.querySelector('.capsule-edit-empty')?.classList.remove('hidden');
+      // ✅ Показываем снова интерфейс редактирования (step 2)
+      document.querySelectorAll('.capsule-step').forEach((step, i) => {
+        step.classList.toggle('active', i === 1);
+      });
 
+      document.querySelector('.capsule-edit-finalize')?.classList.add('hidden');
+      document.querySelector('.capsule-form')?.classList.add('hidden');
+      document.querySelector('.capsule-review-button')?.classList.remove('hidden');
+      document.querySelector('.capsule-edit-right-selector')?.classList.remove('hidden');
+      document.querySelector('.capsule-edit-empty')?.classList.add('hidden');
+
+      // Пересчитываем цену
       recalculateTotalPrice();
+
+      // ✅ Убираем return, чтобы не прерывать остальную логику кликов
     }
 
     const deleteBtn = e.target.closest('.capsule-product-card-delete-btn');
