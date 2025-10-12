@@ -197,7 +197,8 @@
                                         <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
                                         </div>
                                         <div class="capsule-product-card-content">
-                                        <h4 class="capsule-product-card-title">{{ product.title }}</h4>
+                                        <p class="capsule-product-card-vendor">{{ product.vendor }}</p>
+                                        <p class="capsule-product-card-title">{{ product.title }}</p>
                                         {% if product.metafields.custom.short_description.value != blank %}
                                             <p class="capsule-product-card-desc">{{ product.metafields.custom.short_description.value }}</p>
                                         {% endif %}
