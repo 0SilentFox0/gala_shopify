@@ -271,18 +271,6 @@
                 "price_tVjtKg"
               ]
             },
-            "divider_ey7UMp": {
-              "type": "_divider",
-              "name": "t:names.divider",
-              "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
-              },
-              "blocks": {}
-            },
             "variant_picker_R3rGDr": {
               "type": "variant-picker",
               "settings": {
@@ -295,18 +283,6 @@
                 "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "divider_MpELV8": {
-              "type": "_divider",
-              "name": "t:names.divider",
-              "settings": {
-                "thickness": 1,
-                "corner_radius": "square",
-                "width_percent": 100,
-                "padding-block-start": 0,
-                "padding-block-end": 0
               },
               "blocks": {}
             },
@@ -1063,9 +1039,7 @@
           "block_order": [
             "breadcrumbs_dMBfG6",
             "group_icgrde",
-            "divider_ey7UMp",
             "variant_picker_R3rGDr",
-            "divider_MpELV8",
             "group_ygG6UE",
             "product_inventory_WNbPJr",
             "group_n3iX7h",
