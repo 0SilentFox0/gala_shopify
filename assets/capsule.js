@@ -308,27 +308,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const addFullBtn = e.target.closest('.capsule-add-full-button');
     if (addFullBtn) {
-      const productId = addFullBtn.dataset.id;
+      // Берём capsule handle так же, как в .capsule-edit-button
+      const productGridItem = addFullBtn.closest('.product-grid__item');
+      const capsuleHandle = productGridItem?.dataset.capsule;
 
-      // Активируем нужный capsule-edit-product
-      const capsuleEditProducts = document.querySelectorAll('.capsule-edit-product');
-      capsuleEditProducts.forEach(block => block.classList.remove('active'));
+      // Снимаем активность со всех капсул
+      document.querySelectorAll('.capsule-edit-product').forEach(b => b.classList.remove('active'));
 
-      const activeBlock = document.querySelector(`.capsule-edit-product[data-capsule="${productId}"]`);
-      if (activeBlock) activeBlock.classList.add('active');
+      // Ищем нужный блок капсулы по handle
+      const activeBlock = capsuleHandle
+        ? document.querySelector(`.capsule-edit-product[data-capsule="${capsuleHandle}"]`)
+        : null;
 
-      // --- создаем товары для финального шага, как в review ---
-      const items = document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item');
+      if (activeBlock) {
+        activeBlock.classList.add('active');
+      } else {
+        console.warn('Не найден .capsule-edit-product для', capsuleHandle);
+      }
+
+      // === Переносим товары в форму (как в review) ===
+      const items = activeBlock
+        ? activeBlock.querySelectorAll('.capsule-edit-product-item')
+        : document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item');
+
       const form = document.querySelector('.capsule-form');
 
-      // очищаем старые инпуты, если были
+      // Чистим старые инпуты
       form?.querySelectorAll('input').forEach(input => input.remove());
 
-      items.forEach((item, index) => {
+      // Создаём новые hidden inputs по выбранным позициям
+      Array.from(items).forEach((item, index) => {
         const id = item.dataset.id;
-        const title = item.dataset.title;
-        const img = item.dataset.img;
-        const price = item.dataset.price;
 
         const inputId = document.createElement('input');
         inputId.type = 'hidden';
@@ -340,28 +350,20 @@ document.addEventListener('DOMContentLoaded', () => {
         inputQty.name = `items[${index}][quantity]`;
         inputQty.value = '1';
 
-        form.appendChild(inputId);
-        form.appendChild(inputQty);
+        form?.appendChild(inputId);
+        form?.appendChild(inputQty);
       });
 
-      // Подсветить выбранные товары в финальном гриде
-      const selectedIds = Array.from(document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item'))
-        .map(item => item.dataset.id);
-
+      // Подсветка выбранных карточек в финальной сетке
+      const selectedIds = Array.from(items).map(i => i.dataset.id);
       document.querySelectorAll('.capsule-edit-finalize-grid .capsule-product-card').forEach(card => {
-        const cardId = card.dataset.id;
-        if (selectedIds.includes(cardId)) {
-          card.classList.add('active');
-        } else {
-          card.classList.remove('active');
-        }
+        card.classList.toggle('active', selectedIds.includes(card.dataset.id));
       });
 
-      // Переключаем шаги — сразу на третий
+      // === Переключаемся сразу на 3-й шаг ===
       document.querySelectorAll('.capsule-step').forEach((step, i) => {
         step.classList.toggle('active', i === 2);
       });
-
       document.querySelector('.capsule-first-step-body')?.classList.add('hidden');
       document.querySelector('.capsule-edit-wrapper')?.classList.add('active');
       document.querySelector('.capsule-edit-finalize')?.classList.remove('hidden');
@@ -370,6 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.capsule-edit-right-selector')?.classList.add('hidden');
       document.querySelector('.capsule-edit-empty')?.classList.add('hidden');
 
+      // Пересчёт цены
       recalculateTotalPrice();
 
       return;
