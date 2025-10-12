@@ -5635,7 +5635,7 @@ product-card dialog-component {
 }
 
 .product-details variant-picker {
-  padding: 30px 0px;
+  padding: 20px 0px !important;
   border-top: 1px solid #3a1704;
-  border-bottom: 1px solid #3a1704;
+  border-bottom: 1px solid #3a1704 ;
 }
