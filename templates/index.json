@@ -492,7 +492,7 @@
       ],
       "custom_css": [
         "img {object-fit: contain;}",
-        ".link {background-color: transparent; border: 0px; text-decoration: underline; cursor: pointer; color: #3A1704;}"
+        ".link {background-color: transparent; border: 0px; text-decoration: underline; cursor: pointer; color: #3a1704;}"
       ],
       "name": "t:names.image_with_text",
       "settings": {
@@ -1777,6 +1777,9 @@
           ]
         }
       },
+      "custom_css": [
+        ".resource-list__carousel a {pointer-events: none;}"
+      ],
       "name": "t:names.products_carousel",
       "settings": {
         "collection": "capsule",
