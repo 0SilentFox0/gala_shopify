@@ -310,12 +310,54 @@ document.addEventListener('DOMContentLoaded', () => {
     if (addFullBtn) {
       const productId = addFullBtn.dataset.id;
 
+      // Активируем нужный capsule-edit-product
       const capsuleEditProducts = document.querySelectorAll('.capsule-edit-product');
       capsuleEditProducts.forEach(block => block.classList.remove('active'));
 
       const activeBlock = document.querySelector(`.capsule-edit-product[data-capsule="${productId}"]`);
       if (activeBlock) activeBlock.classList.add('active');
 
+      // --- создаем товары для финального шага, как в review ---
+      const items = document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item');
+      const form = document.querySelector('.capsule-form');
+
+      // очищаем старые инпуты, если были
+      form?.querySelectorAll('input').forEach(input => input.remove());
+
+      items.forEach((item, index) => {
+        const id = item.dataset.id;
+        const title = item.dataset.title;
+        const img = item.dataset.img;
+        const price = item.dataset.price;
+
+        const inputId = document.createElement('input');
+        inputId.type = 'hidden';
+        inputId.name = `items[${index}][id]`;
+        inputId.value = id;
+
+        const inputQty = document.createElement('input');
+        inputQty.type = 'hidden';
+        inputQty.name = `items[${index}][quantity]`;
+        inputQty.value = '1';
+
+        form.appendChild(inputId);
+        form.appendChild(inputQty);
+      });
+
+      // Подсветить выбранные товары в финальном гриде
+      const selectedIds = Array.from(document.querySelectorAll('.capsule-edit-product.active .capsule-edit-product-item'))
+        .map(item => item.dataset.id);
+
+      document.querySelectorAll('.capsule-edit-finalize-grid .capsule-product-card').forEach(card => {
+        const cardId = card.dataset.id;
+        if (selectedIds.includes(cardId)) {
+          card.classList.add('active');
+        } else {
+          card.classList.remove('active');
+        }
+      });
+
+      // Переключаем шаги — сразу на третий
       document.querySelectorAll('.capsule-step').forEach((step, i) => {
         step.classList.toggle('active', i === 2);
       });
