@@ -17,10 +17,12 @@
 
 <nav class="breadcrumbs" role="navigation" aria-label="Breadcrumb">
   <ol class="breadcrumb-list">
-    <!-- 1. Home -->
-    <li class="breadcrumb-item">
-      <p style="margin: 0;"><a href="{{ routes.root_url }}">Home</a></p>
-    </li>
+    {% unless product %}
+      <!-- 1. Home -->
+      <li class="breadcrumb-item">
+        <p style="margin: 0;"><a href="{{ routes.root_url }}">Home</a></p>
+      </li>
+    {% endunless %}
 
     {% if product %}
       <!-- 2. All products -->
