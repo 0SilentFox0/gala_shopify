@@ -1778,7 +1778,7 @@
         }
       },
       "custom_css": [
-        ".resource-list__carousel a {pointer-events: none;}",
+        ".resource-list__carousel a,.product-card-link{pointer-events: none;}",
         ".resource-list__carousel form {display: none;}"
       ],
       "name": "t:names.products_carousel",
