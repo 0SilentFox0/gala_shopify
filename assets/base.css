@@ -4898,10 +4898,20 @@ product-card dialog-component {
   text-align: center;
 }
 
-.capsule-product-card-title {
+.capsule-product-card-vendor {
   margin: 0px;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
+  line-height: 100%;
+  text-transform: uppercase;
+  color: #3b1704;
+}
+
+.capsule-product-card-title {
+  margin: 0px;
+  margin-top: 8px;
+  font-weight: 400;
+  font-size: 12px;
   line-height: 100%;
   text-transform: uppercase;
   color: #3b1704;
