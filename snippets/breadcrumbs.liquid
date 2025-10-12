@@ -33,7 +33,7 @@
       {% for level in (1..10) %}
         {% assign found = false %}
         {% for col in product.collections %}
-          {% if col.handle != 'all_products' %}
+          {% if col.handle != 'all' %}
             {% assign lvl_num = col.metafields[ns][key] | plus: 0 %}
             {% if lvl_num == level %}
               <li class="breadcrumb-separator">{{ sep }}</li>
