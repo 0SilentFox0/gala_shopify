@@ -4895,7 +4895,6 @@ product-card dialog-component {
 
 .capsule-product-card-content {
   margin-top: 16px;
-  text-align: center;
 }
 
 .capsule-product-card-vendor {
@@ -4941,7 +4940,7 @@ product-card dialog-component {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
 .capsule-product-card-replace-btn,
