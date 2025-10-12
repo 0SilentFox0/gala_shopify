@@ -1363,8 +1363,7 @@
         "button_q4NkXE"
       ],
       "custom_css": [
-        ".product-media-container img {object-fit: cover !important;}",
-        ".price {}"
+        ".product-media-container img {object-fit: cover !important;}"
       ],
       "name": "t:names.product_recommendations",
       "settings": {
