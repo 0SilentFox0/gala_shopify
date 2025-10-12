@@ -305,6 +305,33 @@ document.addEventListener('DOMContentLoaded', () => {
       document.querySelector('.capsule-form')?.classList.remove('hidden');
       document.querySelector('.capsule-review-button')?.classList.add('hidden');
     }
+
+    const addFullBtn = e.target.closest('.capsule-add-full-button');
+    if (addFullBtn) {
+      const productId = addFullBtn.dataset.id;
+
+      const capsuleEditProducts = document.querySelectorAll('.capsule-edit-product');
+      capsuleEditProducts.forEach(block => block.classList.remove('active'));
+
+      const activeBlock = document.querySelector(`.capsule-edit-product[data-capsule="${productId}"]`);
+      if (activeBlock) activeBlock.classList.add('active');
+
+      document.querySelectorAll('.capsule-step').forEach((step, i) => {
+        step.classList.toggle('active', i === 2);
+      });
+
+      document.querySelector('.capsule-first-step-body')?.classList.add('hidden');
+      document.querySelector('.capsule-edit-wrapper')?.classList.add('active');
+      document.querySelector('.capsule-edit-finalize')?.classList.remove('hidden');
+      document.querySelector('.capsule-form')?.classList.remove('hidden');
+      document.querySelector('.capsule-review-button')?.classList.add('hidden');
+      document.querySelector('.capsule-edit-right-selector')?.classList.add('hidden');
+      document.querySelector('.capsule-edit-empty')?.classList.add('hidden');
+
+      recalculateTotalPrice();
+
+      return;
+    }
   });
 
   document.addEventListener('change', (e) => {
