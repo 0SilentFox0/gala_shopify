@@ -5650,3 +5650,9 @@ product-card dialog-component {
   border-top: 1px solid #3a1704;
   border-bottom: 1px solid #3a1704 ;
 }
+
+@media(max-width: 767px) {
+  .breadcrumbs {
+    margin-top: 40px;
+  }
+}
