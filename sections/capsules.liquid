@@ -192,21 +192,21 @@
                                         data-collection="{{ collection.title }}"
                                         data-price="{{ product.price | divided_by: 100 }}"
                                         data-id="{{ product.selected_or_first_available_variant.id }}">
-                                    <div class="capsule-product-card-inner">
-                                        <div class="capsule-product-card-img">
-                                        <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                                        <div class="capsule-product-card-inner">
+                                            <div class="capsule-product-card-img">
+                                            <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                                            </div>
+                                            <div class="capsule-product-card-content">
+                                            <p class="capsule-product-card-vendor">{{ product.vendor }}</p>
+                                            <p class="capsule-product-card-title">{{ product.title }}</p>
+                                            {% if product.metafields.custom.short_description.value != blank %}
+                                                <p class="capsule-product-card-desc">{{ product.metafields.custom.short_description.value }}</p>
+                                            {% endif %}
+                                            <p class="capsule-product-card-price">{{ product.price | money_with_currency }}</p>
+                                            </div>
                                         </div>
-                                        <div class="capsule-product-card-content">
-                                        <p class="capsule-product-card-vendor">{{ product.vendor }}</p>
-                                        <p class="capsule-product-card-title">{{ product.title }}</p>
-                                        {% if product.metafields.custom.short_description.value != blank %}
-                                            <p class="capsule-product-card-desc">{{ product.metafields.custom.short_description.value }}</p>
-                                        {% endif %}
-                                        <p class="capsule-product-card-price">{{ product.price | money_without_currency }}</p>
-                                        </div>
-                                    </div>
-                                    <button class="capsule-product-card-replace-btn">Replace item</button>
-                                    <button class="capsule-product-card-delete-btn hidden">Delete item</button>
+                                        <button class="capsule-product-card-replace-btn">Replace item</button>
+                                        <button class="capsule-product-card-delete-btn hidden">Delete item</button>
                                     </div>
                                 {% endfor %}
                                 {% endpaginate %}
