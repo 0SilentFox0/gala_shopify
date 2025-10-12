@@ -55,6 +55,13 @@
       {% paginate products by 24 %}
         {% capture children %}
           {% for product in products %}
+            {% assign is_capsule = false %}
+            {% for collection in product.collections %}
+              {% if collection.handle == 'capsule' %}
+                {% assign is_capsule = true %}
+              {% endif %}
+            {% endfor %}
+            {% unless is_capsule %}
             <li
               class="product-grid__item product-grid__item--{{ forloop.index0 }}"
               data-page="{{ paginate.current_page }}"
@@ -64,6 +71,7 @@
             >
               {% content_for 'block', type: 'product-card', id: 'product-card', closest.product: product %}
             </li>
+            {% endunless %}
           {% endfor %}
         {% endcapture %}
         {% render 'product-grid', section: section, children: children, products: products, paginate: paginate %}
