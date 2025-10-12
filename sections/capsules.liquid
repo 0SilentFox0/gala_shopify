@@ -202,7 +202,7 @@
                                         {% if product.metafields.custom.short_description.value != blank %}
                                             <p class="capsule-product-card-desc">{{ product.metafields.custom.short_description.value }}</p>
                                         {% endif %}
-                                        <p class="capsule-product-card-price">{{ product.price | money_with_currency }}</p>
+                                        <p class="capsule-product-card-price">{{ product.price | money_without_currency }}</p>
                                         </div>
                                     </div>
                                     <button class="capsule-product-card-replace-btn">Replace item</button>
