@@ -1028,6 +1028,21 @@
     "product_list_YxnXze": {
       "type": "product-list",
       "blocks": {
+        "button_PhUeqB": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop now",
+            "link": "{{ closest.collection.url }}",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        },
         "static-header": {
           "type": "_product-list-content",
           "name": "t:names.header",
@@ -1298,9 +1313,13 @@
           ]
         }
       },
+      "block_order": [
+        "button_PhUeqB"
+      ],
       "custom_css": [
         ".product-media-container img {object-fit: cover !important;}",
-        ".link {text-decoration: underline; font-size: 11px; text-transform: uppercase;}"
+        ".link {text-decoration: underline; font-size: 11px; text-transform: uppercase;}",
+        "a.button {margin: 10px auto 0px auto;}"
       ],
       "name": "t:names.products_carousel",
       "settings": {
@@ -1451,21 +1470,6 @@
     "product_list_4E4xTQ": {
       "type": "product-list",
       "blocks": {
-        "button_YyzPrw": {
-          "type": "button",
-          "name": "t:names.button",
-          "settings": {
-            "label": "View All",
-            "link": "{{ closest.collection.url }}",
-            "open_in_new_tab": false,
-            "style_class": "button",
-            "width": "fit-content",
-            "custom_width": 100,
-            "width_mobile": "fit-content",
-            "custom_width_mobile": 100
-          },
-          "blocks": {}
-        },
         "static-header": {
           "type": "_product-list-content",
           "name": "t:names.header",
@@ -1792,12 +1796,7 @@
           ]
         }
       },
-      "block_order": [
-        "button_YyzPrw"
-      ],
-      "custom_css": [
-        "a.button {margin: 10px auto 0px auto;}"
-      ],
+      "custom_css": [],
       "name": "t:names.products_carousel",
       "settings": {
         "collection": "сhristopheresber",
