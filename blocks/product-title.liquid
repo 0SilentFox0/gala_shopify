@@ -5,7 +5,7 @@
   {% assign product_title = '<p>' | append: text | append: '</p>' %}
   {% render 'text', fallback_text: product_title, block: block %}
 {% elsif block.settings.product != blank %}
-  <p class="product-card-title">{% if template.name == 'collection' %}{{ block.settings.product.vendor }}{% else %}{{ block.settings.product.title }}{% endif %} <button class="st-wishlist-button" data-type="details" data-handle="{{ block.settings.product.handle }}"></button></p>
+  <p class="product-card-title">{% if template.name == 'collection' and template.suffix != 'capsule' %}{{ block.settings.product.vendor }}{% else %}{{ block.settings.product.title }}{% endif %} <button class="st-wishlist-button" data-type="details" data-handle="{{ block.settings.product.handle }}"></button></p>
 {% endif %}
 
 {% schema %}
