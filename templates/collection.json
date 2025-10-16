@@ -247,6 +247,14 @@
               },
               "blocks": {}
             },
+            "product_badge_b6VRPg": {
+              "type": "product-badge",
+              "name": "Product badge",
+              "settings": {
+                "text": ""
+              },
+              "blocks": {}
+            },
             "group": {
               "type": "group",
               "settings": {
@@ -476,6 +484,7 @@
           },
           "block_order": [
             "card-gallery",
+            "product_badge_b6VRPg",
             "group"
           ]
         }
