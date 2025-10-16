@@ -4887,10 +4887,12 @@ product-card dialog-component {
 
 .capsule-product-card {
   display: none;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .capsule-product-card.active {
-  display: block;
+  display: flex;
 }
 
 .capsule-product-card-content {
