@@ -51,7 +51,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Let summer unfold: featherlight dresses, muted palettes, and barefoot luxury. <a href=\"/collections\" title=\"All collections\"><span style=\"text-decoration:underline\">VIEW COLLECTION</span></a></p>",
+            "text": "<p>Let summer unfold: featherlight dresses, muted palettes, and barefoot luxury. <span style=\"text-decoration:underline\">VIEW COLLECTION</span></p>",
             "width": "100%",
             "max_width": "none",
             "alignment": "left",
@@ -84,7 +84,7 @@
       ],
       "name": "t:names.hero",
       "settings": {
-        "link": "",
+        "link": "shopify://collections/all",
         "open_in_new_tab": false,
         "media_type_1": "image",
         "image_1": "shopify://shop_images/galadubai.ae_1739201847_3565005945963454035_69361182654_1.png",
