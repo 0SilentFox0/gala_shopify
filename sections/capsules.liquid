@@ -116,16 +116,16 @@
                                             {% if collection.metafields.custom.level.value == "1" %}
                                                 {% if collection.title != "Capsule" and collection.handle != "all" and collection.title != "All Products" %}
                                                     {% assign collection_title = collection.title %}
-                                                    {% if collection.handle == "top" %}
-                                                        {% assign col_start = 3 %}
-                                                        {% assign col_span = 2 %}
-                                                        {% assign row_start = 1 %}
-                                                        {% assign row_span = 2 %}
-                                                    {% endif %}
                                                 {% endif %}
                                             {% endif %}
+                                            {% if collection.handle == "top" %}
+                                                {% assign col_start = 3 %}
+                                                {% assign col_span = 2 %}
+                                                {% assign row_start = 1 %}
+                                                {% assign row_span = 2 %}
+                                            {% endif %}
                                         {% endfor %}
-                                        <div class="capsule-edit-product-item" style="grid-column: {{ col_start }} / span {{ col_span }}; grid-row: {{ row_start }} / span {{ row_span }}" data-collection="{{ collection_title }}" data-price="{{ capsule_product.price |  divided_by: 100 }}" data-id="{{ capsule_product.selected_or_first_available_variant.id }}">
+                                        <div class="capsule-edit-product-item" style="grid-column: {{ col_start }} / span {{ col_span }}; grid-row: {{ row_start }} / span {{ row_span }}" data-collection="{{ collection_title }}" data-price="{{ capsuleProduct.price |  divided_by: 100 }}" data-id="{{ capsuleProduct.selected_or_first_available_variant.id }}">
                                             <img src="{{ capsuleProduct.featured_image | image_url }}" alt="{{ capsuleProduct.featured_image.alt }}" loading="lazy">
                                             <span class="capsule-edit-product-item-hotspot">
                                                 <span></span>
