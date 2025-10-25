@@ -165,40 +165,38 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // ЗАМЕНА блока обработки replaceBtn
     const replaceBtn = e.target.closest('.capsule-product-card-replace-btn');
-    if (replaceBtn) {
+    if (replaceBtn && activeEditProductItem) {
       const card = replaceBtn.closest('.capsule-product-card');
-      if (!card) return;
+      const newId = card.dataset.id;
+      const newImg = card.querySelector('img');
 
-      // Если слот не выбран (мы на шаге финализации), пытаемся выбрать его автоматически
-      if (!activeEditProductItem) {
-        const collection = card.dataset.collection;
-        const cardId = card.dataset.id;
+      activeEditProductItem.dataset.id = newId;
+      activeEditProductItem.dataset.price = (card.dataset.price || '0').replace(/,/g, '');
+      activeEditProductItem.dataset.title = card.dataset.title;
+      activeEditProductItem.dataset.img = newImg.src;
 
-        // 1) Пытаемся найти слот той же коллекции
-        activeEditProductItem =
-          document.querySelector(`.capsule-edit-product .capsule-edit-product-item[data-collection="${collection}"]`) ||
+      const img = activeEditProductItem.querySelector('img');
+      if (img && newImg) {
+        img.src = newImg.src;
+        img.alt = newImg.alt;
       }
 
-      if (!activeEditProductItem) return; // если и так не нашли — выходим тихо
-
-      activeEditProductItem.classList.add('active');
-
-      // Возвращаемся к шагу редактирования (step 2) и показываем правую панель
+      // ✅ Показываем снова интерфейс редактирования (step 2)
       document.querySelectorAll('.capsule-step').forEach((step, i) => {
         step.classList.toggle('active', i === 1);
       });
+
       document.querySelector('.capsule-edit-finalize')?.classList.add('hidden');
       document.querySelector('.capsule-form')?.classList.add('hidden');
       document.querySelector('.capsule-review-button')?.classList.remove('hidden');
       document.querySelector('.capsule-edit-right-selector')?.classList.remove('hidden');
       document.querySelector('.capsule-edit-empty')?.classList.add('hidden');
 
-      // Пересчёт цены
+      // Пересчитываем цену
       recalculateTotalPrice();
 
-      // Не прерываем остальную логику кликов
+      // ✅ Убираем return, чтобы не прерывать остальную логику кликов
     }
 
     const deleteBtn = e.target.closest('.capsule-product-card-delete-btn');
