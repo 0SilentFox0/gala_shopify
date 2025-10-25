@@ -300,6 +300,9 @@
 
                                             {% assign key = product.handle | append: ';' %}
 
+                                            {{ key }}
+                                            {{ seen }}
+
                                             {% unless seen contains key %}
                                                 <div class="capsule-product-card"
                                                     data-collection="{{ collection_title }}"
