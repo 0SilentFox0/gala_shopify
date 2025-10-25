@@ -128,10 +128,15 @@
                                                 {% assign col_span = 4 %}
                                                 {% assign row_start = 5 %}
                                                 {% assign row_span = 4 %}
-                                            {% elsif collection.handle == "hat" %}
+                                            {% elsif collection.handle == "hats" %}
                                                 {% assign col_start = 7 %}
                                                 {% assign col_span = 2 %}
                                                 {% assign row_start = 1 %}
+                                                {% assign row_span = 2 %}
+                                            {% elsif collection.handle == "bags" %}
+                                                {% assign col_start = 7 %}
+                                                {% assign col_span = 2 %}
+                                                {% assign row_start = 3 %}
                                                 {% assign row_span = 2 %}
                                             {% endif %}
                                         {% endfor %}
