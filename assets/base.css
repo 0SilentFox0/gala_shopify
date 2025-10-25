@@ -2286,7 +2286,7 @@ deferred-media[class] :is(.deferred-media__poster-button img, .deferred-media__p
 .price-facet-label {
   margin: 0px;
   font-size: 14px;
-  color: black;
+  color: #3A1704;
   line-height: 100%;
   font-weight: 500;
 }
