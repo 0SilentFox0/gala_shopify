@@ -43,7 +43,7 @@
     "type_font_h6": "subheading",
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
-    "page_width": "narrow",
+    "page_width": "wide",
     "badge_position": "top-right",
     "badge_corner_radius": 100,
     "badge_sale_color_scheme": "scheme-1",
@@ -133,11 +133,6 @@
           "navigation_link_css_selector": "",
           "custom_css": ""
         }
-      },
-      "6174324309569838175": {
-        "type": "shopify://apps/smile-io/blocks/smile-shopify-app/2fae4e25-1841-4ea2-bc02-bd548478c4f6",
-        "disabled": false,
-        "settings": {}
       },
       "11356494674496455976": {
         "type": "shopify://apps/froonze-loyalty-wishlist/blocks/loyalty/3c495b68-652c-468d-a0ef-5bad6935d104",
