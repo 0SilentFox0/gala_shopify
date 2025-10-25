@@ -165,38 +165,62 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
+    // ЗАМЕНА блока обработки replaceBtn
     const replaceBtn = e.target.closest('.capsule-product-card-replace-btn');
-    if (replaceBtn && activeEditProductItem) {
+    if (replaceBtn) {
       const card = replaceBtn.closest('.capsule-product-card');
-      const newId = card.dataset.id;
-      const newImg = card.querySelector('img');
+      if (!card) return;
 
-      activeEditProductItem.dataset.id = newId;
-      activeEditProductItem.dataset.price = (card.dataset.price || '0').replace(/,/g, '');
-      activeEditProductItem.dataset.title = card.dataset.title;
-      activeEditProductItem.dataset.img = newImg.src;
+      // Если слот не выбран (мы на шаге финализации), пытаемся выбрать его автоматически
+      if (!activeEditProductItem) {
+        const collection = card.dataset.collection;
+        const cardId = card.dataset.id;
 
-      const img = activeEditProductItem.querySelector('img');
-      if (img && newImg) {
-        img.src = newImg.src;
-        img.alt = newImg.alt;
+        // 1) Пытаемся найти слот той же коллекции
+        activeEditProductItem =
+          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item[data-collection="${collection}"]`) ||
+          // 2) Как альтернатива — слот с таким же id (если вдруг есть)
+          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item[data-id="${cardId}"]`) ||
+          // 3) Фолбэк — первый доступный слот
+          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item`);
       }
 
-      // ✅ Показываем снова интерфейс редактирования (step 2)
+      if (!activeEditProductItem) return; // если и так не нашли — выходим тихо
+
+      // Данные новой карточки
+      const newId = card.dataset.id;
+      const newPrice = (card.dataset.price || '0').replace(/,/g, '');
+      const newTitle = card.dataset.title || '';
+      const newImgEl = card.querySelector('img');
+      const newImgSrc = newImgEl?.src || '';
+      const newImgAlt = newImgEl?.alt || '';
+
+      // Обновляем слот
+      activeEditProductItem.dataset.id = newId;
+      activeEditProductItem.dataset.price = newPrice;
+      activeEditProductItem.dataset.title = newTitle;
+      activeEditProductItem.dataset.img = newImgSrc;
+
+      const slotImg = activeEditProductItem.querySelector('img');
+      if (slotImg && newImgSrc) {
+        slotImg.src = newImgSrc;
+        slotImg.alt = newImgAlt;
+      }
+
+      // Возвращаемся к шагу редактирования (step 2) и показываем правую панель
       document.querySelectorAll('.capsule-step').forEach((step, i) => {
         step.classList.toggle('active', i === 1);
       });
-
       document.querySelector('.capsule-edit-finalize')?.classList.add('hidden');
       document.querySelector('.capsule-form')?.classList.add('hidden');
       document.querySelector('.capsule-review-button')?.classList.remove('hidden');
       document.querySelector('.capsule-edit-right-selector')?.classList.remove('hidden');
       document.querySelector('.capsule-edit-empty')?.classList.add('hidden');
 
-      // Пересчитываем цену
+      // Пересчёт цены
       recalculateTotalPrice();
 
-      // ✅ Убираем return, чтобы не прерывать остальную логику кликов
+      // Не прерываем остальную логику кликов
     }
 
     const deleteBtn = e.target.closest('.capsule-product-card-delete-btn');
