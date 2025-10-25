@@ -199,11 +199,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const deleteBtn = e.target.closest('.capsule-product-card-delete-btn');
-    if (deleteBtn && activeEditProductItem) {
+    if (deleteBtn) {
+      const card = deleteBtn.closest('.capsule-product-card');
+      if (!card) return;
+
+      // Если слот ещё не выбран — ищем его автоматически
+      if (!activeEditProductItem) {
+        const id = card.dataset.id;
+        const collection = card.dataset.collection;
+
+        activeEditProductItem =
+          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item[data-id="${id}"]`) ||
+          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item[data-collection="${collection}"]`);
+      }
+
+      if (!activeEditProductItem) return;
+
+      // Удаляем слот
+      const removedId = activeEditProductItem.dataset.id;
       activeEditProductItem.remove();
       activeEditProductItem = null;
+
+      // Чистим форму (если слоты уже добавлялись в hidden inputs)
+      const form = document.querySelector('.capsule-form');
+      form?.querySelectorAll(`input[name*="[id]"][value="${removedId}"]`).forEach(i => i.remove());
+
+      // Обновляем UI правой панели / подсказок
       document.querySelector('.capsule-edit-right-selector')?.classList.add('hidden');
       document.querySelector('.capsule-edit-empty')?.classList.remove('hidden');
+
+      // Снимаем подсветку с карточки в финальной сетке
+      document.querySelectorAll('.capsule-edit-finalize-grid .capsule-product-card').forEach(c => {
+        if (c.dataset.id === removedId) c.classList.remove('active');
+      });
+
+      // Пересчёт цены
       recalculateTotalPrice();
     }
 
