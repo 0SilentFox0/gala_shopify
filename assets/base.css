@@ -4981,11 +4981,12 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   padding: 12px;
   text-align: center;
   background-color: transparent;
-  border: 1px solid #000000;
+  border: 1px solid #3A1704;
   font-size: 14px;
   font-weight: 700;
   line-height: 100%;
   cursor: pointer;
+  color: #3A1704;
 }
 
 .current-product .capsule-product-card-inner {
