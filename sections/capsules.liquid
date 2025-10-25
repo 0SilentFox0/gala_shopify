@@ -300,14 +300,14 @@
                                     {% endif %}
                                     {% endfor %}
 
-                                    {% if collection_title == '' %}
-                                    {% continue %}
-                                    {% endif %}
+                                    {% unless collection_title == '' %}
+                                    {% break %}
+                                    {% endunless %}
 
                                     {% assign key = '|' | append: product.id | append: '|' %}
-                                    {% if seen contains key %}
-                                    {% continue %}
-                                    {% endif %}
+                                    {% unless seen contains key %}
+                                    {% break %}
+                                    {% endunless %}
 
 
                                     <div class="capsule-product-card active"
