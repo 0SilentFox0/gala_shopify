@@ -1292,9 +1292,53 @@
                   },
                   "blocks": {}
                 },
+                "buy_buttons_Qq3kkR": {
+                  "type": "buy-buttons",
+                  "name": "t:names.product_buy_buttons",
+                  "settings": {
+                    "product": "{{ closest.product }}",
+                    "stacking": false,
+                    "show_pickup_availability": true,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "quantity": {
+                      "type": "quantity",
+                      "disabled": true,
+                      "static": true,
+                      "settings": {
+                        "product": "{{ closest.product }}"
+                      },
+                      "blocks": {}
+                    },
+                    "add-to-cart": {
+                      "type": "add-to-cart",
+                      "static": true,
+                      "settings": {
+                        "product": "{{ closest.product }}",
+                        "style_class": "button-secondary"
+                      },
+                      "blocks": {}
+                    },
+                    "accelerated-checkout": {
+                      "type": "accelerated-checkout",
+                      "disabled": true,
+                      "static": true,
+                      "settings": {
+                        "product": "{{ closest.product }}"
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": []
+                },
                 "button_mkadkC": {
                   "type": "button",
                   "name": "t:names.button",
+                  "disabled": true,
                   "settings": {
                     "label": "Add full outfit to cart",
                     "link": "shopify://collections/all",
@@ -1344,6 +1388,7 @@
               "block_order": [
                 "product_title_3LwfiQ",
                 "price_cBig6Q",
+                "buy_buttons_Qq3kkR",
                 "button_mkadkC",
                 "variant_picker_w4QK9p",
                 "swatches_zaeFqp"
