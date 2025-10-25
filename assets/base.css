@@ -3901,10 +3901,6 @@ slideshow-arrows .slideshow-control.slideshow-control--style-none {
   padding-block: 16px;
 }
 
-.sorting-filter-component-desktop .facets__label {
-  margin: 0px;
-}
-
 .resource-list__carousel slideshow-arrows {
   margin-top: 20px;
   position: static;
