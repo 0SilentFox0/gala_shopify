@@ -298,7 +298,7 @@
                                                 {% endif %}
                                             {% endfor %}
 
-                                            {% assign key = product.id | append: ';' %}
+                                            {% assign key = product.handle | append: ';' %}
 
                                             {% unless seen contains key %}
                                                 <div class="capsule-product-card"
