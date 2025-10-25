@@ -287,16 +287,15 @@
                                             {% assign collection_title = '' %}
 
                                             {% for col in product.collections %}
-                                            {% if col.metafields.custom.level.value == "1" 
-                                                    and col.title != "Capsule"
-                                                    and col.handle != "all"
-                                                    and col.title != "All Products"
-                                                    and col.title != "Bottom"
-                                                    and col.title != "Top"
-                                                    and col.title != "Accessories" %}
-                                                {% assign collection_title = col.title %}
-                                                {% break %}
-                                            {% endif %}
+                                                {% if col.metafields.custom.level.value == "1" 
+                                                        and col.title != "Capsule"
+                                                        and col.handle != "all"
+                                                        and col.title != "All Products"
+                                                        and col.title != "Bottom"
+                                                        and col.title != "Top"
+                                                        and col.title != "Accessories" %}
+                                                    {% assign collection_title = col.title %}
+                                                {% endif %}
                                             {% endfor %}
 
                                             {% assign key = product.id | append: ';' %}
