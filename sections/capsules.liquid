@@ -300,9 +300,9 @@
                                     {% endif %}
                                     {% endfor %}
 
-                                    {% unless collection_title == '' %}
+                                    {% if collection_title == '' %}
                                     {% break %}
-                                    {% endunless %}
+                                    {% endif %}
 
                                     {% assign key = '|' | append: product.id | append: '|' %}
                                     {% unless seen contains key %}
