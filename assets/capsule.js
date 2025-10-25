@@ -178,34 +178,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 1) Пытаемся найти слот той же коллекции
         activeEditProductItem =
-          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item[data-collection="${collection}"]`) ||
-          // 2) Как альтернатива — слот с таким же id (если вдруг есть)
-          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item[data-id="${cardId}"]`) ||
-          // 3) Фолбэк — первый доступный слот
-          document.querySelector(`.capsule-edit-product.active .capsule-edit-product-item`);
+          document.querySelector(`.capsule-edit-product .capsule-edit-product-item[data-collection="${collection}"]`) ||
       }
 
       if (!activeEditProductItem) return; // если и так не нашли — выходим тихо
 
-      // Данные новой карточки
-      const newId = card.dataset.id;
-      const newPrice = (card.dataset.price || '0').replace(/,/g, '');
-      const newTitle = card.dataset.title || '';
-      const newImgEl = card.querySelector('img');
-      const newImgSrc = newImgEl?.src || '';
-      const newImgAlt = newImgEl?.alt || '';
-
-      // Обновляем слот
-      activeEditProductItem.dataset.id = newId;
-      activeEditProductItem.dataset.price = newPrice;
-      activeEditProductItem.dataset.title = newTitle;
-      activeEditProductItem.dataset.img = newImgSrc;
-
-      const slotImg = activeEditProductItem.querySelector('img');
-      if (slotImg && newImgSrc) {
-        slotImg.src = newImgSrc;
-        slotImg.alt = newImgAlt;
-      }
+      activeEditProductItem.classList.add('active');
 
       // Возвращаемся к шагу редактирования (step 2) и показываем правую панель
       document.querySelectorAll('.capsule-step').forEach((step, i) => {
