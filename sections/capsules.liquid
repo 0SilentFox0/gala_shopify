@@ -298,7 +298,7 @@
                                                 {% endif %}
                                             {% endfor %}
 
-                                            {% assign key = product.handle | append: ';' %}
+                                            {% assign key = '|' | append: product.handle | append: '|' %}
 
                                             {{ key }}
 
