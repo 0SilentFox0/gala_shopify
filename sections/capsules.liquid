@@ -112,42 +112,42 @@
                                 <div class="capsule-edit-product-list">
                                     {% for capsuleProduct in capsuleProducts.value %}
                                         {% assign collection_title = '' %}
-                                        {% for collection in capsuleProduct.collections %}
-                                            {% if collection.metafields.custom.level.value == "1" %}
-                                                {% if collection.title != "Capsule" and collection.handle != "all" and collection.title != "All Products" and collection.title != "Bottom" and collection.title != "Top" and collection.title != "Accessories" %}
-                                                    {% assign collection_title = collection.title %}
+                                        {% for capsuleProductCollection in capsuleProduct.collections %}
+                                            {% if capsuleProductCollection.metafields.custom.level.value == "1" %}
+                                                {% if capsuleProductCollection.title != "Capsule" and capsuleProductCollection.handle != "all" and capsuleProductCollection.title != "All Products" and capsuleProductCollection.title != "Bottom" and capsuleProductCollection.title != "Top" and capsuleProductCollection.title != "Accessories" %}
+                                                    {% assign collection_title = capsuleProductCollection.title %}
                                                 {% endif %}
-                                                {% if collection.handle == "top" or collection.handle == "tops" or collection.handle == "jackets" or collection.handle == "shirts" or collection.handle == "blouses" %}
+                                                {% if capsuleProductCollection.handle == "top" or capsuleProductCollection.handle == "tops" or capsuleProductCollection.handle == "jackets" or capsuleProductCollection.handle == "shirts" or capsuleProductCollection.handle == "blouses" %}
                                                     {% assign col_start = 3 %}
                                                     {% assign col_span = 4 %}
                                                     {% assign row_start = 1 %}
                                                     {% assign row_span = 4 %}
-                                                {% elsif collection.handle == "bottom" or collection.handle == "skirts" or collection.handle == "shorts" or collection.handle == "jeans" or collection.handle == "trousers" %}
+                                                {% elsif capsuleProductCollection.handle == "bottom" or capsuleProductCollection.handle == "skirts" or capsuleProductCollection.handle == "shorts" or capsuleProductCollection.handle == "jeans" or capsuleProductCollection.handle == "trousers" %}
                                                     {% assign col_start = 3 %}
                                                     {% assign col_span = 4 %}
                                                     {% assign row_start = 5 %}
                                                     {% assign row_span = 4 %}
-                                                {% elsif collection.handle == "bags" %}
+                                                {% elsif capsuleProductCollection.handle == "bags" %}
                                                     {% assign col_start = 1 %}
                                                     {% assign col_span = 2 %}
                                                     {% assign row_start = 3 %}
                                                     {% assign row_span = 2 %}
-                                                {% elsif collection.handle == "hats" %}
+                                                {% elsif capsuleProductCollection.handle == "hats" %}
                                                     {% assign col_start = 7 %}
                                                     {% assign col_span = 2 %}
                                                     {% assign row_start = 1 %}
                                                     {% assign row_span = 2 %}
-                                                {% elsif collection.handle == "glasses" %}
+                                                {% elsif capsuleProductCollection.handle == "glasses" %}
                                                     {% assign col_start = 7 %}
                                                     {% assign col_span = 2 %}
                                                     {% assign row_start = 3 %}
                                                     {% assign row_span = 2 %}
-                                                {% elsif collection.handle == "jewelery" %}
+                                                {% elsif capsuleProductCollection.handle == "jewelery" %}
                                                     {% assign col_start = 1 %}
                                                     {% assign col_span = 2 %}
                                                     {% assign row_start = 1 %}
                                                     {% assign row_span = 2 %}
-                                                {% elsif collection.handle == "shoes" %}
+                                                {% elsif collecapsuleProductCollectionction.handle == "shoes" %}
                                                     {% assign col_start = 1 %}
                                                     {% assign col_span = 2 %}
                                                     {% assign row_start = 5 %}
