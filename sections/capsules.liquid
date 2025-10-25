@@ -118,15 +118,15 @@
                                                     {% assign collection_title = collection.title %}
                                                 {% endif %}
                                             {% endif %}
-                                            {% if collection.handle == "top" or collection.handle == "tops" %}
+                                            {% if collection.handle == "top" or collection.handle == "tops" or collection.handle == "jackets" or collection.handle == "shirts" or collection.handle == "blouses" %}
                                                 {% assign col_start = 3 %}
                                                 {% assign col_span = 4 %}
                                                 {% assign row_start = 1 %}
                                                 {% assign row_span = 4 %}
-                                            {% elsif collection.handle == "bottom" or collection.handle == "skirts" or collection.handle == "shorts" or collection.handle == "jeans" %}
+                                            {% elsif collection.handle == "bottom" or collection.handle == "skirts" or collection.handle == "shorts" or collection.handle == "jeans" or collection.handle == "trousers" %}
                                                 {% assign col_start = 3 %}
                                                 {% assign col_span = 4 %}
-                                                {% assign row_start = 1 %}
+                                                {% assign row_start = 5 %}
                                                 {% assign row_span = 4 %}
                                             {% endif %}
                                         {% endfor %}
