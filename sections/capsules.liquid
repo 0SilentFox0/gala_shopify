@@ -112,7 +112,7 @@
                                 <div class="capsule-edit-product-list">
                                     {% for capsuleProduct in capsuleProducts.value %}
                                         {% assign collection_title = '' %}
-                                        {% for collection in capsule_product.collections %}
+                                        {% for collection in capsuleProduct.collections %}
                                             {% if collection.metafields.custom.level.value == "1" %}
                                                 {% if collection.title != "Capsule" and collection.handle != "all" and collection.title != "All Products" %}
                                                     {% assign collection_title = collection.title %}
