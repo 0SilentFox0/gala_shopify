@@ -117,42 +117,42 @@
                                                 {% if collection.title != "Capsule" and collection.handle != "all" and collection.title != "All Products" and collection.title != "Bottom" and collection.title != "Top" and collection.title != "Accessories" %}
                                                     {% assign collection_title = collection.title %}
                                                 {% endif %}
-                                            {% endif %}
-                                            {% if collection.handle == "top" or collection.handle == "tops" or collection.handle == "jackets" or collection.handle == "shirts" or collection.handle == "blouses" %}
-                                                {% assign col_start = 3 %}
-                                                {% assign col_span = 4 %}
-                                                {% assign row_start = 1 %}
-                                                {% assign row_span = 4 %}
-                                            {% elsif collection.handle == "bottom" or collection.handle == "skirts" or collection.handle == "shorts" or collection.handle == "jeans" or collection.handle == "trousers" %}
-                                                {% assign col_start = 3 %}
-                                                {% assign col_span = 4 %}
-                                                {% assign row_start = 5 %}
-                                                {% assign row_span = 4 %}
-                                            {% elsif collection.handle == "bags" %}
-                                                {% assign col_start = 1 %}
-                                                {% assign col_span = 2 %}
-                                                {% assign row_start = 3 %}
-                                                {% assign row_span = 2 %}
-                                            {% elsif collection.handle == "123" %}
-                                                {% assign col_start = 7 %}
-                                                {% assign col_span = 2 %}
-                                                {% assign row_start = 1 %}
-                                                {% assign row_span = 2 %}
-                                            {% elsif collection.handle == "glasses" %}
-                                                {% assign col_start = 7 %}
-                                                {% assign col_span = 2 %}
-                                                {% assign row_start = 3 %}
-                                                {% assign row_span = 2 %}
-                                            {% elsif collection.handle == "jewelery" %}
-                                                {% assign col_start = 1 %}
-                                                {% assign col_span = 2 %}
-                                                {% assign row_start = 1 %}
-                                                {% assign row_span = 2 %}
-                                            {% elsif collection.handle == "shoes" %}
-                                                {% assign col_start = 1 %}
-                                                {% assign col_span = 2 %}
-                                                {% assign row_start = 5 %}
-                                                {% assign row_span = 2 %}
+                                                {% if collection.handle == "top" or collection.handle == "tops" or collection.handle == "jackets" or collection.handle == "shirts" or collection.handle == "blouses" %}
+                                                    {% assign col_start = 3 %}
+                                                    {% assign col_span = 4 %}
+                                                    {% assign row_start = 1 %}
+                                                    {% assign row_span = 4 %}
+                                                {% elsif collection.handle == "bottom" or collection.handle == "skirts" or collection.handle == "shorts" or collection.handle == "jeans" or collection.handle == "trousers" %}
+                                                    {% assign col_start = 3 %}
+                                                    {% assign col_span = 4 %}
+                                                    {% assign row_start = 5 %}
+                                                    {% assign row_span = 4 %}
+                                                {% elsif collection.handle == "bags" %}
+                                                    {% assign col_start = 1 %}
+                                                    {% assign col_span = 2 %}
+                                                    {% assign row_start = 3 %}
+                                                    {% assign row_span = 2 %}
+                                                {% elsif collection.handle == "hats" %}
+                                                    {% assign col_start = 7 %}
+                                                    {% assign col_span = 2 %}
+                                                    {% assign row_start = 1 %}
+                                                    {% assign row_span = 2 %}
+                                                {% elsif collection.handle == "glasses" %}
+                                                    {% assign col_start = 7 %}
+                                                    {% assign col_span = 2 %}
+                                                    {% assign row_start = 3 %}
+                                                    {% assign row_span = 2 %}
+                                                {% elsif collection.handle == "jewelery" %}
+                                                    {% assign col_start = 1 %}
+                                                    {% assign col_span = 2 %}
+                                                    {% assign row_start = 1 %}
+                                                    {% assign row_span = 2 %}
+                                                {% elsif collection.handle == "shoes" %}
+                                                    {% assign col_start = 1 %}
+                                                    {% assign col_span = 2 %}
+                                                    {% assign row_start = 5 %}
+                                                    {% assign row_span = 2 %}
+                                                {% endif %}
                                             {% endif %}
                                         {% endfor %}
                                         <div class="capsule-edit-product-item" style="grid-column: {{ col_start }} / span {{ col_span }}; grid-row: {{ row_start }} / span {{ row_span }}" data-collection="{{ collection_title }}" data-price="{{ capsuleProduct.price |  divided_by: 100 }}" data-id="{{ capsuleProduct.selected_or_first_available_variant.id }}">
