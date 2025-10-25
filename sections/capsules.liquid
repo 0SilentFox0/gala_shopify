@@ -136,7 +136,7 @@
                                             {% elsif collection.handle == "bags" %}
                                                 {% assign col_start = 1 %}
                                                 {% assign col_span = 2 %}
-                                                {% assign row_start = 1 %}
+                                                {% assign row_start = 3 %}
                                                 {% assign row_span = 2 %}
                                             {% elsif collection.handle == "glasses" %}
                                                 {% assign col_start = 7 %}
@@ -146,7 +146,12 @@
                                             {% elsif collection.handle == "jewelery" %}
                                                 {% assign col_start = 1 %}
                                                 {% assign col_span = 2 %}
-                                                {% assign row_start = 3 %}
+                                                {% assign row_start = 1 %}
+                                                {% assign row_span = 2 %}
+                                            {% elsif collection.handle == "shoes" %}
+                                                {% assign col_start = 1 %}
+                                                {% assign col_span = 2 %}
+                                                {% assign row_start = 5 %}
                                                 {% assign row_span = 2 %}
                                             {% endif %}
                                         {% endfor %}
