@@ -4396,6 +4396,10 @@ product-card dialog-component {
   gap: 8px;
 }
 
+.capsule-first-step-body product-card .image-block {
+  aspect-ratio: 1/1.6;
+}
+
 .capsule-step {
   display: flex;
   align-items: center;
