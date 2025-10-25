@@ -297,12 +297,8 @@
                                                     {% assign collection_title = col.title %}
                                                 {% endif %}
                                             {% endfor %}
-
-                                            {% assign key = '|' | append: product.handle | append: '|' %}
-
-                                            {{ key }}
-
-                                            {% unless seen contains key %}
+                                            
+                                            {% unless seen contains product.handle %}
                                                 <div class="capsule-product-card"
                                                     data-collection="{{ collection_title }}"
                                                     data-price="{{ product.price | divided_by: 100 }}"
@@ -324,7 +320,7 @@
                                                     <button class="capsule-product-card-delete-btn">Delete item</button>
                                                 </div>
                                             {% endunless %}
-                                            {% assign seen = seen | append: key %}
+                                            {% assign seen = seen | append: product.handle %}
 
                                         {% endfor %}
                                     {% endpaginate %}
