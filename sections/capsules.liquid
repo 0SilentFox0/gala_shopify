@@ -268,6 +268,7 @@
 
                         <div class="capsule-edit-finalize-grid">
                             {% assign target_collections = '' %}
+                            {% assign seen = '' %}
 
                             {%- for collection in collections -%}
                             {% if collection.metafields.custom.level.value == "1" %}
@@ -279,7 +280,6 @@
 
                             {%- for handle in target_collections -%}
                                 {% assign collection = collections[handle] %}
-                                {% assign seen = '' %}
                                 {% if collection and collection.products_count > 0 %}
                                     {% paginate collection.products by 1000 %}
 
@@ -297,7 +297,7 @@
                                                     {% assign collection_title = col.title %}
                                                 {% endif %}
                                             {% endfor %}
-                                            
+
                                             {% unless seen contains product.handle %}
                                                 <div class="capsule-product-card"
                                                     data-collection="{{ collection_title }}"
