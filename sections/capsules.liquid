@@ -282,12 +282,11 @@
                             {% if collection and collection.products_count > 0 %}
                                 {% paginate collection.products by 1000 %}
 
-                                {% assign seen = '' %} {# сюда будем добавлять |ID| уже выведенных товаров #}
+                                {% assign seen = '' %}
 
                                 {% for product in collection.products %}
                                     {% assign collection_title = '' %}
 
-                                    {%- comment -%} Ищем первую коллекцию уровня 1, не из исключений {%- endcomment -%}
                                     {% for col in product.collections %}
                                     {% if col.metafields.custom.level.value == "1" 
                                             and col.title != "Capsule"
@@ -301,18 +300,16 @@
                                     {% endif %}
                                     {% endfor %}
 
-                                    {%- comment -%} Пропускаем, если коллекция не найдена {%- endcomment -%}
                                     {% if collection_title == '' %}
                                     {% continue %}
                                     {% endif %}
 
-                                    {%- comment -%} Дедуп по product.id {%- endcomment -%}
                                     {% assign key = '|' | append: product.id | append: '|' %}
                                     {% if seen contains key %}
                                     {% continue %}
                                     {% endif %}
 
-                                    {# ---------- РЕНДЕР КАРТОЧКИ ---------- #}
+
                                     <div class="capsule-product-card active"
                                         data-collection="{{ collection_title }}"
                                         data-price="{{ product.price | divided_by: 100 }}"
@@ -333,8 +330,6 @@
                                     <button class="capsule-product-card-replace-btn hidden">Replace item</button>
                                     <button class="capsule-product-card-delete-btn">Delete item</button>
                                     </div>
-
-                                    {%- comment -%} Помечаем товар как уже выведенный {%- endcomment -%}
                                     {% assign seen = seen | append: key %}
 
                                 {% endfor %}
