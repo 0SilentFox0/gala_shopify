@@ -4400,14 +4400,18 @@ product-card dialog-component {
   aspect-ratio: 1/1.6;
 }
 
-product-card .buy-buttons-block .st-wishlist-button{
+product-card .buy-buttons-block .st-wishlist-button,
+product-card .buy-buttons-block .add-to-cart-text--added,
+product-card .buy-buttons-block add-to-cart-icon{
   display: none;
 }
 
 product-card .buy-buttons-block .add-to-cart-button {
   padding: 0px !important;
-  text-transform: uppercase !important;
   border: 0px !important;
+}
+product-card .buy-buttons-block .add-to-cart-button .add-to-cart-text {
+  text-transform: uppercase !important;
 }
 product-card .buy-buttons-block .add-to-cart-button:hover {
   color: #3A1704 !important;
