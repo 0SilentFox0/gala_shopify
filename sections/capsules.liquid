@@ -278,56 +278,55 @@
                             {% assign target_collections = target_collections | split: ',' %}
 
                             {%- for handle in target_collections -%}
-                            {% assign collection = collections[handle] %}
-                            {% if collection and collection.products_count > 0 %}
-                                {% paginate collection.products by 1000 %}
-
+                                {% assign collection = collections[handle] %}
                                 {% assign seen = '' %}
+                                {% if collection and collection.products_count > 0 %}
+                                    {% paginate collection.products by 1000 %}
 
-                                {% for product in collection.products %}
-                                    {% assign collection_title = '' %}
+                                        {% for product in collection.products %}
+                                            {% assign collection_title = '' %}
 
-                                    {% for col in product.collections %}
-                                    {% if col.metafields.custom.level.value == "1" 
-                                            and col.title != "Capsule"
-                                            and col.handle != "all"
-                                            and col.title != "All Products"
-                                            and col.title != "Bottom"
-                                            and col.title != "Top"
-                                            and col.title != "Accessories" %}
-                                        {% assign collection_title = col.title %}
-                                        {% break %}
-                                    {% endif %}
-                                    {% endfor %}
+                                            {% for col in product.collections %}
+                                            {% if col.metafields.custom.level.value == "1" 
+                                                    and col.title != "Capsule"
+                                                    and col.handle != "all"
+                                                    and col.title != "All Products"
+                                                    and col.title != "Bottom"
+                                                    and col.title != "Top"
+                                                    and col.title != "Accessories" %}
+                                                {% assign collection_title = col.title %}
+                                                {% break %}
+                                            {% endif %}
+                                            {% endfor %}
 
-                                    {% assign key = product.id %}
+                                            {% assign key = product.id %}
 
-                                    {% unless seen contains key %}
-                                        <div class="capsule-product-card active"
-                                            data-collection="{{ collection_title }}"
-                                            data-price="{{ product.price | divided_by: 100 }}"
-                                            data-id="{{ product.selected_or_first_available_variant.id }}">
-                                            <div class="capsule-product-card-inner">
-                                                <div class="capsule-product-card-img">
-                                                <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                                            {% unless seen contains key %}
+                                                <div class="capsule-product-card active"
+                                                    data-collection="{{ collection_title }}"
+                                                    data-price="{{ product.price | divided_by: 100 }}"
+                                                    data-id="{{ product.selected_or_first_available_variant.id }}">
+                                                    <div class="capsule-product-card-inner">
+                                                        <div class="capsule-product-card-img">
+                                                        <img src="{{ product.featured_image | image_url }}" alt="{{ product.featured_image.alt }}" loading="lazy">
+                                                        </div>
+                                                        <div class="capsule-product-card-content">
+                                                        <p class="capsule-product-card-vendor">{{ product.vendor }}</p>
+                                                        <p class="capsule-product-card-title">{{ product.title }}</p>
+                                                        {% if product.metafields.custom.short_description.value != blank %}
+                                                            <p class="capsule-product-card-desc">{{ product.metafields.custom.short_description.value }}</p>
+                                                        {% endif %}
+                                                        <p class="capsule-product-card-price">{{ product.price | money }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <button class="capsule-product-card-replace-btn hidden">Replace item</button>
+                                                    <button class="capsule-product-card-delete-btn">Delete item</button>
                                                 </div>
-                                                <div class="capsule-product-card-content">
-                                                <p class="capsule-product-card-vendor">{{ product.vendor }}</p>
-                                                <p class="capsule-product-card-title">{{ product.title }}</p>
-                                                {% if product.metafields.custom.short_description.value != blank %}
-                                                    <p class="capsule-product-card-desc">{{ product.metafields.custom.short_description.value }}</p>
-                                                {% endif %}
-                                                <p class="capsule-product-card-price">{{ product.price | money }}</p>
-                                                </div>
-                                            </div>
-                                            <button class="capsule-product-card-replace-btn hidden">Replace item</button>
-                                            <button class="capsule-product-card-delete-btn">Delete item</button>
-                                        </div>
-                                    {% endunless %}
-                                    {% assign seen = seen | append: key %}
+                                            {% endunless %}
+                                            {% assign seen = seen | append: key %}
 
-                                {% endfor %}
-                                {% endpaginate %}
+                                        {% endfor %}
+                                    {% endpaginate %}
                                 {% endif %}
                             {%- endfor -%}
                         </div>
