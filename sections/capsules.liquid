@@ -300,7 +300,7 @@
                                     {% endif %}
                                     {% endfor %}
 
-                                    {% assign key = '|' | append: product.id | append: '|' %}
+                                    {% assign key = product.id %}
 
                                     {% unless seen contains key %}
                                         <div class="capsule-product-card active"
