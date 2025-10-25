@@ -128,6 +128,11 @@
                                                 {% assign col_span = 4 %}
                                                 {% assign row_start = 5 %}
                                                 {% assign row_span = 4 %}
+                                            {% elsif collection.handle == "har" %}
+                                                {% assign col_start = 7 %}
+                                                {% assign col_span = 2 %}
+                                                {% assign row_start = 1 %}
+                                                {% assign row_span = 2 %}
                                             {% endif %}
                                         {% endfor %}
                                         <div class="capsule-edit-product-item" style="grid-column: {{ col_start }} / span {{ col_span }}; grid-row: {{ row_start }} / span {{ row_span }}" data-collection="{{ collection_title }}" data-price="{{ capsuleProduct.price |  divided_by: 100 }}" data-id="{{ capsuleProduct.selected_or_first_available_variant.id }}">
