@@ -105,12 +105,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const filtersToggle = document.querySelector('.capsule-facets-toggle');
     const filtersBody = document.querySelector('.facets__filters-wrapper');
 
-    if (!filtersBody || !filtersToggle) return;
-
-    const isClickInside = filtersBody.contains(e.target) || filtersToggle.contains(e.target);
-
-    if (!isClickInside && filtersBody.classList.contains('active')) {
-      filtersBody.classList.remove('active');
+    if (filtersBody && filtersToggle) {
+      const isClickInside = filtersBody.contains(e.target) || filtersToggle.contains(e.target);
+      if (!isClickInside && filtersBody.classList.contains('active')) {
+        filtersBody.classList.remove('active');
+      }
     }
 
     const hideHotspotBtn = e.target.closest('.capsule-edit-hide-hotspot');
