@@ -884,7 +884,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "Editor’s advice",
-                    "open_by_default": true
+                    "open_by_default": false
                   },
                   "blocks": {
                     "text_FDhDte": {
