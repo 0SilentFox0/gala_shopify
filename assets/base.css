@@ -4400,6 +4400,10 @@ product-card dialog-component {
   aspect-ratio: 1/1.6;
 }
 
+product-card .buy-buttons-block .st-wishlist-button{
+  display: none;
+}
+
 .capsule-step {
   display: flex;
   align-items: center;
