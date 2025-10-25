@@ -4450,8 +4450,8 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
 }
 
 .capsule-step.active .capsule-step-number {
-  background-color: #000000;
-  border-color: black;
+  background-color: #3A1704;
+  border-color: #3A1704;
   color: white;
 }
 
@@ -4467,7 +4467,7 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
 
 .capsule-step.active .capsule-step-title {
   font-weight: 700;
-  color: black;
+  color: #3A1704;
 }
 
 .capsule-divider {
@@ -4502,7 +4502,7 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   margin: 0px;
   font-size: 14px;
   line-height: 140%;
-  color: #000000;
+  color: #3A1704;
   font-family: "Cotham-Book", sans-serif;
 }
 
