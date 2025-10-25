@@ -4417,7 +4417,7 @@ product-card .buy-buttons-block .add-to-cart-button {
 }
 product-card .buy-buttons-block .add-to-cart-button .add-to-cart-text {
   text-transform: uppercase !important;
-  font-size: 14px;
+  font-size: 12px;
 }
 product-card .buy-buttons-block .add-to-cart-button:hover {
   color: #3A1704 !important;
