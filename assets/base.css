@@ -4749,14 +4749,14 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   margin: 0px;
   font-size: 16px;
   line-height: 100%;
-  color: #000000;
+  color: #3A1704;
 }
 
 .capsule-review-button,
 .capsule-form-button,
 .capsule-add-full-button {
   width: 100%;
-  background-color: black;
+  background-color: #3A1704;
   color: white;
   padding: 16px 32px;
   font-weight: 600;
