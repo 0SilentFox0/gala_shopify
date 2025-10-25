@@ -5049,7 +5049,7 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   cursor: pointer;
 }
 
-.popup-link-size-guide {
+.popup-link-size-guide .button {
   font-size: 12px;
 }
 
