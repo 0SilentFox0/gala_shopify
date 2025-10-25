@@ -5049,6 +5049,10 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   cursor: pointer;
 }
 
+.popup-link-size-guide {
+  font-size: 12px;
+}
+
 .capsule-product-card-options {
   margin-top: 12px;
   display: flex;

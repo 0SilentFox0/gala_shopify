@@ -116,7 +116,7 @@
             {% assign option_escape = product_option.name | escape  %}
             {% if option_escape == "Size" %}
                 <dialog-component
-                  class="popup-link popul-link-{{ block.id }}"
+                  class="popup-link popul-link-{{ block.id }} popup-link-size-guide"
                   {{ block.shopify_attributes }}
                 >
                   <div
