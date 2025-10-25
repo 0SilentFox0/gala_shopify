@@ -4413,9 +4413,11 @@ product-card .buy-buttons-block .add-to-cart-button {
   text-align: left;
   justify-content: start;
   max-width: fit-content;
+  height: fit-content;
 }
 product-card .buy-buttons-block .add-to-cart-button .add-to-cart-text {
   text-transform: uppercase !important;
+  font-size: 14px;
 }
 product-card .buy-buttons-block .add-to-cart-button:hover {
   color: #3A1704 !important;
