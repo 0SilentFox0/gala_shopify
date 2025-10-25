@@ -114,7 +114,7 @@
                                         {% assign collection_title = '' %}
                                         {% for collection in capsuleProduct.collections %}
                                             {% if collection.metafields.custom.level.value == "1" %}
-                                                {% if collection.title != "Capsule" and collection.handle != "all" and collection.title != "All Products" %}
+                                                {% if collection.title != "Capsule" and collection.handle != "all" and collection.title != "All Products" and collection.title != "Bottom" and collection.title != "Top" and collection.title != "Accessories" %}
                                                     {% assign collection_title = collection.title %}
                                                 {% endif %}
                                             {% endif %}
