@@ -5061,6 +5061,7 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   font-weight: 700;
   text-transform: uppercase;
   margin: 0px;
+  line-height: 120%;
 }
 
 .capsule-slider-block {
