@@ -4404,6 +4404,16 @@ product-card .buy-buttons-block .st-wishlist-button{
   display: none;
 }
 
+product-card .buy-buttons-block .add-to-cart-button {
+  padding: 0px;
+  text-transform: uppercase;
+  border: 0px;
+}
+product-card .buy-buttons-block .add-to-cart-button:hover {
+  color: #3A1704;
+  background-color: transparent;
+}
+
 .capsule-step {
   display: flex;
   align-items: center;
