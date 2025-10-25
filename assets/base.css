@@ -4405,13 +4405,13 @@ product-card .buy-buttons-block .st-wishlist-button{
 }
 
 product-card .buy-buttons-block .add-to-cart-button {
-  padding: 0px;
-  text-transform: uppercase;
-  border: 0px;
+  padding: 0px !important;
+  text-transform: uppercase !important;
+  border: 0px !important;
 }
 product-card .buy-buttons-block .add-to-cart-button:hover {
-  color: #3A1704;
-  background-color: transparent;
+  color: #3A1704 !important;
+  background-color: transparent !important;
 }
 
 .capsule-step {
