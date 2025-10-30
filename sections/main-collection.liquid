@@ -55,7 +55,7 @@
       {% paginate products by 24 %}
         {% capture children %}
           {% for product in products %}
-            {% unless product.metafields.custom.capsule.value %}
+            {% unless product.metafields.custom.capsule %}
             <li
               class="product-grid__item product-grid__item--{{ forloop.index0 }}"
               data-page="{{ paginate.current_page }}"
