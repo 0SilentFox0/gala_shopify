@@ -287,7 +287,13 @@
         "second_step": "Customize Your Capsule",
         "third_step": "Select Item Details",
         "heading": "Create your perfect Look",
-        "text": "Start with a designer’s choice, then customize it to fit your style."
+        "text": "Start with a designer’s choice, then customize it to fit your style.",
+        "edit_heading": "Custom capsule",
+        "edit_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        "edit_subheading": "Select an item on the left to start editing.",
+        "edit_subtext": "Click on any item to edit or remove it, or tap on an empty spot to add a new piece to your look.",
+        "finalize_heading": "Finalize Your Capsule",
+        "finalize_text": "Choose size and color for each item before adding to bag."
       }
     },
     "main": {
