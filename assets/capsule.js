@@ -125,44 +125,49 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const editBtn = e.target.closest('.capsule-edit-button');
     if (editBtn) {
-      const productGridItem = editBtn.closest('.product-grid__item');
-      const capsuleHandle = productGridItem?.dataset.capsule;
-      const capsuleEditProducts = document.querySelectorAll('.capsule-edit-product');
+  const productGridItem = editBtn.closest('.product-grid__item');
+  const capsuleHandle = productGridItem?.dataset.capsule;
+  const capsuleTitle = productGridItem?.querySelector('.product-card-title')?.textContent?.trim();
 
-      capsuleEditProducts.forEach(block => {
-        block.classList.remove('active');
-      });
+  const capsuleEditProducts = document.querySelectorAll('.capsule-edit-product');
+  capsuleEditProducts.forEach(block => block.classList.remove('active'));
 
-      const activeBlock = document.querySelector(`.capsule-edit-product[data-capsule="${capsuleHandle}"]`);
-      if (activeBlock) {
-        activeBlock.classList.add('active');
+  const activeBlock = document.querySelector(`.capsule-edit-product[data-capsule="${capsuleHandle}"]`);
+  if (activeBlock) {
+    activeBlock.classList.add('active');
 
-        let total = 0;
-        const items = activeBlock.querySelectorAll('.capsule-edit-product-item');
-        items.forEach(item => {
-          total += parseFloat((item.dataset.price || '0').replace(/,/g, ''));
-        });
-
-        const priceEl = document.querySelector('.capsule-edit-price');
-        if (priceEl) {
-          const formatted = new Intl.NumberFormat('en-US', {
-            style: 'decimal',
-            useGrouping: true,
-            minimumFractionDigits: 0
-          }).format(total);
-          priceEl.textContent = `${formatted} AED`;
-        }
-      }
-
-      document.querySelector('.capsule-edit-wrapper')?.classList.add('active');
-      document.querySelector('.capsule-first-step-body')?.classList.add('hidden');
-
-      document.querySelectorAll('.capsule-step').forEach((step, i) => {
-        step.classList.toggle('active', i === 1);
-      });
-
-      return;
+    // Изменяем заголовок второго шага
+    const editHeading = document.querySelector('.capsule-edit-content h2');
+    if (editHeading && capsuleTitle) {
+      editHeading.textContent = capsuleTitle;
     }
+
+    let total = 0;
+    const items = activeBlock.querySelectorAll('.capsule-edit-product-item');
+    items.forEach(item => {
+      total += parseFloat((item.dataset.price || '0').replace(/,/g, ''));
+    });
+
+    const priceEl = document.querySelector('.capsule-edit-price');
+    if (priceEl) {
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'decimal',
+        useGrouping: true,
+        minimumFractionDigits: 0
+      }).format(total);
+      priceEl.textContent = `${formatted} AED`;
+    }
+  }
+
+  document.querySelector('.capsule-edit-wrapper')?.classList.add('active');
+  document.querySelector('.capsule-first-step-body')?.classList.add('hidden');
+
+  document.querySelectorAll('.capsule-step').forEach((step, i) => {
+    step.classList.toggle('active', i === 1);
+  });
+
+  return;
+}
 
     const replaceBtn = e.target.closest('.capsule-product-card-replace-btn');
     if (replaceBtn && activeEditProductItem) {
