@@ -63,7 +63,7 @@
   id="product-card-{{ block.id }}"
   data-product-transition="{{ settings.transition_to_main_product }}"
   {{ block.shopify_attributes }}
-  {% if product.metafields.custom.capsule.value %}
+  {% if product.metafields.custom.capsule.value and template.name != "collection" %}
     data-capsule-product="{{ product.id }}"
   {% endif %}
 >
