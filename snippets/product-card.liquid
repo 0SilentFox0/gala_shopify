@@ -54,6 +54,9 @@
     data-product-id="{{ product.id }}"
     data-featured-media-url="{{ featured_media_url }}"
     data-product-transition="{{ settings.transition_to_main_product }}"
+    {% if product.metafields.custom.capsule.value %}
+      data-capsule-product="{{ product.id }}"
+    {% endif %}
   >
 {%- endif -%}
 <product-card
