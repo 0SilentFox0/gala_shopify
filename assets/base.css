@@ -5693,3 +5693,8 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
     margin-top: 40px;
   }
 }
+
+[data-collection="Dresses"] img {
+  height: 100%;
+  object-fit: cover;
+}
