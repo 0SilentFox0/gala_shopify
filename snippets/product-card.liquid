@@ -182,6 +182,9 @@
 
     localStorage.setItem('capsuleSelectionProductId', id);
 
-    window.location.href = '/collections/capsule';
+    setTimeout(() => {
+      window.location.href = '/collections/capsule';
+    },1000)
+    
   });
 </script>
