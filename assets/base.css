@@ -5698,3 +5698,8 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   height: 100%;
   object-fit: cover;
 }
+
+.meet-dialog {
+  top: 50%;
+  transform: translateY(-50%);
+}
