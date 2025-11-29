@@ -103,6 +103,7 @@
                                                     name="contact[name]"
                                                     value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }}{% endif %}"
                                                     placeholder="{{ 'blocks.contact_form.name' | t }}"
+                                                    required
                                                     >
                                                 </div>
 
@@ -121,6 +122,7 @@
                                                     pattern="[0-9\-]*"
                                                     value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
                                                     placeholder="+971 00 000 0000"
+                                                    required
                                                     >
                                                 </div>
 
