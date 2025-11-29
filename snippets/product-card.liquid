@@ -49,14 +49,11 @@
   endif
 %}
 
-{%- if settings.transition_to_main_product -%}
+{%- if settings.transition_to_main_product and product.metafields.custom.capsule.value != true -%}
   <product-card-link
     data-product-id="{{ product.id }}"
     data-featured-media-url="{{ featured_media_url }}"
     data-product-transition="{{ settings.transition_to_main_product }}"
-    {% if product.metafields.custom.capsule.value %}
-      data-capsule-product="{{ product.id }}"
-    {% endif %}
   >
 {%- endif -%}
 <product-card
@@ -66,6 +63,9 @@
   id="product-card-{{ block.id }}"
   data-product-transition="{{ settings.transition_to_main_product }}"
   {{ block.shopify_attributes }}
+  {% if product.metafields.custom.capsule.value %}
+    data-capsule-product="{{ product.id }}"
+  {% endif %}
 >
   <a
     id="{{ product_card_id | md5 }}"
@@ -107,7 +107,7 @@
     {{ children }}
   </div>
 </product-card>
-{%- if settings.transition_to_main_product -%}
+{%- if settings.transition_to_main_product and product.metafields.custom.capsule.value != true -%}
   </product-card-link>
 {%- endif -%}
 
