@@ -52,7 +52,90 @@
                                 {% endif %}
 
                                 {% if block.settings.button != blank %}
-                                    <a href="{{ block.settings.button_url }}" class="meet-section-button">{{ block.settings.button }}</a>
+                                    <dialog-component>
+                                        <button on:click="/showDialog" class="meet-section-button">{{ block.settings.button }}</button>
+                                        <dialog
+                                            ref="dialog"
+                                            class="dialog-modal meet-dialog color-{{ settings.drawer_color_scheme }}"
+                                            scroll-lock
+                                            >
+                                            
+                                            <h2>Book consultation</h2>
+
+                                            {% assign form_id = section.id | prepend: 'ContactFormBook-' %}
+
+                                            {%- form 'contact', id: form_id, class: 'contact-form__form' -%}
+                                                {%- if form.errors -%}
+                                                <div
+                                                    class="contact-form__error"
+                                                    tabindex="-1"
+                                                    autofocus
+                                                >
+                                                    {{- 'icon-error.svg' | inline_asset_content -}}
+
+                                                    {{- form.errors.translated_fields.email | capitalize }}
+                                                    {{ form.errors.messages.email -}}
+                                                </div>
+                                                {%- endif -%}
+
+                                                {%- if form.posted_successfully? -%}
+                                                <div
+                                                    class="contact-form__success"
+                                                    tabindex="-1"
+                                                    autofocus
+                                                >
+                                                    {{- 'icon-checkmark.svg' | inline_asset_content -}}
+                                                    {{- 'blocks.contact_form.post_success' | t -}}
+                                                </div>
+                                                {%- endif -%}
+
+                                                <div>
+                                                    <label
+                                                    for="ContactForm-name"
+                                                    >
+                                                    {{- 'blocks.contact_form.name' | t -}}
+                                                    </label>
+                                                    <input
+                                                    type="text"
+                                                    id="ContactForm-name"
+                                                    class="contact-form__input"
+                                                    autocomplete="name"
+                                                    name="contact[name]"
+                                                    value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.first_name }}{% endif %}"
+                                                    placeholder="{{ 'blocks.contact_form.name' | t }}"
+                                                    >
+                                                </div>
+
+                                                <div>
+                                                    <label
+                                                    for="ContactForm-phone"
+                                                    >
+                                                    {{- 'blocks.contact_form.phone' | t -}}
+                                                    </label>
+                                                    <input
+                                                    type="tel"
+                                                    id="ContactForm-phone"
+                                                    class="contact-form__input"
+                                                    autocomplete="tel"
+                                                    name="contact[phone]"
+                                                    pattern="[0-9\-]*"
+                                                    value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}"
+                                                    placeholder="+971 00 000 0000"
+                                                    >
+                                                </div>
+
+                                                <button
+                                                    type="submit"
+                                                    class="button submit-button size-style {{ block.settings.style_class }}"
+                                                    style="{% render 'size-style', settings: block.settings %}"
+                                                    {{ block.shopify_attributes }}
+                                                    >
+                                                    SEND
+                                                </button>
+                                            {%- endform -%}
+
+                                        </dialog>
+                                    </dialog-component>
                                 {% endif %}
                             </div>
                         {% endfor %}
