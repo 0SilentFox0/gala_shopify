@@ -5407,6 +5407,7 @@ product-card .buy-buttons-block .add-to-cart-button:hover {
   font-weight: 600;
   max-width: fit-content;
   cursor: pointer;
+  background-color: transparent;
 }
 
 @media(min-width: 768px) {
