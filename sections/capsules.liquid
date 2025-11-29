@@ -114,7 +114,7 @@
                                                 {% if capsuleProductCollection.title != "Capsule" and capsuleProductCollection.handle != "all" and capsuleProductCollection.title != "All Products" and capsuleProductCollection.title != "Bottom" and capsuleProductCollection.title != "Top" and capsuleProductCollection.title != "Accessories" %}
                                                     {% assign collection_title = capsuleProductCollection.title %}
                                                 {% endif %}
-                                                {% if capsuleProductCollection.handle == "top" or capsuleProductCollection.handle == "tops" or capsuleProductCollection.handle == "jackets" or capsuleProductCollection.handle == "shirts" or capsuleProductCollection.handle == "blouses" %}
+                                                {% if capsuleProductCollection.handle == "top" or capsuleProductCollection.handle == "tops" or capsuleProductCollection.handle == "jackets" or capsuleProductCollection.handle == "shirts" or capsuleProductCollection.handle == "blouses" or capsuleProductCollection.handle == "blouses-tops" %}
                                                     {% assign col_start = 3 %}
                                                     {% assign col_span = 4 %}
                                                     {% assign row_start = 1 %}
