@@ -170,3 +170,18 @@
     }
   }
 {% endstylesheet %}
+
+<script>
+  document.addEventListener('click', (e) => {
+    const card = e.target.closest('.product-card[data-capsule-product]');
+    if (!card) return;
+
+    e.preventDefault();
+
+    const id = card.dataset.capsuleProduct;
+
+    localStorage.setItem('capsuleSelectionProductId', id);
+
+    window.location.href = '/collections/capsule';
+  });
+</script>

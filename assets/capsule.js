@@ -1,5 +1,25 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  // === Автозапуск капсулы при переходе ===
+  const capsuleProductId = localStorage.getItem('capsuleSelectionProductId');
+
+  if (capsuleProductId) {
+    // Ищем карточку соответствующей капсулы на странице
+    const capsuleCard = document.querySelector(`.product-grid__item[data-capsule="${capsuleProductId}"], 
+                                                .product-card[data-product-id="${capsuleProductId}"]`);
+
+    if (capsuleCard) {
+      const editBtn = capsuleCard.querySelector('.capsule-edit-button, .capsule-add-full-button');
+
+      if (editBtn) {
+        editBtn.click(); // имитируем клик — откроется 2 этап
+      }
+    }
+
+    // Убираем, чтобы не запускать повторно
+    localStorage.removeItem('capsuleSelectionProductId');
+  }
+
   const storedCapsule = localStorage.getItem('capsuleSelection');
 
   if (storedCapsule) {
