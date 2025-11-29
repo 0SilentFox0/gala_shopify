@@ -67,6 +67,7 @@
     data-capsule-product="{{ product.id }}"
   {% endif %}
 >
+  {% if product.metafields.custom.capsule.value != true %}
   <a
     id="{{ product_card_id | md5 }}"
     {% unless onboarding %}
@@ -80,6 +81,7 @@
       {{ product.title }}
     </span>
   </a>
+  {% endif %}
   <div
     class="
       product-card__content
