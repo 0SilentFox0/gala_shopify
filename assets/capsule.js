@@ -17,8 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       }
 
+      setTimeout(() => {
       // Убираем, чтобы не запускать повторно
       localStorage.removeItem('capsuleSelectionProductId');
+      }, 1000);
     }
   }, 1000);
 
