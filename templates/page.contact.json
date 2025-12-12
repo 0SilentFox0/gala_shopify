@@ -882,7 +882,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Email Support<br/><span style=\"text-decoration:underline\">support.example@email.com<br/></span>(We aim to respond within 24 hours on business days.)</p>",
+                            "text": "<p>Email Support<br/><span style=\"text-decoration:underline\">customercare@gala.ae<br/></span>(We aim to respond within 24 hours on business days.)</p>",
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
@@ -1053,7 +1053,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Phone Support<br/><span style=\"text-decoration:underline\">+971 4 000 0000<br/></span>(Support available in English and Arabic)</p>",
+                            "text": "<p>Phone Support<br/><span style=\"text-decoration:underline\">+971 585288369<br/></span>(Support available in English and Russian)</p>",
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
