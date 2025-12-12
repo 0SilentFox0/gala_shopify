@@ -348,7 +348,7 @@
                     "text_ppznVF": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Integer quis auctor elit sed vulputate mi sit amet. Pretium aenean pharetra magna ac placerat vestibulum.</p>",
+                        "text": "<p>Once your order is placed, you will receive a confirmation email followed by a shipping notification with your tracking number.<br/>You can track your package at any time using the link provided in your email. If you need assistance or your order is delayed, our Customer Care team is here to help — simply contact us via the form or at customercare@gala.ae.</p>",
                         "width": "100%",
                         "max_width": "none",
                         "alignment": "left",
