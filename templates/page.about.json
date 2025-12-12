@@ -83,6 +83,7 @@
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
+        "use_newsletter": false,
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -132,7 +133,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Since 2019 we’ve been redefining modern elegance — one garment at a time.</p>",
+                "text": "<p>Gala — curated fashion for Women Who choose Beauty</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -157,7 +158,7 @@
             "text_QBjb4c": {
               "type": "text",
               "settings": {
-                "text": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur id dignissim sapien. Nulla facilisi. Maecenas accumsan augue non massa posuere, et rhoncus velit volutpat. Vivamus a arcu non erat vestibulum faucibus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p><p>Donec iaculis, sapien sed dictum ultricies, leo nunc dictum ligula, et sollicitudin mauris quam in justo. Quisque non sapien at sapien imperdiet vestibulum. Cras fermentum, nisi sit amet finibus pretium, justo urna sodales nisl, nec volutpat nulla nunc eget elit.</p><p>Suspendisse sit amet ante sit amet risus fermentum lacinia. Sed vitae erat in sapien lacinia gravida. Vivamus nec quam velit.<br/><br/></p>",
+                "text": "<p>Gala is more than boutique.<br/>It is a <strong>carefully curated universe of femininity, refined style, and meaningful luxury</strong>, shaped by professional stylists and fashion experts.</p><p>Our signature advantage is a <strong>curated approach</strong>: we handpick every brand and every piece with intention — focusing on elegance, sensuality, and the unique character of the modern woman.</p><p>Discover iconic and fashion-defining designers, including:</p><p> <strong>Magda Butrym</strong> — bold femininity and sculptural silhouettes<br/><br/><strong>Cult Gaia</strong> — wearable art and architectural accessories<br/><br/><strong>Giambattista Valli</strong> — romantic couture and timeless sophistication<br/><br/>And other carefully selected designers who celebrate beauty and individuality</p>",
                 "width": "100%",
                 "max_width": "none",
                 "alignment": "left",
