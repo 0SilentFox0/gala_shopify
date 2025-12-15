@@ -325,7 +325,7 @@
                           "type": "text",
                           "name": "Text",
                           "settings": {
-                            "text": "<p>King Salman Bin Abdulaziz Al Saud St 2, Dubai, OAE</p>",
+                            "text": "<p><strong>Ground Floor, Jumeirah Al Qasr</strong><br/><strong>Madinat Jumeirah</strong><br/><strong>Dubai, UAE</strong></p>",
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
