@@ -11,6 +11,7 @@
   "sections": {
     "preload_ptcddz": {
       "type": "preload",
+      "disabled": true,
       "name": "Preload",
       "settings": {
         "bg": "shopify://shop_images/galadubai.ae_1739201847_3565005945963454035_69361182654_1_1.webp",
