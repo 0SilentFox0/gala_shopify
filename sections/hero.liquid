@@ -292,7 +292,23 @@
       {% endif %}
         {% content_for 'blocks' %}
         {%- if section.settings.shop_button_text != blank -%}
-          <a href="{{ section.settings.shop_button_link | default: '/collections/all' }}" class="hero__shop-button">{{ section.settings.shop_button_text }}</a>
+          <div 
+            class="hero__shop-button-wrapper"
+            style="
+              padding-block-start: {{ section.settings.shop_button_padding_block_start | default: 0 }}px;
+              padding-block-end: {{ section.settings.shop_button_padding_block_end | default: 0 }}px;
+              text-align: {{ section.settings.shop_button_alignment | default: 'start' }};
+              width: 100%;
+            "
+          >
+            <a 
+              href="{{ section.settings.shop_button_link | default: '/collections/all' }}" 
+              class="hero__shop-button"
+              style="font-size: {{ section.settings.shop_button_font_size | default: 1 }}em;"
+            >
+              {{ section.settings.shop_button_text }}
+            </a>
+          </div>
         {%- endif -%}
       {% if section.settings.use_newsletter %}
         </div>
@@ -490,6 +506,11 @@
     }
   }
 
+  .hero__shop-button-wrapper {
+    width: 100%;
+    display: block;
+  }
+
   .hero__shop-button {
     color: white;
     text-decoration: underline;
@@ -646,6 +667,56 @@
       "id": "shop_button_link",
       "label": "Button Link",
       "default": "/collections/all"
+    },
+    {
+      "type": "range",
+      "id": "shop_button_font_size",
+      "label": "Font Size",
+      "min": 0.5,
+      "max": 3,
+      "step": 0.1,
+      "unit": "em",
+      "default": 1
+    },
+    {
+      "type": "select",
+      "id": "shop_button_alignment",
+      "label": "Alignment",
+      "options": [
+        {
+          "value": "start",
+          "label": "Start"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "End"
+        }
+      ],
+      "default": "start"
+    },
+    {
+      "type": "range",
+      "id": "shop_button_padding_block_start",
+      "label": "Top Spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "shop_button_padding_block_end",
+      "label": "Bottom Spacing",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
     },
     {
       "type": "header",
