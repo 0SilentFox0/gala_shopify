@@ -1,5 +1,6 @@
 
 
+
 {% liquid
   assign media_count = 0
   if section.settings.image_1 != blank and section.settings.image_2 != blank
@@ -19,8 +20,18 @@
   assign has_video = false
   assign has_video_multiple = false
   assign has_media = false
+  assign has_mobile_image = false
+  assign has_desktop_image = false
   assign media_type_1 = section.settings.media_type_1
   assign media_type_2 = section.settings.media_type_2
+  
+  if section.settings.mobile_image != blank
+    assign has_mobile_image = true
+  endif
+  if section.settings.desktop_image != blank
+    assign has_desktop_image = true
+  endif
+  
   if section.settings.image_1 != blank and media_type_1 == 'image'
     assign has_image_1 = true
   endif
@@ -34,7 +45,7 @@
     assign has_video_2 = true
   endif
 
-  if has_image_1 or has_image_2
+  if has_image_1 or has_image_2 or has_mobile_image or has_desktop_image
     assign has_image = true
   endif
   if has_video_1 or has_video_2
@@ -55,7 +66,37 @@
 %}
 
 {% capture media %}
-  {%- if has_image_1 -%}
+  {%- if has_mobile_image -%}
+    {% assign media_count = media_count | plus: 1 %}
+    {{
+      section.settings.mobile_image
+      | image_url: width: 3840
+      | image_tag:
+        width: section.settings.mobile_image.width,
+        widths: widths,
+        height: section.settings.mobile_image.height,
+        alt: section.settings.mobile_image.alt,
+        class: 'hero__image hero__image--mobile',
+        sizes: sizes
+    }}
+  {%- endif -%}
+  
+  {%- if has_desktop_image -%}
+    {% assign media_count = media_count | plus: 1 %}
+    {{
+      section.settings.desktop_image
+      | image_url: width: 3840
+      | image_tag:
+        width: section.settings.desktop_image.width,
+        widths: widths,
+        height: section.settings.desktop_image.height,
+        alt: section.settings.desktop_image.alt,
+        class: 'hero__image hero__image--desktop',
+        sizes: sizes
+    }}
+  {%- endif -%}
+  
+  {%- if has_image_1 and has_mobile_image == false and has_desktop_image == false -%}
     {% assign media_count = media_count | plus: 1 %}
     {{
       section.settings.image_1
@@ -123,7 +164,31 @@
 {% endcapture %}
 
 {% capture media_blurred %}
-  {% if has_image_1 %}
+  {% if has_desktop_image %}
+    {{
+      section.settings.desktop_image
+      | image_url: width: 3840
+      | image_tag:
+        width: section.settings.desktop_image.width,
+        widths: widths,
+        height: section.settings.desktop_image.height,
+        alt: '',
+        class: 'hero__image',
+        sizes: sizes
+    }}
+  {% elsif has_mobile_image %}
+    {{
+      section.settings.mobile_image
+      | image_url: width: 3840
+      | image_tag:
+        width: section.settings.mobile_image.width,
+        widths: widths,
+        height: section.settings.mobile_image.height,
+        alt: '',
+        class: 'hero__image',
+        sizes: sizes
+    }}
+  {% elsif has_image_1 %}
     {{
       section.settings.image_1
       | image_url: width: 3840
@@ -166,13 +231,7 @@
     --hero-border-width: {{ section.settings.border_width }}px;
     --hero-border-opacity: {{ section.settings.border_opacity }}%;
     --blur-opacity: {{ section.settings.reflection_opacity | divided_by: 100.0 }};
-    {% if section.settings.section_height == 'custom' %}
-      --hero-min-height: {{ section.settings.section_height_custom }}svh;
-    {% elsif section.settings.section_height == "full-screen" %}
-       --hero-min-height: 100svh;
-    {% else %}
-      --hero-min-height: var(--section-height-{{ section.settings.section_height }});
-    {% endif %}
+    --hero-min-height: 100svh;
   "
   {% if request.visual_preview_mode %}
     data-shopify-visual-preview
@@ -198,18 +257,13 @@
     class="hero__container spacing-style section section--full-width"
     style="      {% render 'spacing-style', settings: section.settings %}"
   >
-    {%- if section.settings.link != blank -%}
-      <a
-        href="{{ section.settings.link }}"
-        class="hero__link"
-        {% if section.settings.open_in_new_tab %}
-          target="_blank" rel="noopener"
-        {% endif %}
-      ></a>
-    {%- endif -%}
     <div
       class="hero__media-wrapper"
-      {%- if section.settings.image_1 != blank -%}
+      {%- if section.settings.desktop_image != blank -%}
+        style="--hero-media-aspect-ratio: {{ section.settings.desktop_image.aspect_ratio }}; --hero-media-count: {{ media_count }};"
+      {%- elsif section.settings.mobile_image != blank -%}
+        style="--hero-media-aspect-ratio: {{ section.settings.mobile_image.aspect_ratio }}; --hero-media-count: {{ media_count }};"
+      {%- elsif section.settings.image_1 != blank -%}
         style="--hero-media-aspect-ratio: {{ section.settings.image_1.aspect_ratio }}; --hero-media-count: {{ media_count }};"
       {%- endif -%}
     >
@@ -237,6 +291,7 @@
         <div class="hero__content-left">
       {% endif %}
         {% content_for 'blocks' %}
+        <a href="/collections/all" class="button button--primary hero__shop-button">Shop now</a>
       {% if section.settings.use_newsletter %}
         </div>
         <div class="hero__content-newsletter">
@@ -424,6 +479,22 @@
     overflow: hidden;
   }
 
+  .hero__image--mobile {
+    display: block;
+    
+    @media screen and (width >= 750px) {
+      display: none;
+    }
+  }
+
+  .hero__image--desktop {
+    display: none;
+    
+    @media screen and (width >= 750px) {
+      display: block;
+    }
+  }
+
   .hero__link {
     position: absolute;
     inset: 0;
@@ -552,6 +623,16 @@
     {
       "type": "header",
       "content": "t:content.media"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
     },
     {
       "type": "select",
