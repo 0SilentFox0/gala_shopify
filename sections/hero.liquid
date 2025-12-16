@@ -291,7 +291,9 @@
         <div class="hero__content-left">
       {% endif %}
         {% content_for 'blocks' %}
-        <a href="/collections/all" class="hero__shop-button">Shop now</a>
+        {%- if section.settings.shop_button_text != blank -%}
+          <a href="{{ section.settings.shop_button_link | default: '/collections/all' }}" class="hero__shop-button">{{ section.settings.shop_button_text }}</a>
+        {%- endif -%}
       {% if section.settings.use_newsletter %}
         </div>
         <div class="hero__content-newsletter">
@@ -491,8 +493,10 @@
   .hero__shop-button {
     color: white;
     text-decoration: underline;
-    font-size: inherit;
+    font-size: 1em;
     font-family: inherit;
+    font-weight: inherit;
+    line-height: inherit;
     transition: color 0.2s ease;
     display: inline-block;
 
@@ -626,6 +630,22 @@
       "id": "open_in_new_tab",
       "label": "t:settings.open_new_tab",
       "default": false
+    },
+    {
+      "type": "header",
+      "content": "Shop Now Button"
+    },
+    {
+      "type": "text",
+      "id": "shop_button_text",
+      "label": "Button Text",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "shop_button_link",
+      "label": "Button Link",
+      "default": "/collections/all"
     },
     {
       "type": "header",
