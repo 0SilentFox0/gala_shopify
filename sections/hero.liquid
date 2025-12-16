@@ -514,7 +514,7 @@
 
   .hero__shop-button {
     color: white;
-    text-decoration: underline;
+    text-decoration: none;
     font-size: 1em;
     font-family: inherit;
     font-weight: inherit;
@@ -522,6 +522,7 @@
     transition: all 0.2s ease;
     display: inline-block;
     position: relative;
+    margin-left: 0;
 
     &::after {
       content: '';
@@ -536,7 +537,6 @@
 
     &:hover {
       opacity: 0.7;
-      text-decoration: none;
 
       &::after {
         width: 100%;
