@@ -231,7 +231,7 @@
     --hero-border-width: {{ section.settings.border_width }}px;
     --hero-border-opacity: {{ section.settings.border_opacity }}%;
     --blur-opacity: {{ section.settings.reflection_opacity | divided_by: 100.0 }};
-    --hero-min-height: 100svh;
+    --hero-min-height: calc(100vh - var(--header-group-height, 0px));
   "
   {% if request.visual_preview_mode %}
     data-shopify-visual-preview
@@ -291,7 +291,7 @@
         <div class="hero__content-left">
       {% endif %}
         {% content_for 'blocks' %}
-        <a href="/collections/all" class="button button--primary hero__shop-button">Shop now</a>
+        <a href="/collections/all" class="hero__shop-button">Shop now</a>
       {% if section.settings.use_newsletter %}
         </div>
         <div class="hero__content-newsletter">
@@ -389,19 +389,12 @@
 
 {% stylesheet %}
   .hero-wrapper {
-    --hero-height-offset: 0px;
-  }
-
-  body:has(> #header-group > .header-section > #header-component[transparent]):not(
-      :has(> #header-group > .header-section + .shopify-section)
-    )
-    .hero-wrapper:first-child {
-    --hero-height-offset: var(--header-group-height, 0);
+    --hero-height-offset: var(--header-group-height, 0px);
   }
 
   .hero {
     position: relative;
-    min-height: calc(var(--hero-min-height) - var(--hero-height-offset));
+    min-height: var(--hero-min-height);
   }
 
   .hero[data-shopify-visual-preview] {
@@ -492,6 +485,20 @@
     
     @media screen and (width >= 750px) {
       display: block;
+    }
+  }
+
+  .hero__shop-button {
+    color: white;
+    text-decoration: underline;
+    font-size: inherit;
+    font-family: inherit;
+    transition: color 0.2s ease;
+    display: inline-block;
+
+    &:hover {
+      color: black;
+      text-decoration: underline;
     }
   }
 
