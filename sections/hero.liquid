@@ -231,7 +231,7 @@
     --hero-border-width: {{ section.settings.border_width }}px;
     --hero-border-opacity: {{ section.settings.border_opacity }}%;
     --blur-opacity: {{ section.settings.reflection_opacity | divided_by: 100.0 }};
-    --hero-min-height: calc(100vh - var(--header-group-height, 0px));
+    --hero-min-height: calc(100vh - 60px);
   "
   {% if request.visual_preview_mode %}
     data-shopify-visual-preview
@@ -305,7 +305,7 @@
             <a 
               href="{{ section.settings.shop_button_link | default: '/collections/all' }}" 
               class="hero__shop-button"
-              style="font-size: {{ section.settings.shop_button_font_size | default: 1 }}em; margin-left: 0;"
+              style="font-size: {{ section.settings.shop_button_font_size | default: 1 }}em;"
             >
               {{ section.settings.shop_button_text }}
             </a>
@@ -413,7 +413,11 @@
 
   .hero {
     position: relative;
-    min-height: var(--hero-min-height);
+    min-height: calc(100vh - 60px);
+
+    @media screen and (width >= 750px) {
+      min-height: calc(100vh - 82px);
+    }
   }
 
   .hero[data-shopify-visual-preview] {
