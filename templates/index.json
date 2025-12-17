@@ -93,7 +93,6 @@
         "shop_button_alignment": "start",
         "shop_button_padding_block_start": 0,
         "shop_button_padding_block_end": 0,
-        "mobile_image": "shopify://shop_images/9x16.png",
         "desktop_image": "shopify://shop_images/16x9_ab94a613-8f5c-4e2d-b3fa-b928d15fe604.png",
         "media_type_1": "image",
         "image_1": "shopify://shop_images/16x9_af7fc78a-be5c-47d5-aa1f-82f83f2e009f.png",
