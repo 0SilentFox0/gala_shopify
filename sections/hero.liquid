@@ -3,27 +3,19 @@
 
 {% liquid
   assign media_count = 0
-  if section.settings.image_1 != blank and section.settings.image_2 != blank
-    assign media_width_desktop = 100 | divided_by: 2 | append: 'vw'
-  else
-    assign media_width_desktop = '100vw'
-  endif
+  assign media_width_desktop = '100vw'
   assign media_width_mobile = '100vw'
   assign sizes = '(min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
   assign widths = '300, 450, 600, 750, 900, 1050, 1200, 1350, 1500, 1650, 1800, 1950, 2000, 2500, 3000, 3500, 4000, 5000'
 
   assign has_image_1 = false
-  assign has_image_2 = false
   assign has_video_1 = false
-  assign has_video_2 = false
   assign has_image = false
   assign has_video = false
-  assign has_video_multiple = false
   assign has_media = false
   assign has_mobile_image = false
   assign has_desktop_image = false
   assign media_type_1 = section.settings.media_type_1
-  assign media_type_2 = section.settings.media_type_2
   
   if section.settings.mobile_image != blank
     assign has_mobile_image = true
@@ -35,24 +27,15 @@
   if section.settings.image_1 != blank and media_type_1 == 'image'
     assign has_image_1 = true
   endif
-  if section.settings.image_2 != blank and media_type_2 == 'image'
-    assign has_image_2 = true
-  endif
   if section.settings.video_1 != blank and media_type_1 == 'video'
     assign has_video_1 = true
   endif
-  if section.settings.video_2 != blank and media_type_2 == 'video'
-    assign has_video_2 = true
-  endif
 
-  if has_image_1 or has_image_2 or has_mobile_image or has_desktop_image
+  if has_image_1 or has_mobile_image or has_desktop_image
     assign has_image = true
   endif
-  if has_video_1 or has_video_2
+  if has_video_1
     assign has_video = true
-  endif
-  if has_video_1 and has_video_2
-    assign has_video_multiple = true
   endif
   if has_image or has_video
     assign has_media = true
@@ -126,34 +109,6 @@
     }}
   {%- endif -%}
 
-  {%- if has_image_2 -%}
-    {% assign media_count = media_count | plus: 1 %}
-    {{
-      section.settings.image_2
-      | image_url: width: 3840
-      | image_tag:
-        width: section.settings.image_2.width,
-        widths: widths,
-        height: section.settings.image_2.height,
-        alt: section.settings.image_2.alt,
-        class: 'hero__image',
-        sizes: sizes
-    }}
-  {%- endif -%}
-
-  {%- if has_video_2 -%}
-    {% assign media_count = media_count | plus: 1 %}
-    {{
-      section.settings.video_2
-      | video_tag:
-        image_size: '3840x',
-        autoplay: true,
-        loop: true,
-        controls: false,
-        muted: true,
-        class: 'hero__video'
-    }}
-  {%- endif -%}
 
   {% if has_media == false and is_transparent %}
     <placeholder-image
@@ -202,19 +157,6 @@
         sizes: sizes
     }}
   {% endif %}
-  {% if has_image_2 %}
-    {{
-      section.settings.image_2
-      | image_url: width: 3840
-      | image_tag:
-        width: section.settings.image_2.width,
-        widths: widths,
-        height: section.settings.image_2.height,
-        alt: '',
-        class: 'hero__image',
-        sizes: sizes
-    }}
-  {% endif %}
   {% if has_media == false and is_transparent %}
     <placeholder-image
       class="hero__image"
@@ -237,12 +179,12 @@
   {% if request.visual_preview_mode %}
     data-shopify-visual-preview
   {% endif %}
-  {% if section.settings.blurred_reflection and has_video_multiple == false %}
+  {% if section.settings.blurred_reflection %}
     data-blur-shadow="true"
   {% endif %}
 >
   {% if section.settings.blurred_reflection %}
-    {% unless has_video_multiple or is_transparent == false %}
+    {% unless is_transparent == false %}
       <div class="hero__blurred-image">
         {{ media_blurred }}
       </div>
@@ -775,28 +717,6 @@
       "id": "video_1",
       "label": "t:settings.video",
       "visible_if": "{{ section.settings.media_type_1 == 'video' }}"
-    },
-    {
-      "type": "header",
-      "content": "t:content.media_2"
-    },
-    {
-      "type": "select",
-      "id": "media_type_2",
-      "label": "t:settings.type",
-      "options": [
-        {
-          "value": "video",
-          "label": "t:options.video"
-        }
-      ],
-      "default": "video"
-    },
-    {
-      "type": "video",
-      "id": "video_2",
-      "label": "t:settings.video",
-      "visible_if": "{{ section.settings.media_type_2 == 'video' }}"
     },
     {
       "type": "header",
